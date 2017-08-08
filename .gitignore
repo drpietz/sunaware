@@ -21,6 +21,7 @@ yarn-error.log*
 /.idea
 /out
 *.iws
+*.iml
 # - Eclipse
 .metadata
 bin/
