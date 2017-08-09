@@ -15,7 +15,7 @@ export default (initialState = {}) => {
     ...middlewares
   )
   return createStoreWithBaqend(
-    db.connect('app-starter', true),
+    db.connect('archaic-hobbit-96', true),
     reducer,
     initialState,
     middleware
