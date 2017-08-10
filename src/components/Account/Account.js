@@ -7,13 +7,16 @@ import { connect } from 'react-redux'
 
 import { login, register, logout} from '../../actions/auth'
 
+
 class Account extends Component {
   constructor(props) {
     super(props)
     this.state = {
       username: null,
       password: null,
-      email: null
+      email: null,
+        GPS: true,
+        SkinType: null
     }
   }
 
@@ -35,15 +38,48 @@ class Account extends Component {
     this.props.actions.logout()
   }
 
-  render() {
+  validateTerms = () => {
+      console.log("aaa")
+  }
+
+
+
+    render() {
     return (
       <div className='account'>
         {this.props.auth.isLoggedIn ? (
-          <div>
+            <div className="column">
             Welcome, { this.props.user.username }
-            <p>
-              <button className="button is-warning" onClick={this.handleLogout}>Logout</button>
-            </p>
+<br/>
+                <p className="field">
+                  <label className="label">Skin type</label>
+                    <a className="control">
+                    <a className="select">
+                  <select>
+                      <option>weiß</option>
+                      <option>hell</option>
+                      <option>medium</option>
+                      <option>mediterran</option>
+                      <option>braun</option>
+                      <option>schwarz</option>
+                  </select>
+              </a>
+                    </a>
+                </p>
+                <p className="field">
+                    <a className="checkbox" onClick={this.validateTerms}> </a>
+                        <label className="checkbox">
+                      <input type="checkbox" />
+                          GPS enabled
+                  </label>
+               </p>
+
+          <br/>  <p className="field">
+
+              <button className="button is-warning" onClick={this.handleLogout}>Logout</button> <space/>
+              <button className="button is-warning" onClick={this.handleSave}>Save changes</button>
+
+                </p>
           </div>
 
         ) : (
