@@ -9,11 +9,11 @@ export function login(username, password) {
   }
 }
 
-export function register(username, password) {
+export function register(username, password, email) {
   return {
     'BAQEND': {
       type: USER_REGISTER,
-      payload: (db) => db.User.register(username, password)
+      payload: (db) => db.User.register(username, password, email)
     }
   }
 }
