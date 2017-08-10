@@ -10,15 +10,17 @@ export function login(username, password) {
 }
 
 export function register(username, password, email) {
-  let user = {
-    username: username,
-    email: email
-  }
-
   return {
     'BAQEND': {
       type: USER_REGISTER,
-      payload: (db) => db.User.register(user, password)
+      payload: (db) => {
+        let user = new db.User({
+          username: username,
+          email: email
+        })
+
+        return db.User.register(user, password)
+      }
     }
   }
 }
