@@ -13,7 +13,7 @@ class Account extends Component {
     this.state = {
       username: null,
       password: null,
-        email: null
+      email: null
     }
   }
 
@@ -23,7 +23,7 @@ class Account extends Component {
 
   handleLogin = (event) => {
     event.preventDefault()
-    this.props.actions.login(this.state.username, this.state.password, this.state.password)
+    this.props.actions.login(this.state.username, this.state.password)
   }
 
   handleRegister = (event) => {
