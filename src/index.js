@@ -6,6 +6,6 @@ import './index.css';
 import 'font-awesome/css/font-awesome.css';
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+	<App />,
+	document.getElementById('root')
 );
