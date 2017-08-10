@@ -76,7 +76,7 @@ class Account extends Component {
 						</p>
 					</div>
 				) : (
-						<form onChange={this.handleInputChange}
+					<form onChange={this.handleInputChange}>
 						<div className="field">
 							<label className="label">Name</label>
 							<div className="control has-icons-left has-icons-right">
