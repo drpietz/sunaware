@@ -1,0 +1,30 @@
+{
+  "class": "/db/WeatherInfo",
+  "acl": {
+    "schemaAdd": {
+      "/db/Role/1": "allow"
+    },
+    "schemaReplace": {
+      "/db/Role/1": "allow"
+    }
+  },
+  "embedded": true,
+  "metadata": {},
+  "fields": {
+    "weather": {
+      "name": "weather",
+      "type": "/db/Weather",
+      "order": 0
+    },
+    "rainfall": {
+      "name": "rainfall",
+      "type": "/db/Rainfall",
+      "order": 1
+    },
+    "temparature": {
+      "name": "temparature",
+      "type": "/db/Double",
+      "order": 2
+    }
+  }
+}

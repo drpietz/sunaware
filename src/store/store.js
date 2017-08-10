@@ -4,7 +4,7 @@ import { createStoreWithBaqend, baqendReducer } from 'redux-baqend'
 import middlewares from '../middleware'
 import reducers from '../reducers'
 
-import { db } from 'baqend/lib/baqend'
+import { db } from 'baqend'
 
 export default (initialState = {}) => {
   const reducer = combineReducers({
@@ -15,7 +15,7 @@ export default (initialState = {}) => {
     ...middlewares
   )
   return createStoreWithBaqend(
-    db.connect('app-starter', true),
+    db.connect('archaic-hobbit-96', true),
     reducer,
     initialState,
     middleware
