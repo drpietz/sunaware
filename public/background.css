@@ -1,0 +1,17 @@
+
+   .bg-img { 
+        background-image: url(sunrise.jpeg) ;
+        background-position: center center;
+        background-repeat:  no-repeat;
+        background-attachment: fixed;
+        background-size:  cover;
+        background-color: #999;
+
+ }
+
+  
+   nav a {
+	color: white !important;
+ }
+
+  
