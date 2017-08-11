@@ -13,7 +13,7 @@ class Account extends Component {
 		this.state = {
 			username: null,
 			password: null,
-			email: null,
+			displayname: null,
 			gps: true,
 			skinType: null
 		}
@@ -28,9 +28,14 @@ class Account extends Component {
 		this.props.actions.login(this.state.username, this.state.password)
 	}
 
+	handleLogin = (event) => {
+		event.preventDefault()
+		this.props.actions.login(this.state.username, this.state.password)
+	}
+
 	handleRegister = (event) => {
 		event.preventDefault()
-		this.props.actions.register(this.state.username, this.state.password, this.state.email)
+		this.props.actions.register(this.state.username, this.state.password, this.state.displayname)
 	}
 
 	handleLogout = (event) => {
@@ -43,7 +48,7 @@ class Account extends Component {
 			<div className='account'>
 				{ this.props.auth.isLoggedIn ? (
 					<div className="column">
-						Welcome, { this.props.user.username }
+						Welcome, { this.props.user.displayname }
 						<br/><br/>
 						<form onChange={this.handleInputChange}>
 							<p className="field">
@@ -88,12 +93,24 @@ class Account extends Component {
 						<div className="field">
 							<label className="label">Name</label>
 							<div className="control has-icons-left has-icons-right">
-								<input className="input" name="username" type="text" placeholder="Name input" />
+								<input className="input" name="displayname" type="text" placeholder="Name input" />
 								<span className="icon is-small is-left">
 									<i className="fa fa-user"></i>
 								</span></div></div>
 
 
+
+
+
+						<div className="field">
+							<label className="label">Email</label>
+							<div className="control has-icons-left">
+								<input className="input" name="username" type="text" placeholder="Email input" />
+								<span className="icon is-small is-left">
+									<i className="fa fa-envelope"></i>
+								</span>
+							</div>
+						</div>
 
 						<div className="field">
 							<label className="label">Password</label>
@@ -106,21 +123,17 @@ class Account extends Component {
 							</div>
 						</div>
 
-						<div className="field">
-							<label className="label">Email</label>
-							<div className="control has-icons-left">
-								<input className="input" name="email" type="text" placeholder="Email input" />
-								<span className="icon is-small is-left">
-									<i className="fa fa-envelope"></i>
-								</span>
-							</div>
-						</div>
 						<br />
 						<div>
 							<button className="button is-warning" onClick={this.handleLogin}>Login</button> <space/>
 							<button className="button is-warning" onClick={this.handleRegister}>Register</button>
 						</div>
+
+						<div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+
 					</form>
+
+
 				)}
 			</div>
 		)
