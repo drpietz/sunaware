@@ -43,7 +43,7 @@ class Introduction extends Component {
 					<div className="hero-foot">
 						<nav className="tabs is-boxed is-fullwidth">
 							<div className="container has-text-centered ">
-								<span><small>by Anne Kunstmann, Tim Pietz, Marcel Repenning, Ben Schmidtke</small></span>
+								<span><small>by Anne Kunstmann, Tim Pietz, Marcel Repenning, Benjamin Schmidtke</small></span>
 							</div>
 						</nav>
 					</div>
