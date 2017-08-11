@@ -15,6 +15,8 @@ class Account extends Component {
 			password: null,
 			displayname: null,
 			gps: true,
+			latitude: null,
+			longitude: null,
 			skinType: null
 		}
 	}
@@ -23,11 +25,6 @@ class Account extends Component {
 		this.setState({ [event.target.name]: event.target.value })
 	}
 
-
-	handleLogin = (event) => {
-		event.preventDefault()
-		this.props.actions.login(this.state.username, this.state.password)
-	}
 
 	handleRegister = (event) => {
 		event.preventDefault()
