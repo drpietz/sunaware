@@ -10,13 +10,7 @@ class Start extends Component {
 
 			<div className="main">
 				<div className="hero is-fullheight bg-img">
-					<nav className="breadcrumb is-right is-small" aria-label="breadcrumbs">
-						<ul>
-							<li><Link to="/">Log out</Link></li>
-							<li><a href="#">Account</a></li>
-							<li><a href="#">About us</a></li>
-						</ul>
-					</nav>
+
 					<div className="hero-body">
 						<div className="container is-centered">
 							<h1 className="title">

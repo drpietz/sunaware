@@ -8,13 +8,7 @@ class Introduction extends Component {
 		return (
 			<div className="layout">
 				<div className="hero is-fullheight bg-img">
-					<nav className="breadcrumb is-right is-small" aria-label="breadcrumbs">
-						<ul>
-							<li><Link to="/account">Login</Link></li>
-							<li><Link to="/start">Sign up</Link></li>
-							<li><a href="#">About us</a></li>
-						</ul>
-					</nav>
+
 					<div className="hero-body">
 						<div className="container">
 							<h1 className="title">

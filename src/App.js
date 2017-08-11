@@ -1,8 +1,9 @@
 import './App.css'
 import React, { Component } from 'react'
+//import logo from './logo.svg'
 
 import { Route, Switch } from 'react-router'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, NavLink } from 'react-router-dom'
 
 import { Provider } from 'react-redux'
 import createStore from './store/store'
@@ -19,6 +20,16 @@ class App extends Component {
 			<Provider store={store}>
 				<BrowserRouter>
 					<div className="App">
+						<div style={{ backgroundColor: '#eee', padding: '16px' }}>
+						<nav className="breadcrumb is-right is-small" aria-label="breadcrumbs">
+							<ul>
+								<li><NavLink  style={{ padding: '0 8px' }}
+											  activeStyle={{ textDecoration: 'underline' }} to="/account"><span class="icon is-small"><i class="fa fa-home"></i></span><span>Account</span></NavLink></li>
+								<li><NavLink to="/start">Map</NavLink></li>
+								<li><a href="#">About us</a></li>
+							</ul>
+						</nav>
+						</div>
 						<Switch>
 							<Route exact path="/" component={Introduction}/>
 							<Route path="/account" component={Account}/>
