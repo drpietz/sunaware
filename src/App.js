@@ -9,8 +9,9 @@ import { Provider } from 'react-redux'
 import createStore from './store/store'
 
 import Account from './components/Account/Account'
+import Introduction from './components/Introduction/Introduction'
 
-const store = createStore()
+const store = createStore();
 
 class App extends Component {
 	render() {
@@ -29,6 +30,7 @@ class App extends Component {
 						</div>
 						<Switch>
 							<Route path="/account" component={Account}/>
+							<Route path="/" component={Introduction}/>
 						</Switch>
 					</div>
 				</BrowserRouter>
