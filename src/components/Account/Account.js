@@ -45,36 +45,36 @@ class Account extends Component {
 						<br/><br/>
 						<form onChange={this.handleInputChange}>
 							<p className="field">
-							<label className="label">Skin type</label>
-							<a className="control">
-								<a className="select" name="skinType">
-									<select>
-										<option>weiß</option>
-										<option>hell</option>
-										<option>medium</option>
-										<option>mediterran</option>
-										<option>braun</option>
-										<option>schwarz</option>
-									</select>
+								<label className="label">Skin type</label>
+								<a className="control">
+									<a className="select" name="skinType">
+										<select>
+											<option value={0}>weiß</option>
+											<option value={1}>hell</option>
+											<option value={2}>medium</option>
+											<option value={3}>mediterran</option>
+											<option value={4}>braun</option>
+											<option value={5}>schwarz</option>
+										</select>
+									</a>
 								</a>
-							</a>
-						</p>
-						<p className="field">
-							<a className="checkbox"> </a>
-							<label className="checkbox">
-								<input type="checkbox" name="gps" /> GPS enabled
-							</label>
-						</p>
-						<div className="field">
-							<label className="label">Longitude</label>
-								<input className="input" name="longitude" type="text" placeholder="Longitude input"/>
+							</p>
+							<p className="field">
+								<a className="checkbox"> </a>
+								<label className="checkbox">
+									<input type="checkbox" name="gps" /> GPS enabled
+								</label>
+							</p>
+							<div className="field">
+								<label className="label">Longitude</label>
+								<input className="input" name="longitude" type="number" step="any" placeholder="Longitude input"/>
 							</div>
 
 
-						<div className="field">
-							<label className="label">Latitude</label>
-								<input className="input" name="latitude" type="text" placeholder="Latitude input"/>
-						</div>
+							<div className="field">
+								<label className="label">Latitude</label>
+								<input className="input" name="latitude" type="number" step="any" placeholder="Latitude input"/>
+							</div>
 						</form>
 						<br/>
 						<p className="field">
