@@ -30,11 +30,6 @@ class Account extends Component {
 		this.props.actions.login(this.state.username, this.state.password)
 	}
 
-	handleLogin = (event) => {
-		event.preventDefault()
-		this.props.actions.login(this.state.username, this.state.password)
-	}
-
 	handleRegister = (event) => {
 		event.preventDefault()
 		this.props.actions.register(this.state.username, this.state.password, this.state.displayname)
