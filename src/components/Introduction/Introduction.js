@@ -1,5 +1,6 @@
 import './Introduction.css'
-import React, { Component } from 'react'
+import React, { Component} from 'react'
+import {Link} from 'react-router-dom'
 
 class Introduction extends Component {
 
@@ -9,8 +10,8 @@ class Introduction extends Component {
 				<div className="hero is-fullheight bg-img">
 					<nav className="breadcrumb is-right is-small" aria-label="breadcrumbs">
 						<ul>
-							<li><a href="#">Login</a></li>
-							<li><a href="#">Sign up</a></li>
+							<li><Link to="/account">Login</Link></li>
+							<li><Link to="/start">Sign up</Link></li>
 							<li><a href="#">About us</a></li>
 						</ul>
 					</nav>
