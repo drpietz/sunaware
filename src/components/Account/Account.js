@@ -23,10 +23,6 @@ class Account extends Component {
 		this.setState({ [event.target.name]: event.target.value })
 	}
 
-	handleLogin = (event) => {
-		event.preventDefault()
-		this.props.actions.login(this.state.username, this.state.password)
-	}
 
 	handleLogin = (event) => {
 		event.preventDefault()
@@ -89,51 +85,57 @@ class Account extends Component {
 						</p>
 					</div>
 				) : (
-					<form onChange={this.handleInputChange}>
-						<div className="field">
-							<label className="label">Name</label>
-							<div className="control has-icons-left has-icons-right">
-								<input className="input" name="displayname" type="text" placeholder="Name input" />
-								<span className="icon is-small is-left">
-									<i className="fa fa-user"></i>
-								</span></div></div>
-
-
-
-
-
-						<div className="field">
-							<label className="label">Email</label>
-							<div className="control has-icons-left">
-								<input className="input" name="username" type="text" placeholder="Email input" />
-								<span className="icon is-small is-left">
-									<i className="fa fa-envelope"></i>
-								</span>
+					<div className="hero is-fullheight bg-img">
+						<nav className="breadcrumb is-right is-small" aria-label="breadcrumbs">
+							<ul>
+								<li><Link to="/account">Login</Link></li>
+								<li><Link to="/start">Sign up</Link></li>
+								<li><a href="#">About us</a></li>
+							</ul>
+						</nav>
+						<form onChange={this.handleInputChange}>
+							<div className="field">
+								<label className="label">Name</label>
+								<div className="control has-icons-left has-icons-right">
+									<input className="input" name="displayname" type="text" placeholder="Name input" />
+									<span className="icon is-small is-left">
+										<i className="fa fa-user"/>
+									</span>
+								</div>
 							</div>
-						</div>
 
-						<div className="field">
-							<label className="label">Password</label>
-
-							<div className="control has-icons-left">
-								<input className="input" name="password" type="password" placeholder="Password"/>
-								<span className="icon is-small is-left">
-									<i className="fa fa-lock"></i>
-								</span>
+							<div className="field">
+								<label className="label">Email</label>
+								<div className="control has-icons-left">
+									<input className="input" name="username" type="text" placeholder="Email input" />
+									<span className="icon is-small is-left">
+										<i className="fa fa-envelope"/>
+									</span>
+								</div>
 							</div>
-						</div>
 
-						<br />
-						<div>
-							<button className="button is-warning" onClick={this.handleLogin}>Login</button> <space/>
-							<button className="button is-warning" onClick={this.handleRegister}>Register</button>
-						</div>
+							<div className="field">
+								<label className="label">Password</label>
 
-						<div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+								<div className="control has-icons-left">
+									<input className="input" name="password" type="password" placeholder="Password"/>
+									<span className="icon is-small is-left">
+										<i className="fa fa-lock"/>
+									</span>
+								</div>
+							</div>
 
-					</form>
+							<br />
+							<div>
+								<button className="button is-warning" onClick={this.handleLogin}>Login</button> <space/>
+								<button className="button is-warning" onClick={this.handleRegister}>Register</button>
+							</div>
 
+							<div className="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"/>
 
+						</form>
+
+					</div>
 				)}
 			</div>
 		)
