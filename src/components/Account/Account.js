@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+import { Link } from 'react-router-dom'
 import { login, register, logout} from '../../actions/auth'
 
 class Account extends Component {
@@ -90,48 +91,51 @@ class Account extends Component {
 								<li><a href="#">About us</a></li>
 							</ul>
 						</nav>
-						<form onChange={this.handleInputChange}>
-							<div className="field">
-								<label className="label">Name</label>
-								<div className="control has-icons-left has-icons-right">
-									<input className="input" name="displayname" type="text" placeholder="Name input" />
-									<span className="icon is-small is-left">
-										<i className="fa fa-user"/>
-									</span>
-								</div>
+								<div className="hero-body">
+						<div className="container">
+								<form onChange={this.handleInputChange}>
+									<div className="field">
+										<label className="label">Name</label>
+										<div className="control has-icons-left has-icons-right">
+											<input className="input" name="displayname" type="text" placeholder="Name input" />
+											<span className="icon is-small is-left">
+												<i className="fa fa-user"/>
+											</span>
+										</div>
+									</div>
+
+									<div className="field">
+										<label className="label">Email</label>
+										<div className="control has-icons-left">
+											<input className="input" name="username" type="text" placeholder="Email input" />
+											<span className="icon is-small is-left">
+												<i className="fa fa-envelope"/>
+											</span>
+										</div>
+									</div>
+
+									<div className="field">
+										<label className="label">Password</label>
+
+										<div className="control has-icons-left">
+											<input className="input" name="password" type="password" placeholder="Password"/>
+											<span className="icon is-small is-left">
+												<i className="fa fa-lock"/>
+											</span>
+										</div>
+									</div>
+
+									<br />
+									<div>
+										<button className="button is-warning" onClick={this.handleLogin}>Login</button> <space/>
+										<button className="button is-warning" onClick={this.handleRegister}>Register</button>
+									</div>
+
+									<div className="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"/>
+
+								</form>
 							</div>
-
-							<div className="field">
-								<label className="label">Email</label>
-								<div className="control has-icons-left">
-									<input className="input" name="username" type="text" placeholder="Email input" />
-									<span className="icon is-small is-left">
-										<i className="fa fa-envelope"/>
-									</span>
-								</div>
-							</div>
-
-							<div className="field">
-								<label className="label">Password</label>
-
-								<div className="control has-icons-left">
-									<input className="input" name="password" type="password" placeholder="Password"/>
-									<span className="icon is-small is-left">
-										<i className="fa fa-lock"/>
-									</span>
-								</div>
-							</div>
-
-							<br />
-							<div>
-								<button className="button is-warning" onClick={this.handleLogin}>Login</button> <space/>
-								<button className="button is-warning" onClick={this.handleRegister}>Register</button>
-							</div>
-
-							<div className="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"/>
-
-						</form>
-
+						</div>
 					</div>
 				)}
 			</div>
