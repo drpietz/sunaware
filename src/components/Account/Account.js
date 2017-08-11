@@ -14,8 +14,8 @@ class Account extends Component {
 			username: null,
 			password: null,
 			email: null,
-			GPS: true,
-			SkinType: null
+			gps: true,
+			skinType: null
 		}
 	}
 
@@ -37,9 +37,6 @@ class Account extends Component {
 		this.props.actions.logout()
 	}
 
-	validateTerms = () => {
-		console.log("aaa")
-	}
 
 	render() {
 		return (
@@ -47,11 +44,12 @@ class Account extends Component {
 				{ this.props.auth.isLoggedIn ? (
 					<div className="column">
 						Welcome, { this.props.user.username }
-						<br/>
-						<p className="field">
+						<br/><br/>
+						<form onChange={this.handleInputChange}>
+							<p className="field">
 							<label className="label">Skin type</label>
 							<a className="control">
-								<a className="select">
+								<a className="select" name="skinType">
 									<select>
 										<option>weiß</option>
 										<option>hell</option>
@@ -64,15 +62,25 @@ class Account extends Component {
 							</a>
 						</p>
 						<p className="field">
-							<a className="checkbox" onClick={this.validateTerms}> </a>
+							<a className="checkbox"> </a>
 							<label className="checkbox">
-								<input type="checkbox" /> GPS enabled
+								<input type="checkbox" name="gps" /> GPS enabled
 							</label>
 						</p>
+						<div className="field">
+							<label className="label">Longitude</label>
+								<input className="input" name="longitude" type="text" placeholder="Longitude input"/>
+							</div>
+
+
+						<div className="field">
+							<label className="label">Latitude</label>
+								<input className="input" name="latitude" type="text" placeholder="Latitude input"/>
+						</div>
+						</form>
 						<br/>
 						<p className="field">
-							<button className="button is-warning" onClick={this.handleLogout}>Logout</button> <space/>
-							<button className="button is-warning" onClick={this.handleSave}>Save changes</button>
+							<button className="button is-warning" onClick={this.handleLogout}>Logout</button>
 						</p>
 					</div>
 				) : (
@@ -80,16 +88,12 @@ class Account extends Component {
 						<div className="field">
 							<label className="label">Name</label>
 							<div className="control has-icons-left has-icons-right">
-								<input className="input is-success" name="username" type="text" placeholder="Name input" />
+								<input className="input" name="username" type="text" placeholder="Name input" />
 								<span className="icon is-small is-left">
 									<i className="fa fa-user"></i>
-								</span>
-								<span className="icon is-small is-right">
-									<i className="fa fa-check"></i>
-								</span>
-							</div>
-							<p className="help is-success">This username is available</p>
-						</div>
+								</span></div></div>
+
+
 
 						<div className="field">
 							<label className="label">Password</label>
