@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_REGISTER, USER_LOGOUT } from '../actions/types'
+import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_PROFILE_UPDATE } from '../actions/types'
 import { BAQEND_CONNECTED } from 'redux-baqend'
 
 const initialState = {
@@ -16,6 +16,9 @@ export default function auth(state = initialState, action = {}) {
 			return { ...state, user: action.payload, isLoggedIn: true }
 		case USER_LOGOUT:
 			return { ...state, user: null, isLoggedIn: false }
+		case USER_PROFILE_UPDATE:
+			console.log(state)
+			return { ...state, user: action.payload}
 		default:
 			return state
 	}

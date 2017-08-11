@@ -1,4 +1,5 @@
-import { USER_LOGIN, USER_REGISTER, USER_LOGOUT } from './types'
+import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_PROFILE_UPDATE } from './types'
+import GeoPoint from 'baqend/lib/GeoPoint'
 
 export function login(username, password) {
 	return {
@@ -34,3 +35,17 @@ export function logout() {
 	}
 }
 
+export function updateProfile(skinType, gpsEnabled, latitude, longitude) {
+	let position = new GeoPoint(parseFloat(latitude), parseFloat(longitude));
+
+	return {
+		'BAQEND': {
+			type: USER_PROFILE_UPDATE,
+			payload: (db) => db.User.me.partialUpdate()
+				.set('skinType', skinType)
+				.set('gpsEnabled', gpsEnabled)
+				.set('position', position)
+				.execute()
+		}
+	}
+}
