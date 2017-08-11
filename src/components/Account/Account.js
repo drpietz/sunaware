@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { login, register, logout} from '../../actions/auth'
+import { login, register, logout, updateProfile } from '../../actions/auth'
 
 class Account extends Component {
 	constructor(props) {
@@ -28,6 +28,11 @@ class Account extends Component {
 	handleLogin = (event) => {
 		event.preventDefault()
 		this.props.actions.login(this.state.username, this.state.password)
+	}
+
+	handleUpdate = (event) => {
+		event.preventDefault()
+		this.props.actions.updateProfile(this.state.skinType, this.state.gps, this.state.latitude, this.state.longitude)
 	}
 
 	handleRegister = (event) => {
@@ -83,6 +88,7 @@ class Account extends Component {
 						<br/>
 						<p className="field">
 							<button className="button is-warning" onClick={this.handleLogout}>Logout</button>
+							<button className="button is-warning" onClick={this.handleUpdate}>Update</button>
 						</p>
 					</div>
 				) : (
@@ -142,7 +148,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return { actions: bindActionCreators({ login, register, logout }, dispatch) }
+	return { actions: bindActionCreators({ login, register, logout, updateProfile}, dispatch) }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Account)
