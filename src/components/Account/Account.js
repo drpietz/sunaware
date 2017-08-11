@@ -15,6 +15,8 @@ class Account extends Component {
 			password: null,
 			displayname: null,
 			gps: true,
+			latitude: null,
+			longitude: null,
 			skinType: null
 		}
 	}
