@@ -10,8 +10,7 @@ function SunawareLayout(props) {
 				<header className="nav">
 					<div className="container">
 						<span className="nav-toggle">
-							<span/>
-							<span/>
+							<span/><span/><span/>
 						</span>
 						<div className="nav-right nav-menu">
 							<NavLink className="nav-item"
