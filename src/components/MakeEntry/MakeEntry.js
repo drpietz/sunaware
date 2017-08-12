@@ -17,16 +17,16 @@ class MakeEntry extends Component {
 					<section className="section">
 						<div className="container">
 							<label className="rad">
-								<input type="radio" name="rain" value="none" />
-								<img src="/img/clouds/1.png"/>
+								<input type="radio" name="rain" value="0" />
+								<img src="/img/weather/rain/0.png"/>
 							</label>
 							<label className="rad">
-								<input type="radio" name="rain" value="normal" />
-								<img src="/img/clouds/5.png"/>
+								<input type="radio" name="rain" value="2" />
+								<img src="/img/weather/rain/2.png"/>
 							</label>
-							<label classname="rad">
-								<input type="radio" name="rain" value="strong" />
-								<img src="/img/clouds/6.png"/>
+							<label className="rad">
+								<input type="radio" name="rain" value="3" />
+								<img src="/img/weather/rain/3.png"/>
 							</label>
 						</div>
 					</section>
@@ -36,23 +36,23 @@ class MakeEntry extends Component {
 					<section className="section">
 						<div className="container">
 							<label className="rad">
-								<input type="radio" name="clouds" value="none" />
-								<img src="/img/clouds/1.png"/>
+								<input type="radio" name="clouds" value="0" />
+								<img src="/img/weather/clouds/0.png"/>
 							</label>
 							<label className="rad">
-								<input type="radio" name="clouds" value="normal" />
-								<img src="/img/clouds/2.png"/>
+								<input type="radio" name="clouds" value="2" />
+								<img src="/img/weather/clouds/2.png"/>
 							</label>
-							<label classname="rad">
-								<input type="radio" name="clouds" value="strong" />
-								<img src="/img/clouds/3.png"/>
+							<label className="rad">
+								<input type="radio" name="clouds" value="4" />
+								<img src="/img/weather/clouds/4.png"/>
 							</label>
 						</div>
 					</section>
 				</p>
 				<div className="field">
 					<label className="label">Temperature</label>
-					<input className="input" name="Temperature" placeholder="Temperature in degrees"/>
+					<input className="input" name="temparature" placeholder="Temperature in degrees"/>
 				</div>
 				<div className="field is-grouped is-grouped-centered">
 					<p className="control">

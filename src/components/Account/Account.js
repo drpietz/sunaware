@@ -65,28 +65,28 @@ class Account extends Component {
 								<section className="section">
 									<div className="container">
 										<label className="rad">
-											<input type="radio" name="skin" value="white" />
-											<img src="/skintype/1.png"/>
+											<input type="radio" name="skinType" value="0" />
+											<img src="/img/user/skintypes/0.png"/>
 										</label>
 										<label className="rad">
-											<input type="radio" name="skin" value="colour" />
-											<img src="/skintype/2.png"/>
+											<input type="radio" name="skinType" value="1" />
+											<img src="/img/user/skintypes/1.png"/>
 										</label>
 										<label className="rad">
-											<input type="radio" name="skin" value="asian" />
-											<img src="/skintype/3.png"/>
+											<input type="radio" name="skinType" value="2" />
+											<img src="/img/user/skintypes/2.png"/>
 										</label>
 										<label className="rad">
-											<input type="radio" name="skin" value="mediterranian" />
-											<img src="/skintype/4.png"/>
+											<input type="radio" name="skinType" value="3" />
+											<img src="/img/user/skintypes/3.png"/>
 										</label>
 										<label className="rad">
-											<input type="radio" name="skin" value="dark" />
-											<img src="/skintype/5.png"/>
+											<input type="radio" name="skinType" value="4" />
+											<img src="/img/user/skintypes/4.png"/>
 										</label>
-										<label classname="rad">
-											<input type="radio" name="skin" value="black" />
-											<img src="/skintype/6.png"/>
+										<label className="rad">
+											<input type="radio" name="skinType" value="5" />
+											<img src="/img/user/skintypes/5.png"/>
 										</label>
 									</div>
 								</section>
