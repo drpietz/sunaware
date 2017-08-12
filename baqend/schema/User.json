@@ -2,6 +2,9 @@
   "class": "/db/User",
   "superClass": "/db/Object",
   "acl": {
+    "delete": {
+      "/db/Role/1": "allow"
+    },
     "schemaAdd": {
       "/db/Role/1": "allow"
     },
@@ -22,8 +25,8 @@
         "READONLY"
       ]
     },
-    "email": {
-      "name": "email",
+    "displayname": {
+      "name": "displayname",
       "type": "/db/String",
       "order": 1
     },
@@ -37,7 +40,7 @@
     },
     "skinType": {
       "name": "skinType",
-      "type": "/db/SkinType",
+      "type": "/db/Integer",
       "order": 3
     },
     "positioningEnabled": {

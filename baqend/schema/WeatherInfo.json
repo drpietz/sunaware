@@ -11,20 +11,25 @@
   "embedded": true,
   "metadata": {},
   "fields": {
-    "weather": {
-      "name": "weather",
-      "type": "/db/Weather",
+    "position": {
+      "name": "position",
+      "type": "/db/GeoPoint",
       "order": 0
     },
-    "rainfall": {
-      "name": "rainfall",
-      "type": "/db/Rainfall",
+    "clouds": {
+      "name": "clouds",
+      "type": "/db/Integer",
       "order": 1
+    },
+    "rain": {
+      "name": "rain",
+      "type": "/db/Integer",
+      "order": 2
     },
     "temparature": {
       "name": "temparature",
       "type": "/db/Double",
-      "order": 2
+      "order": 3
     }
   }
 }
