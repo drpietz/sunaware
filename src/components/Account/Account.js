@@ -8,47 +8,47 @@ import { connect } from 'react-redux'
 import { login, register, logout, updateProfile } from '../../actions/auth'
 
 class Account extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            username: null,
-            password: null,
-            displayname: null,
-            gps: true,
-            latitude: null,
-            longitude: null,
-            skinType: null
-        }
-    }
+	constructor(props) {
+		super(props)
+		this.state = {
+			username: null,
+			password: null,
+			displayname: null,
+			gps: true,
+			latitude: null,
+			longitude: null,
+			skinType: null
+		}
+	}
 
-    handleInputChange = (event) => {
-        this.setState({ [event.target.name]: event.target.value })
-    }
+	handleInputChange = (event) => {
+		this.setState({[event.target.name]: event.target.value})
+	}
 
-    handleLogin = (event) => {
-        event.preventDefault()
-        this.props.actions.login(this.state.username, this.state.password)
-    }
+	handleLogin = (event) => {
+		event.preventDefault()
+		this.props.actions.login(this.state.username, this.state.password)
+	}
 
-    handleUpdate = (event) => {
-        event.preventDefault()
-        this.props.actions.updateProfile(this.state.skinType, this.state.gps, this.state.latitude, this.state.longitude)
-    }
+	handleUpdate = (event) => {
+		event.preventDefault()
+		this.props.actions.updateProfile(this.state.skinType, this.state.gps, this.state.latitude, this.state.longitude)
+	}
 
-    handleRegister = (event) => {
-        event.preventDefault()
-        this.props.actions.register(this.state.username, this.state.password, this.state.displayname)
-    }
+	handleRegister = (event) => {
+		event.preventDefault()
+		this.props.actions.register(this.state.username, this.state.password, this.state.displayname)
+	}
 
-    handleLogout = (event) => {
-        this.props.actions.logout()
-    }
+	handleLogout = (event) => {
+		this.props.actions.logout()
+	}
 
 
-    render() {
-        return (
+	render() {
+		return (
 			<div className='account'>
-                { this.props.auth.isLoggedIn ? (
+				{ this.props.auth.isLoggedIn ? (
 					<div className="column">
 						Welcome, { this.props.user.displayname }
 						<br/><br/>
@@ -91,7 +91,7 @@ class Account extends Component {
 							<button className="button is-warning" onClick={this.handleUpdate}>Update</button>
 						</p>
 					</div>
-                ) : (
+				) : (
 					<form onChange={this.handleInputChange}>
 						<div className="field">
 							<label className="label">Name</label>
@@ -133,22 +133,22 @@ class Account extends Component {
 						<div className="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"/>
 
 					</form>
-                )}
+				)}
 			</div>
-        )
-    }
+		)
+	}
 }
 
 Account.propTypes = {
-    user: PropTypes.object
+	user: PropTypes.object
 }
 
 function mapStateToProps(state) {
-    return { auth: state.auth, user: state.auth.user }
+	return { auth: state.auth, user: state.auth.user }
 }
 
 function mapDispatchToProps(dispatch) {
-    return { actions: bindActionCreators({ login, register, logout, updateProfile}, dispatch) }
+	return { actions: bindActionCreators({ login, register, logout, updateProfile}, dispatch) }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Account)
