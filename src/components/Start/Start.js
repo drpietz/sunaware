@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
-import './Start.css'
-
 class Start extends Component {
 
 	render() {
@@ -18,6 +16,7 @@ class Start extends Component {
 					src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB-ZrFxLXdINcrzeYrlyg6H0QXIaDhJITY
 			&q=Space+Needle,Berlin">
 				</iframe>
+				<Link to="/start/entry" className="button is-warning">Report weather</Link>
 			</div>
 		);
 	}

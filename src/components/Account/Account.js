@@ -14,7 +14,7 @@ class Account extends Component {
 			username: null,
 			password: null,
 			displayname: null,
-			positioningEnabled: false,
+			positioningEnabled: true,
 			latitude: null,
 			longitude: null,
 			skinType: null
@@ -59,20 +59,37 @@ class Account extends Component {
 						Welcome, { this.props.user.displayname }
 						<br/><br/>
 						<form onChange={this.handleInputChange}>
+
 							<p className="field">
 								<label className="label">Skin type</label>
-								<div className="control">
-									<div className="select">
-										<select name="skinType">
-											<option value={0}>weiß</option>
-											<option value={1}>hell</option>
-											<option value={2}>medium</option>
-											<option value={3}>mediterran</option>
-											<option value={4}>braun</option>
-											<option value={5}>schwarz</option>
-										</select>
+								<section className="section">
+									<div className="container">
+										<label className="rad">
+											<input type="radio" name="skin" value="white" />
+											<img src="/skintype/1.png"/>
+										</label>
+										<label className="rad">
+											<input type="radio" name="skin" value="colour" />
+											<img src="/skintype/2.png"/>
+										</label>
+										<label className="rad">
+											<input type="radio" name="skin" value="asian" />
+											<img src="/skintype/3.png"/>
+										</label>
+										<label className="rad">
+											<input type="radio" name="skin" value="mediterranian" />
+											<img src="/skintype/4.png"/>
+										</label>
+										<label className="rad">
+											<input type="radio" name="skin" value="dark" />
+											<img src="/skintype/5.png"/>
+										</label>
+										<label classname="rad">
+											<input type="radio" name="skin" value="black" />
+											<img src="/skintype/6.png"/>
+										</label>
 									</div>
-								</div>
+								</section>
 							</p>
 
 							<div className="field">
@@ -96,10 +113,14 @@ class Account extends Component {
 							</div>
 						</form>
 						<br/>
-						<p className="field">
+						<div className="field is-grouped is-grouped-centered">
+							<p className="control">
 							<button className="button is-warning" onClick={this.handleLogout}>Logout</button>
+							</p>
+							<p className="control">
 							<button className="button is-warning" onClick={this.handleUpdate}>Update</button>
-						</p>
+							</p>
+						</div>
 					</div>
 				) : (
 					<form onChange={this.handleInputChange}>

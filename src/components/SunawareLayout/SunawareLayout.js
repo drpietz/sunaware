@@ -41,7 +41,7 @@ function SunawareLayout(props) {
 					<img src="/img/clouds/layer_foreground.svg" className="cloud cloud-foreground" />
 				</div>
 				<div className="credits">
-					by Anne Kinstmann, Tim Pietz, Marcel Repenning, Benjamin Schmidtke
+					by Anne Kunstmann, Tim Pietz, Marcel Repenning, Benjamin Schmidtke
 				</div>
 			</div>
 		</section>

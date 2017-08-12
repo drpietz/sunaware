@@ -9,6 +9,7 @@ import createStore from './store/store'
 
 import SunawareLayout from './components/SunawareLayout/SunawareLayout'
 import Account from './components/Account/Account'
+import MakeEntry from './components/MakeEntry/MakeEntry'
 import WelcomeMessage from './components/WelcomeMessage/WelcomeMessage'
 import Start from './components/Start/Start'
 
@@ -24,7 +25,8 @@ class App extends Component {
 							<Switch>
 								<Route exact path="/" component={WelcomeMessage}/>
 								<Route path="/account" component={Account}/>
-								<Route path="/start" component={Start}/>
+								<Route exact path="/start" component={Start}/>
+								<Route path="/start/entry" component={MakeEntry}/>
 							</Switch>
 						</SunawareLayout>
 					</div>
