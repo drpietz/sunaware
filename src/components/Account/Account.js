@@ -14,7 +14,7 @@ class Account extends Component {
 			username: null,
 			password: null,
 			displayname: null,
-			gps: true,
+			positioningEnabled: true,
 			latitude: null,
 			longitude: null,
 			skinType: null
@@ -22,7 +22,13 @@ class Account extends Component {
 	}
 
 	handleInputChange = (event) => {
-		this.setState({[event.target.name]: event.target.value})
+		const target = event.target;
+		const value = target.type === 'checkbox' ? target.checked : target.value;
+		const name = target.name;
+
+		this.setState({
+			[name]: value
+		})
 	}
 
 	handleLogin = (event) => {
@@ -32,7 +38,7 @@ class Account extends Component {
 
 	handleUpdate = (event) => {
 		event.preventDefault()
-		this.props.actions.updateProfile(this.state.skinType, this.state.gps, this.state.latitude, this.state.longitude)
+		this.props.actions.updateProfile(this.state.skinType, this.state.positioningEnabled, this.state.latitude, this.state.longitude)
 	}
 
 	handleRegister = (event) => {
@@ -55,9 +61,9 @@ class Account extends Component {
 						<form onChange={this.handleInputChange}>
 							<p className="field">
 								<label className="label">Skin type</label>
-								<a className="control">
-									<a className="select" name="skinType">
-										<select>
+								<div className="control">
+									<div className="select">
+										<select name="skinType">
 											<option value={0}>weiß</option>
 											<option value={1}>hell</option>
 											<option value={2}>medium</option>
@@ -65,15 +71,19 @@ class Account extends Component {
 											<option value={4}>braun</option>
 											<option value={5}>schwarz</option>
 										</select>
-									</a>
-								</a>
+									</div>
+								</div>
 							</p>
-							<p className="field">
-								<a className="checkbox"> </a>
-								<label className="checkbox">
-									<input type="checkbox" name="gps" /> GPS enabled
-								</label>
-							</p>
+
+							<div className="field">
+								<div className="control">
+									<label className="checkbox">
+										<input type="checkbox" name="positioningEnabled"/>
+										GPS enabled
+									</label>
+								</div>
+							</div>
+
 							<div className="field">
 								<label className="label">Longitude</label>
 								<input className="input" name="longitude" type="number" step="any" placeholder="Longitude input"/>
