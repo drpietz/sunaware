@@ -21,14 +21,14 @@ class Introduction extends Component {
 							<p>
 								<div className="field is-grouped is-grouped-centered">
 									<p className="control">
-										<a className="button is-warning">
+										<Link to="/start" className="button is-warning">
 											Sign up
-										</a>
+										</Link>
 									</p>
 									<p className="control">
-										<a className="button is-warning">
+										<Link to="/account" className="button is-warning">
 											Login
-										</a>
+										</Link>
 									</p>
 								</div>
 							</p>
