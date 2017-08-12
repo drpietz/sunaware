@@ -10,10 +10,18 @@ function WelcomeMessage(props) {
 				We are providing you with the latest information about weather, your local UV index and how to protect yourself from UV radiation considering your personal skin type.
 				Additionally, users can give you real-time information about their current weather situations.
 			</p>
-			<p>
-				<a href="#" className="button">Sign up</a>
-				<a href="#" className="button">Login</a>
-			</p>
+			<div className="field is-grouped is-grouped-centered">
+				<p className="control">
+					<Link to="/start" className="button is-warning">
+						Sign up
+					</Link>
+				</p>
+				<p className="control">
+					<Link to="/account" className="button is-warning">
+						Login
+					</Link>
+				</p>
+			</div>
 		</div>
 	)
 }
