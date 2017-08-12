@@ -35,7 +35,7 @@ export function logout() {
 	}
 }
 
-export function updateProfile(skinType, gpsEnabled, latitude, longitude) {
+export function updateProfile(skinType, positioningEnabled, latitude, longitude) {
 	let position = new GeoPoint(parseFloat(latitude), parseFloat(longitude));
 
 	return {
@@ -43,7 +43,7 @@ export function updateProfile(skinType, gpsEnabled, latitude, longitude) {
 			type: USER_PROFILE_UPDATE,
 			payload: (db) => db.User.me.partialUpdate()
 				.set('skinType', skinType)
-				.set('gpsEnabled', gpsEnabled)
+				.set('positioningEnabled', positioningEnabled)
 				.set('position', position)
 				.execute()
 		}

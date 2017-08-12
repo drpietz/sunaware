@@ -40,8 +40,8 @@
       "type": "/db/SkinType",
       "order": 3
     },
-    "gpsEnabled": {
-      "name": "gpsEnabled",
+    "positioningEnabled": {
+      "name": "positioningEnabled",
       "type": "/db/Boolean",
       "order": 4
     },
