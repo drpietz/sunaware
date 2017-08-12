@@ -12,7 +12,7 @@
 	background-color: #f5df8a;
 }
 
-.welcome-foot {
+.welcome-foot:not(.disallow-overlapping) {
 	position: relative;
 
 	width: 100%;
@@ -21,7 +21,13 @@
 	background-color: #222222;
 }
 
-.clouds {
+.welcome-foot.disallow-overlapping {
+	position: relative;
+	width: 100%;
+}
+
+.cloud {
+	display: block;
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -29,12 +35,9 @@
 	margin-bottom: 4rem;
 }
 
-.clouds img {
-	display: block;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
+:not(.disallow-overlapping) .cloud-container .cloud-background {
+	position: relative;
+	margin-bottom: 0;
 }
 
 .credits {
@@ -42,4 +45,5 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background-color: #222223;
 }

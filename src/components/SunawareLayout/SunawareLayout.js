@@ -36,12 +36,12 @@ function SunawareLayout(props) {
 				</div>
 			</div>
 
-			<div className="welcome-foot hero-foot">
-				<div className="clouds">
-					<img src="/img/clouds/layer_background.svg"/>
-					<img src="/img/clouds/layer_foreground.svg"/>
+			<div className="welcome-foot hero-foot disallow-overlapping">
+				<div className="cloud-container">
+					<img src="/img/clouds/layer_background.svg" className="cloud cloud-background" />
+					<img src="/img/clouds/layer_foreground.svg" className="cloud cloud-foreground" />
 				</div>
-				<div className="credits container has-text-centered">
+				<div className="credits">
 					by Anne Kinstmann, Tim Pietz, Marcel Repenning, Benjamin Schmidtke
 				</div>
 			</div>
