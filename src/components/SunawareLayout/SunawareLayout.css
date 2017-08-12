@@ -1,0 +1,45 @@
+.welcome-page {
+	background: #ffcc70 radial-gradient(ellipse at bottom, #ffcc70 0%, #db9f39 100%);
+}
+
+.welcome-body .button {
+	background-color: #ffe990;
+	border-color: transparent;
+	color: rgba(0, 0, 0, 0.7);
+}
+
+.welcome-body .button:hover {
+	background-color: #f5df8a;
+}
+
+.welcome-foot {
+	position: relative;
+
+	width: 100%;
+	height: 4rem;
+
+	background-color: #222222;
+}
+
+.clouds {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin-bottom: 4rem;
+}
+
+.clouds img {
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.credits {
+	height: 4rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
