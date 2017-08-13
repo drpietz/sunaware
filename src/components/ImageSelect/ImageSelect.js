@@ -6,7 +6,7 @@ function ImageSelect({name, values}) {
 	return (
 		<div>
 			{values.map(value => (
-				<label className="rad">
+				<label className="rad" key={value.value}>
 					<input type="radio" name={name} value={value.value} />
 					<img src={value.img}/>
 				</label>
