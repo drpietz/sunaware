@@ -1,0 +1,8 @@
+.report-feed {
+	background-color: white
+}
+
+.report-feed li {
+	padding: 0.5rem 0.8rem;
+	border-bottom: 1px solid lightgrey;
+}
