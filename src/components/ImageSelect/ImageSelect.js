@@ -4,11 +4,13 @@ import PropTypes from 'prop-types'
 
 function ImageSelect({name, values}) {
 	return (
-		<div>
+		<div className="image-select">
 			{values.map(value => (
 				<label className="rad" key={value.value}>
 					<input type="radio" name={name} value={value.value} />
-					<img src={value.img}/>
+					<div>
+						<img className="image" src={value.img}/>
+					</div>
 				</label>
 			))}
 		</div>

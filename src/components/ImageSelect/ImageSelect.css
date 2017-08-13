@@ -1,18 +1,36 @@
-label img {
-	height: 100px;
-	width: 100px;
-	transition-duration: 0.2s;
-	transform-origin: 50% 50%;
+.image-select label {
+	display: inline-block;
 }
 
-label > input{
+.image-select input {
 	visibility: hidden;
 	position: absolute;
 }
-label > input + img{
+
+.image-select div {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: content-box;
+	width: 96px;
+	height: 96px;
+	border: 2px solid rgba(0, 0, 0, 0.1);
 	cursor:pointer;
-	border:2px solid transparent;
+	transition-duration: 0.2s;
+	transform-origin: 50% 50%;
+	vertical-align: top;
+	border-radius: 5px;
 }
-label > input:checked + img{
-	border:2px solid #222223;
+
+.image-select label:not(:last-child) {
+	margin-right: 1rem
+}
+
+.image-select img {
+	max-width: 86px;
+	max-height: 86px;
+}
+
+.image-select input:checked + div {
+	border: 2px solid rgba(0, 0, 0, 0.7)
 }
