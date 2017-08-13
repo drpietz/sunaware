@@ -16,4 +16,3 @@ label > input + img{
 label > input:checked + img{
 	border:2px solid #222223;
 }
-

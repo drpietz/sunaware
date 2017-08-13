@@ -1,16 +1,3 @@
 .account {
 	padding: 16px;
 }
-
-label > input{
-	visibility: hidden;
-	position: absolute;
-}
-label > input + img{
-	cursor:pointer;
-	border:2px solid transparent;
-}
-label > input:checked + img{
-	border:2px solid #222223;
-}
-
