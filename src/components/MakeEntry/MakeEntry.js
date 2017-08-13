@@ -38,33 +38,29 @@ class MakeEntry extends Component {
 						<p className="subtitle">
 							Let us know about the weather at your place.
 						</p>
-						<p className="field">
+						<div className="field">
 							<label className="label">Rain type</label>
 							<ImageSelect name="rain" values={[
 								{ value: "0", img: "/img/weather/rain/0.png" },
 								{ value: "2", img: "/img/weather/rain/2.png" },
 								{ value: "3", img: "/img/weather/rain/3.png" }
 							]}/>
-						</p>
-						<p className="field">
+						</div>
+						<div className="field">
 							<label className="label">Cloudiness</label>
 							<ImageSelect name="clouds" values={[
 								{ value: "0", img: "/img/weather/clouds/0.png" },
 								{ value: "2", img: "/img/weather/clouds/2.png" },
 								{ value: "4", img: "/img/weather/clouds/4.png" }
 							]}/>
-						</p>
+						</div>
 						<div className="field">
 							<label className="label">Temperature</label>
 							<input className="input" name="temparature" placeholder="Temperature in degrees"/>
 						</div>
-						<div className="field is-grouped is-grouped-centered">
-							<p className="control">
-								<Link to="/start" className="button is-warning">Cancel</Link>
-							</p>
-							<p className="control">
-								<button className="button is-warning" onClick={this.handleSubmit}>Submit</button>
-							</p>
+						<div className="field is-grouped is-grouped-centered elements-spaced">
+							<Link to="/start" className="button is-warning">Cancel</Link>
+							<button className="button is-warning" onClick={this.handleSubmit}>Submit</button>
 						</div>
 					</form>
 				</Content>

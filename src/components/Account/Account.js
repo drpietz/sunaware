@@ -62,8 +62,7 @@ class Account extends Component {
 						Welcome, { this.props.user.displayname }
 						<br/><br/>
 						<form onChange={this.handleInputChange}>
-
-							<p className="field">
+							<div className="field">
 								<label className="label">Skin type</label>
 								<ImageSelect name="clouds" values={
 									[0,1,2,3,4,5].map(v => ({
@@ -71,7 +70,8 @@ class Account extends Component {
 										img: '/img/user/skintypes/' + v + '.png'
 									}))
 								}/>
-							</p>
+							</div>
+
 							<div className="field">
 								<div className="control">
 									<label className="checkbox">
@@ -92,13 +92,9 @@ class Account extends Component {
 							</div>
 						</form>
 						<br/>
-						<div className="field is-grouped is-grouped-centered">
-							<p className="control">
-								<button className="button is-warning" onClick={this.handleLogout}>Logout</button>
-							</p>
-							<p className="control">
-								<button className="button is-warning" onClick={this.handleUpdate}>Update</button>
-							</p>
+						<div className="field is-grouped is-grouped-centered elements-spaced">
+							<button className="button is-warning" onClick={this.handleLogout}>Logout</button>
+							<button className="button is-warning" onClick={this.handleUpdate}>Update</button>
 						</div>
 					</Content>
 				</PageBody>
@@ -141,8 +137,8 @@ class Account extends Component {
 
 							<br />
 
-							<div>
-								<button className="button is-warning" onClick={this.handleLogin}>Login</button> <space/>
+							<div className="elements-spaced">
+								<button className="button is-warning" onClick={this.handleLogin}>Login</button>
 								<button className="button is-warning" onClick={this.handleRegister}>Register</button>
 							</div>
 

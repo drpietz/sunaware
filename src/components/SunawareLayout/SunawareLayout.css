@@ -1,3 +1,8 @@
 .welcome-page {
 	background: #fff9ef radial-gradient(ellipse at bottom, #fff9ef 0%, #ffe6bb 100%);
 }
+
+.elements-spaced > * {
+	margin-left: 0.4rem;
+	margin-right: 0.4rem;
+}

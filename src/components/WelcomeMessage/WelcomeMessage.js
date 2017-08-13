@@ -17,16 +17,16 @@ function WelcomeMessage(props) {
 				</p>
 
 				<div className="field is-grouped is-grouped-centered">
-					<p className="control">
+					<div className="control">
 						<Link to="/start" className="button is-warning">
 							Sign up
 						</Link>
-					</p>
-					<p className="control">
+					</div>
+					<div className="control">
 						<Link to="/account" className="button is-warning">
 							Login
 						</Link>
-					</p>
+					</div>
 				</div>
 			</Content>
 		</PageBody>
