@@ -37,8 +37,8 @@ function SunawareLayout(props) {
 
 			<div className="welcome-foot hero-foot disallow-overlapping">
 				<div className="cloud-container">
-					<img src="/img/clouds/layer_background.svg" className="cloud cloud-background" />
-					<img src="/img/clouds/layer_foreground.svg" className="cloud cloud-foreground" />
+					<img src="/img/background/layer_background.svg" className="cloud cloud-background" />
+					<img src="/img/background/layer_foreground.svg" className="cloud cloud-foreground" />
 				</div>
 				<div className="credits">
 					by Anne Kunstmann, Tim Pietz, Marcel Repenning, Benjamin Schmidtke
