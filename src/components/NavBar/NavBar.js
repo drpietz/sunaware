@@ -12,12 +12,12 @@ function NavBar(props) {
 					<NavLink className="nav-item"
 							 activeClassName="is-active"
 							 to="/account">
-						<span className="icon is-small"><i className="fa fa-home"/></span> <span>Account</span>
+						<span className="icon is-small"><i className="fa fa-user"/></span> <span> Account</span>
 					</NavLink>
 					<NavLink className="nav-item"
 							 activeClassName="is-active"
 							 to="/start">
-						<span>Map</span>
+						<span className="icon is-small"><i className="fa fa-map"/></span><span> Map</span>
 					</NavLink>
 					<a href="#" className="nav-item">About us</a>
 				</div>
