@@ -7,7 +7,7 @@ const Map = withGoogleMap(props => (
 			defaultZoom={8}
 			defaultCenter={{ lat: 53.55, lng: 10.00 }}
 			defaultOptions={{
-				scrollWheel: false
+				scrollwheel: false
 			}} >
 			{props.markers.map((marker, index) => (
 				<Marker
@@ -40,7 +40,7 @@ class UserReportsMap extends Component {
 
 	render() {
 		return (
-			<div style={{ width: '1344px', height: '600px' }}>
+			<div style={{width: '100%', height: '100%', ...this.props.style}}>
 				<Map
 					containerElement={
 						<div style={{ height: '100%' }} />

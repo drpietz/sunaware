@@ -11,11 +11,7 @@ function SunawareLayout(props) {
 				<NavBar/>
 			</div>
 
-			<div className="welcome-body hero-body">
-				<div className="container has-text-centered">
-					{props.children}
-				</div>
-			</div>
+			{props.children}
 
 			<div className="welcome-foot hero-foot">
 				<CloudFooter/>

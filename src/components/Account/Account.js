@@ -1,4 +1,3 @@
-import './Account.css'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
@@ -8,6 +7,8 @@ import { connect } from 'react-redux'
 import { login, register, logout, updateProfile } from '../../actions/auth'
 
 import ImageSelect from '../ImageSelect/ImageSelect'
+import Content from '../Content/Content'
+import PageBody from "../PageBody/PageBody";
 
 class Account extends Component {
 	constructor(props) {
@@ -54,10 +55,10 @@ class Account extends Component {
 
 
 	render() {
-		return (
-			<div className='account'>
-				{ this.props.auth.isLoggedIn ? (
-					<div className="column">
+		if (this.props.auth.isLoggedIn) {
+			return (
+				<PageBody>
+					<Content>
 						Welcome, { this.props.user.displayname }
 						<br/><br/>
 						<form onChange={this.handleInputChange}>
@@ -93,58 +94,64 @@ class Account extends Component {
 						<br/>
 						<div className="field is-grouped is-grouped-centered">
 							<p className="control">
-							<button className="button is-warning" onClick={this.handleLogout}>Logout</button>
+								<button className="button is-warning" onClick={this.handleLogout}>Logout</button>
 							</p>
 							<p className="control">
-							<button className="button is-warning" onClick={this.handleUpdate}>Update</button>
+								<button className="button is-warning" onClick={this.handleUpdate}>Update</button>
 							</p>
 						</div>
-					</div>
-				) : (
-					<form onChange={this.handleInputChange}>
-						<div className="field">
-							<label className="label">Name</label>
-							<div className="control has-icons-left has-icons-right">
-								<input className="input" name="displayname" type="text" placeholder="Name input" />
-								<span className="icon is-small is-left">
-									<i className="fa fa-user"/>
-								</span>
+					</Content>
+				</PageBody>
+			)
+		} else {
+			return (
+				<PageBody>
+					<Content>
+						<form onChange={this.handleInputChange}>
+							<div className="field">
+								<label className="label">Name</label>
+								<div className="control has-icons-left has-icons-right">
+									<input className="input" name="displayname" type="text" placeholder="Name input" />
+									<span className="icon is-small is-left">
+										<i className="fa fa-user"/>
+									</span>
+								</div>
 							</div>
-						</div>
 
-						<div className="field">
-							<label className="label">Email</label>
-							<div className="control has-icons-left">
-								<input className="input" name="username" type="text" placeholder="Email input" />
-								<span className="icon is-small is-left">
-									<i className="fa fa-envelope"/>
-								</span>
+							<div className="field">
+								<label className="label">Email</label>
+								<div className="control has-icons-left">
+									<input className="input" name="username" type="text" placeholder="Email input" />
+									<span className="icon is-small is-left">
+										<i className="fa fa-envelope"/>
+									</span>
+								</div>
 							</div>
-						</div>
 
-						<div className="field">
-							<label className="label">Password</label>
+							<div className="field">
+								<label className="label">Password</label>
 
-							<div className="control has-icons-left">
-								<input className="input" name="password" type="password" placeholder="Password"/>
-								<span className="icon is-small is-left">
-									<i className="fa fa-lock"/>
-								</span>
+								<div className="control has-icons-left">
+									<input className="input" name="password" type="password" placeholder="Password"/>
+									<span className="icon is-small is-left">
+										<i className="fa fa-lock"/>
+									</span>
+								</div>
 							</div>
-						</div>
 
-						<br />
-						<div>
-							<button className="button is-warning" onClick={this.handleLogin}>Login</button> <space/>
-							<button className="button is-warning" onClick={this.handleRegister}>Register</button>
-						</div>
+							<br />
 
-						<div className="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"/>
+							<div>
+								<button className="button is-warning" onClick={this.handleLogin}>Login</button> <space/>
+								<button className="button is-warning" onClick={this.handleRegister}>Register</button>
+							</div>
 
-					</form>
-				)}
-			</div>
-		)
+							<div className="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"/>
+						</form>
+					</Content>
+				</PageBody>
+			)
+		}
 	}
 }
 
