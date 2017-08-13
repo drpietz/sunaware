@@ -81,14 +81,13 @@ class Account extends Component {
 							</div>
 
 							<div className="field">
-								<label className="label">Longitude</label>
-								<input className="input" name="longitude" type="number" step="any" placeholder="Longitude input"/>
+								<label className="label">Latitude</label>
+								<input className="input" name="latitude" type="number" step="any" placeholder="Latitude"/>
 							</div>
 
-
 							<div className="field">
-								<label className="label">Latitude</label>
-								<input className="input" name="latitude" type="number" step="any" placeholder="Latitude input"/>
+								<label className="label">Longitude</label>
+								<input className="input" name="longitude" type="number" step="any" placeholder="Longitude"/>
 							</div>
 						</form>
 						<br/>
