@@ -20,6 +20,7 @@
 	transform-origin: 50% 50%;
 	vertical-align: top;
 	border-radius: 5px;
+	background-color: white;
 }
 
 .image-select label:not(:last-child) {
