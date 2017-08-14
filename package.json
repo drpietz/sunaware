@@ -9,12 +9,12 @@
     "prop-types": "^15.5.9",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-google-maps": "^7.1.0",
-    "react-redux": "^5.0.4",
+    "react-google-maps": "^7.2.0",
+    "react-redux": "^5.0.6",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
-    "redux-baqend": "^1.0.4",
+    "redux-baqend": "^1.0.5",
     "redux-logger": "^3.0.1"
   },
   "devDependencies": {

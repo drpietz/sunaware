@@ -64,7 +64,7 @@ class Account extends Component {
 						<form onChange={this.handleInputChange}>
 							<div className="field">
 								<label className="label">Skin type</label>
-								<ImageSelect name="clouds" values={
+								<ImageSelect name="skinType" values={
 									[0,1,2,3,4,5].map(v => ({
 										value: v,
 										img: '/img/user/skintypes/' + v + '.png'
@@ -90,12 +90,13 @@ class Account extends Component {
 								<label className="label">Longitude</label>
 								<input className="input" name="longitude" type="number" step="any" placeholder="Longitude"/>
 							</div>
-						</form>
+
 						<br/>
 						<div className="field is-grouped is-grouped-centered elements-spaced">
 							<button className="button is-warning" onClick={this.handleLogout}>Logout</button>
 							<button className="button is-warning" onClick={this.handleUpdate}>Update</button>
 						</div>
+						</form>
 					</Content>
 				</PageBody>
 			)
@@ -141,8 +142,6 @@ class Account extends Component {
 								<button className="button is-warning" onClick={this.handleLogin}>Login</button>
 								<button className="button is-warning" onClick={this.handleRegister}>Register</button>
 							</div>
-
-							<div className="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"/>
 						</form>
 					</Content>
 				</PageBody>
