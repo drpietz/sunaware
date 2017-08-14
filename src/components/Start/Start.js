@@ -13,8 +13,8 @@ class Start extends Component {
 		return (
 			<PageBody>
 				<div style={{ width: '100%', height: 'calc(100vh - 3.25rem)', position: 'relative'}}>
-					<UserReportsMap style={{width: 'calc(100% - 15rem)'}} />
-					<UserReportsFeed style={{width: '15rem', height: '100%', position: 'absolute', top: '0', right: '0'}} />
+					<UserReportsMap style={{width: 'calc(100% - 5rem)'}} />
+					<UserReportsFeed style={{width: '5rem', height: '100%', position: 'absolute', top: '0', right: '0'}} />
 				</div>
 				<br/>
 				<Content>

@@ -9,11 +9,15 @@ class UserReportsFeed extends Component {
 		super(props)
 	}
 
+	static getCloudEmoji(report) {
+		return <img className="emoji" src={"/img/noto/" + report.info.clouds + ".svg"}/>
+	}
+
 	render() {
 		return (
 			<ul style={this.props.style} className="report-feed">
 				{this.props.reports.map(report => (
-					<li key={report.id}>Clouds: {report.info.clouds}</li>
+					<li key={report.id}>{UserReportsFeed.getCloudEmoji(report)}</li>
 				))}
 			</ul>
 		)
