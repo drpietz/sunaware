@@ -12,9 +12,6 @@ class UserReportsFeed extends Component {
 	render() {
 		return (
 			<ul style={this.props.style} className="report-feed">
-				<li>Irgendwann</li>
-				<li>sieht man hier</li>
-				<li>die neuesten Meldungen</li>
 				{this.props.reports.map(report => (
 					<li key={report.id}>Clouds: {report.info.clouds}</li>
 				))}
