@@ -5,7 +5,6 @@ import { Route, Switch } from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
 
 import { Provider } from 'react-redux'
-import createStore from './store/store'
 
 import SunawareLayout from './components/SunawareLayout/SunawareLayout'
 import Account from './components/Account/Account'
@@ -13,7 +12,6 @@ import MakeEntry from './components/MakeEntry/MakeEntry'
 import WelcomeMessage from './components/WelcomeMessage/WelcomeMessage'
 import Start from './components/Start/Start'
 
-const store = createStore();
 
 class App extends Component {
 	render() {
