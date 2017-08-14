@@ -55,6 +55,7 @@ class Account extends Component {
 	}
 
 	handleLogout = (event) => {
+		event.preventDefault()
 		this.props.actions.logout()
 	}
 
