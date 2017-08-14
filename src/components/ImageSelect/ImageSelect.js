@@ -2,12 +2,12 @@ import './ImageSelect.css'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-function ImageSelect({name, values}) {
+function ImageSelect({name, values, defaultValue}) {
 	return (
 		<div className="image-select">
 			{values.map(value => (
 				<label className="rad" key={value.value}>
-					<input type="radio" name={name} value={value.value} />
+					<input type="radio" name={name} value={value.value} defaultChecked={value.value === defaultValue}/>
 					<div>
 						<img className="image" src={value.img}/>
 					</div>
@@ -27,7 +27,11 @@ ImageSelect.propTypes = {
 			]).isRequired,
 			img: PropTypes.string.isRequired
 		})
-	).isRequired
+	).isRequired,
+	defaultValue: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number
+	])
 }
 
 
