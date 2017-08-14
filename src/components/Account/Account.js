@@ -41,7 +41,12 @@ class Account extends Component {
 
 	handleUpdate = (event) => {
 		event.preventDefault()
-	this.props.actions.updateProfile(this.state.skinType, this.state.positioningEnabled, this.state.latitude, this.state.longitude)
+		this.props.actions.updateProfile({
+			positioningEnabled: this.state.positioningEnabled,
+			latitude: this.state.latitude,
+			longitude: this.state.longitude,
+			skinType: this.state.skinType
+		})
 	}
 
 	handleRegister = (event) => {

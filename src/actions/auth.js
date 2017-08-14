@@ -35,23 +35,28 @@ export function logout() {
 	}
 }
 
-export function updateProfile(skinType, positioningEnabled, latitude, longitude) {
-
-
-
+export function updateProfile(fields) {
 	return {
 		'BAQEND': {
 			type: USER_PROFILE_UPDATE,
 			payload: (db) => {
-				let position = new GeoPoint(parseFloat(latitude), parseFloat(longitude));
-				const obj = db.User.me;
-				obj.position = position;
-				obj.positioningEnabled = positioningEnabled;
-				obj.skinType = skinType;
+				let command = db.User.me.partialUpdate()
 
-				console.log(JSON.stringify(obj));
+				// TODO: Nur Latitude ODER Longitude geändert => nur eins von beiden null, trotzdem update?
+				if (fields.latitude !== null && fields.longitude !== null) {
+					let position = new GeoPoint(parseFloat(fields.latitude), parseFloat(fields.longitude))
+					command.set('position', position)
+				}
 
-				return obj.save()
+				if (fields.positioningEnabled !== null) {
+					command.set('positioningEnabled', fields.positioningEnabled)
+					console.log('positioning', fields.positioningEnabled)
+				}
+
+				if (fields.skinType !== null)
+					command.set('skinType', fields.skinType)
+
+				return command.execute()
 			}
 		}
 	}
