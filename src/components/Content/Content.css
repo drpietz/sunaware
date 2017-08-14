@@ -1,0 +1,14 @@
+.container.is-small {
+	width: 300px;
+	margin: auto;
+}
+
+.container.is-medium {
+	width: 500px;
+	margin: auto;
+}
+
+.container.is-large {
+	width: 700px;
+	margin: auto;
+}

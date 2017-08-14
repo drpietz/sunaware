@@ -16,7 +16,7 @@ class Start extends Component {
 					<UserReportsMap style={{width: 'calc(100% - 15rem)'}} />
 					<UserReportsFeed style={{width: '15rem', height: '100%', position: 'absolute', top: '0', right: '0'}} />
 				</div>
-
+				<br/>
 				<Content>
 					<Link to="/start/entry" className="button is-warning">Report weather</Link>
 				</Content>
