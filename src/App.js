@@ -16,7 +16,7 @@ import Start from './components/Start/Start'
 class App extends Component {
 	render() {
 		return (
-			<Provider store={store}>
+			<Provider store={this.props.store}>
 				<BrowserRouter>
 					<div className="App">
 						<SunawareLayout>
