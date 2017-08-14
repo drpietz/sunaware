@@ -19,19 +19,11 @@ const Map = withGoogleMap(props => (
 )
 
 class UserReportsMap extends Component {
-	constructor(props) {
-		super(props)
-
-		this.state = {
-			reports: []
-		}
-	}
-
 	mapReportsToMarkers = reports => (
 		reports.map(report => ({
 			position: {
-				lat: report.position.latitude,
-				lng: report.position.longitude
+				lat: report.info.position.latitude,
+				lng: report.info.position.longitude
 			},
 			defaultAnimation: 2,
 			key: report.id
@@ -48,7 +40,7 @@ class UserReportsMap extends Component {
 					mapElement={
 						<div style={{ height: '100%' }} />
 					}
-					markers={this.mapReportsToMarkers(this.state.reports)}
+					markers={this.mapReportsToMarkers(this.props.reports)}
 					/>
 			</div>
 		)

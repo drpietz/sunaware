@@ -1,4 +1,4 @@
-import { REPORT_SUBMIT } from '../actions/types'
+import { REPORT_SUBMIT, FETCH_REPORTS } from '../actions/types'
 
 const initialState = []
 
@@ -10,6 +10,8 @@ export default function reports(state = initialState, action = {}) {
 				...state,
 				action.payload
 			]
+		case FETCH_REPORTS:
+			return action.payload
 		default:
 			return state
 	}

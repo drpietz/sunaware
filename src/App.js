@@ -4,7 +4,9 @@ import React, { Component } from 'react'
 import { Route, Switch } from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
 
-import { Provider } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchReports } from "./actions/reports"
+import { connect, Provider } from 'react-redux'
 
 import SunawareLayout from './components/SunawareLayout/SunawareLayout'
 import Account from './components/Account/Account'
@@ -14,6 +16,11 @@ import Start from './components/Start/Start'
 
 
 class App extends Component {
+
+	componentDidMount() {
+		this.props.actions.fetchReports()
+	}
+
 	render() {
 		return (
 			<Provider store={this.props.store}>
@@ -34,4 +41,10 @@ class App extends Component {
 	}
 }
 
-export default App
+function mapDispatchToProps(dispatch) {
+	return { actions:
+		bindActionCreators({ fetchReports }, dispatch)
+	}
+}
+
+export default connect(null, mapDispatchToProps)(App)

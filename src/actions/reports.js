@@ -1,4 +1,4 @@
-import { REPORT_SUBMIT } from './types'
+import { REPORT_SUBMIT, FETCH_REPORTS } from './types'
 
 export function submitReport(clouds, rain, temparature) {
 	return {
@@ -19,6 +19,15 @@ export function submitReport(clouds, rain, temparature) {
 
 				return report.insert()
 			}
+		}
+	}
+}
+
+export function fetchReports() {
+	return {
+		'BAQEND': {
+			type: FETCH_REPORTS,
+			payload: db => db.UserReport.find().limit(200).resultList()
 		}
 	}
 }
