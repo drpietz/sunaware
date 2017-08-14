@@ -17,7 +17,7 @@ class Account extends Component {
 			username: null,
 			password: null,
 			displayname: null,
-			positioningEnabled: true,
+			positioningEnabled: null,
 			latitude: null,
 			longitude: null,
 			skinType: null
@@ -41,7 +41,7 @@ class Account extends Component {
 
 	handleUpdate = (event) => {
 		event.preventDefault()
-		this.props.actions.updateProfile(this.state.skinType, this.state.positioningEnabled, this.state.latitude, this.state.longitude)
+	this.props.actions.updateProfile(this.state.skinType, this.state.positioningEnabled, this.state.latitude, this.state.longitude)
 	}
 
 	handleRegister = (event) => {
@@ -64,18 +64,18 @@ class Account extends Component {
 						<form onChange={this.handleInputChange}>
 							<div className="field">
 								<label className="label">Skin type</label>
-								<ImageSelect name="skinType" values={
+								<ImageSelect name="skinType" defaultValue={this.props.user.skinType} values={
 									[0,1,2,3,4,5].map(v => ({
 										value: v,
 										img: '/img/user/skintypes/' + v + '.png'
-									}))
+									 }))
 								}/>
 							</div>
 
 							<div className="field">
 								<div className="control">
 									<label className="checkbox">
-										<input type="checkbox" name="positioningEnabled"/>
+										<input type="checkbox" name="positioningEnabled" defaultChecked={this.props.user.positioningEnabled}/>
 										GPS enabled
 									</label>
 								</div>
@@ -83,12 +83,12 @@ class Account extends Component {
 
 							<div className="field">
 								<label className="label">Latitude</label>
-								<input className="input" name="latitude" type="number" step="any" placeholder="Latitude"/>
+								<input className="input" name="latitude" type="number" step="any" placeholder="Latitude" defaultValue={this.props.user.position.latitude}/>
 							</div>
 
 							<div className="field">
 								<label className="label">Longitude</label>
-								<input className="input" name="longitude" type="number" step="any" placeholder="Longitude"/>
+								<input className="input" name="longitude" type="number" step="any" placeholder="Longitude" defaultValue={this.props.user.position.longitude}/>
 							</div>
 
 						<br/>
