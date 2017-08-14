@@ -58,7 +58,7 @@ class Account extends Component {
 		if (this.props.auth.isLoggedIn) {
 			return (
 				<PageBody>
-					<Content>
+					<Content size="medium">
 						Welcome, { this.props.user.displayname }
 						<br/><br/>
 						<form onChange={this.handleInputChange}>
@@ -103,7 +103,7 @@ class Account extends Component {
 		} else {
 			return (
 				<PageBody>
-					<Content>
+					<Content size="small">
 						<form onChange={this.handleInputChange}>
 							<div className="field">
 								<label className="label">Name</label>

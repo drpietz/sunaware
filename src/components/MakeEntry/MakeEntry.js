@@ -33,7 +33,7 @@ class MakeEntry extends Component {
 	render() {
 		return (
 			<PageBody>
-				<Content>
+				<Content size="medium">
 					<form onChange={this.handleInputChange}>
 						<p className="subtitle">
 							Let us know about the weather at your place.
