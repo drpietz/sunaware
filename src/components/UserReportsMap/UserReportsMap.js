@@ -49,7 +49,7 @@ class UserReportsMap extends Component {
 
 function mapStateToProps(state) {
 	return {
-		reports: state.reports
+		reports: state.reports.all
 	}
 }
 

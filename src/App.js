@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
 
 import { bindActionCreators } from 'redux'
-import { fetchReports } from "./actions/reports"
+import { fetchExistingReports, subscribeToNewReports } from "./actions/reports"
 import { connect, Provider } from 'react-redux'
 
 import SunawareLayout from './components/SunawareLayout/SunawareLayout'
@@ -18,7 +18,8 @@ import Start from './components/Start/Start'
 class App extends Component {
 
 	componentDidMount() {
-		this.props.actions.fetchReports()
+		this.props.actions.fetchExistingReports()
+		this.props.actions.subscribeToNewReports()
 	}
 
 	render() {
@@ -42,8 +43,8 @@ class App extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-	return { actions:
-		bindActionCreators({ fetchReports }, dispatch)
+	return {
+		actions: bindActionCreators({ fetchExistingReports, subscribeToNewReports }, dispatch)
 	}
 }
 
