@@ -41,19 +41,21 @@ class MakeEntry extends Component {
 						</p>
 						<div className="field">
 							<label className="label">Rain type</label>
-							<ImageSelect name="rain" values={[
-								{ value: "0", img: "/img/weather/rain/0.png" },
-								{ value: "2", img: "/img/weather/rain/2.png" },
-								{ value: "3", img: "/img/weather/rain/3.png" }
-							]}/>
+							<ImageSelect name="rain" values={
+								[0,1,2,3].map(v => ({
+									value: v,
+									img: '/img/weather/rain/' + v + '.png'
+								}))
+							}/>
 						</div>
 						<div className="field">
 							<label className="label">Cloudiness</label>
-							<ImageSelect name="clouds" values={[
-								{ value: "0", img: "/img/weather/clouds/0.png" },
-								{ value: "2", img: "/img/weather/clouds/2.png" },
-								{ value: "4", img: "/img/weather/clouds/4.png" }
-							]}/>
+							<ImageSelect name="clouds" values={
+								[0,1,2,3,4].map(v => ({
+									value: v,
+									img: '/img/weather/clouds/' + v + '.png'
+								}))
+							}/>
 						</div>
 						<div className="field">
 							<label className="label">Temperature</label>
