@@ -27,7 +27,7 @@ export function fetchReports() {
 	return {
 		'BAQEND': {
 			type: FETCH_REPORTS,
-			payload: db => db.UserReport.find().limit(200).resultList()
+			payload: db => db.UserReport.find().greaterThan('createdAt', new Date().toISOString()).descending('createdAt').descending('id').resultStream()
 		}
 	}
 }

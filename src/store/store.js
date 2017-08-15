@@ -4,7 +4,7 @@ import { createStoreWithBaqend, baqendReducer } from 'redux-baqend'
 import middlewares from '../middleware'
 import reducers from '../reducers'
 
-import { db } from 'baqend'
+import { db } from 'baqend/realtime'
 
 export default (initialState = {}) => {
 	const reducer = combineReducers({

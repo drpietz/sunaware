@@ -1,5 +1,5 @@
 import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_PROFILE_UPDATE } from './types'
-import { GeoPoint } from 'baqend'
+import { GeoPoint } from 'baqend/realtime'
 
 export function login(username, password) {
 	return {
