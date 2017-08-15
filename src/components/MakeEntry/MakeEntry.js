@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+import Notifications, {notify} from 'react-notify-toast';
 import { submitReport } from '../../actions/reports'
 
 import ImageSelect from '../ImageSelect/ImageSelect'
@@ -10,14 +11,13 @@ import Content from "../Content/Content";
 import PageBody from "../PageBody/PageBody";
 
 class MakeEntry extends Component {
-
 	constructor(props) {
 		super(props)
 
 		this.state = {
 			rain: null,
 			clouds: null,
-			temparature: null
+			temperature: null
 		}
 	}
 
@@ -28,6 +28,7 @@ class MakeEntry extends Component {
 	handleSubmit = event => {
 		event.preventDefault()
 		this.props.actions.submitReport(this.state.clouds, this.state.rain, this.state.temparature)
+		notify.show('Weather Reported!', 'success', 2000 )
 	}
 
 	render() {
@@ -56,11 +57,12 @@ class MakeEntry extends Component {
 						</div>
 						<div className="field">
 							<label className="label">Temperature</label>
-							<input className="input" name="temparature" placeholder="Temperature in degrees"/>
+							<input className="input" name="temperature" placeholder="Temperature in degrees"/>
 						</div>
 						<div className="field is-grouped is-grouped-centered elements-spaced">
 							<Link to="/start" className="button is-warning">Cancel</Link>
 							<button className="button is-warning" onClick={this.handleSubmit}>Submit</button>
+							<Notifications />
 						</div>
 					</form>
 				</Content>

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import Notifications, {notify} from 'react-notify-toast';
+
 
 import { login, register, logout, updateProfile } from '../../actions/auth'
 
@@ -47,6 +49,8 @@ class Account extends Component {
 			longitude: this.state.longitude,
 			skinType: this.state.skinType
 		})
+		notify.show('Account updated', 'success', 2000 )
+
 	}
 
 	handleRegister = (event) => {
@@ -101,6 +105,8 @@ class Account extends Component {
 						<div className="field is-grouped is-grouped-centered elements-spaced">
 							<button className="button is-warning" onClick={this.handleLogout}>Logout</button>
 							<button className="button is-warning" onClick={this.handleUpdate}>Update</button>
+							<Notifications />
+
 						</div>
 						</form>
 					</Content>
