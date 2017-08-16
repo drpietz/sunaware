@@ -1,4 +1,4 @@
-import { REPORT_SUBMIT, FETCH_OLD_REPORTS, RECIEVE_NEW_REPORTS } from './types'
+import { REPORT_SUBMIT, FETCH_OLD_REPORTS, RECEIVE_NEW_REPORTS } from './types'
 
 export function submitReport(clouds, rain, temparature) {
 	return {
@@ -38,7 +38,7 @@ export function fetchExistingReports() {
 export function subscribeToNewReports() {
 	return {
 		'BAQEND': {
-			type: RECIEVE_NEW_REPORTS,
+			type: RECEIVE_NEW_REPORTS,
 			payload: db => db.UserReport.find().greaterThan('createdAt', new Date().toISOString()).descending('createdAt').descending('id').resultStream()
 		}
 	}
