@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 
+
 const Map = withGoogleMap(props => (
 		<GoogleMap
 			defaultZoom={8}
@@ -19,6 +20,11 @@ const Map = withGoogleMap(props => (
 )
 
 class UserReportsMap extends Component {
+
+	static getCloudEmoji(report) {
+		return "/img/noto/" + report.info.clouds + ".svg";
+	}
+
 	mapReportsToMarkers = reports => (
 		reports.map(report => ({
 			position: {
@@ -26,7 +32,10 @@ class UserReportsMap extends Component {
 				lng: report.info.position.longitude
 			},
 			defaultAnimation: 2,
-			key: report.id
+			key: report.id,
+			options: {
+				icon: UserReportsMap.getCloudEmoji(report)
+			}
 		}))
 	)
 
