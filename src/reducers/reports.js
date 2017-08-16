@@ -1,4 +1,4 @@
-import { REPORT_SUBMIT, FETCH_OLD_REPORTS, RECIEVE_NEW_REPORTS } from '../actions/types'
+import { REPORT_SUBMIT, FETCH_OLD_REPORTS, RECEIVE_NEW_REPORTS } from '../actions/types'
 
 const initialState = {
 	initial: [],
@@ -20,7 +20,7 @@ export default function reports(state = initialState, action = {}) {
 			return buildState(state.initial, [...state.recent, action.payload])
 		case FETCH_OLD_REPORTS:
 			return buildState(action.payload, state.recent)
-		case RECIEVE_NEW_REPORTS:
+		case RECEIVE_NEW_REPORTS:
 			return buildState(state.initial, action.payload)
 		default:
 			return state
