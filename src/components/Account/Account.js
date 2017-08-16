@@ -93,12 +93,12 @@ class Account extends Component {
 
 							<div className="field">
 								<label className="label">Latitude</label>
-								<input className="input" name="latitude" type="number" step="any" placeholder="Latitude" defaultValue={this.props.user.position.latitude}/>
+								<input className="input" name="latitude" type="number" step="any" placeholder="Latitude" defaultValue={this.props.user.position ? this.props.user.position.latitude : null}/>
 							</div>
 
 							<div className="field">
 								<label className="label">Longitude</label>
-								<input className="input" name="longitude" type="number" step="any" placeholder="Longitude" defaultValue={this.props.user.position.longitude}/>
+								<input className="input" name="longitude" type="number" step="any" placeholder="Longitude" defaultValue={this.props.user.position ? this.props.user.position.longitude : null}/>
 							</div>
 
 						<br/>
