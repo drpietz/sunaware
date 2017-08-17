@@ -26,8 +26,6 @@ class SunClock extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		console.log("New Props", this.props, nextProps)
-		console.log(this.props.uvTimer.isRunning, nextProps.uvTimer.isRunning)
 		if (this.props.uvTimer.isRunning && !nextProps.uvTimer.isRunning)
 			this.stopUpdateTimer()
 		else if (!this.props.uvTimer.isRunning && nextProps.uvTimer.isRunning) {

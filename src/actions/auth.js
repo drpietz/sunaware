@@ -50,7 +50,6 @@ export function updateProfile(fields) {
 
 				if (fields.positioningEnabled !== null) {
 					command.set('positioningEnabled', fields.positioningEnabled)
-					console.log('positioning', fields.positioningEnabled)
 				}
 
 				if (fields.skinType !== null)
