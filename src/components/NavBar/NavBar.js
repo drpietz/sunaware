@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
-import { NavLink } from 'react-router-dom'
 
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
 import {logout} from "../../actions/auth"
+import NavItem from '../NavItem/NavItem'
 
 class NavBar extends Component {
 
@@ -14,45 +14,29 @@ class NavBar extends Component {
 	}
 
 	render() {
+		let navItems;
+		if (this.props.isLoggedIn) {
+			navItems = [
+				{ link: {to: '/settings'}, label: 'Settings', icon: 'fa-user' },
+				{ link: {to: '/start'}, label: 'Start', icon: 'fa-map' },
+				{ link: {to: '#', onClick: this.handleLogout}, label: 'Logout', icon: 'fa-cog' }
+			]
+		} else {
+			navItems = [
+				{ link: {to: '/login'}, label: 'Login', icon: 'fa-user' },
+				{ link: {to: '/signup'}, label: 'Sign Up', icon: 'fa-user-plus' }
+			]
+		}
+
 		return (
 			<header className="nav">
 				<div className="container">
 					<span className="nav-toggle">
 						<span/><span/><span/>
 					</span>
-					{this.props.isLoggedIn ?
-						<div className="nav-right nav-menu">
-							<NavLink className="nav-item"
-									 activeClassName="is-active"
-									 to="/settings">
-								<span className="icon is-small"><i className="fa fa-user"/></span> <span> Settings</span>
-							</NavLink>
-							<NavLink className="nav-item"
-									 activeClassName="is-active"
-									 to="/start">
-								<span className="icon is-small"><i className="fa fa-map"/></span><span> Map</span>
-							</NavLink>
-							<NavLink className="nav-item"
-									 activeClassName="is-active"
-									 to="#"
-									 onClick={this.handleLogout}>
-								<span className="icon is-small"><i className="fa fa-cog"/></span><span>Logout</span>
-							</NavLink>
-						</div>
-						:
-						<div className="nav-right nav-menu">
-							<NavLink className="nav-item"
-									 activeClassName="is-active"
-									 to="/login">
-								<span className="icon is-small"><i className="fa fa-user"/></span><span> Login</span>
-							</NavLink>
-							<NavLink className="nav-item"
-									 activeClassName="is-active"
-									 to="/signup">
-								<span className="icon is-small"><i className="fa fa-user-plus"/></span><span> Sign Up</span>
-							</NavLink>
-						</div>
-					}
+					<div className="nav-right nav-menu">
+						{navItems.map(item => <NavItem {...item}/>)}
+					</div>
 				</div>
 			</header>
 		)
