@@ -11,8 +11,8 @@ function NavBar(props) {
 				<div className="nav-right nav-menu">
 					<NavLink className="nav-item"
 							 activeClassName="is-active"
-							 to="/account">
-						<span className="icon is-small"><i className="fa fa-user"/></span> <span> Account</span>
+							 to="/Settings">
+						<span className="icon is-small"><i className="fa fa-user"/></span> <span> Settings</span>
 					</NavLink>
 					<NavLink className="nav-item"
 							 activeClassName="is-active"
