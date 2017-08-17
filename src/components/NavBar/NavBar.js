@@ -14,29 +14,24 @@ class NavBar extends Component {
 	}
 
 	render() {
-		let navItems;
-		if (this.props.isLoggedIn) {
-			navItems = [
-				{ link: {to: '/settings'}, label: 'Settings', icon: 'fa-user' },
-				{ link: {to: '/start'}, label: 'Start', icon: 'fa-map' },
-				{ link: {to: '#', onClick: this.handleLogout}, label: 'Logout', icon: 'fa-cog' }
-			]
-		} else {
-			navItems = [
-				{ link: {to: '/login'}, label: 'Login', icon: 'fa-user' },
-				{ link: {to: '/signup'}, label: 'Sign Up', icon: 'fa-user-plus' }
-			]
-		}
-
 		return (
 			<header className="nav">
 				<div className="container">
 					<span className="nav-toggle">
 						<span/><span/><span/>
 					</span>
-					<div className="nav-right nav-menu">
-						{navItems.map(item => <NavItem {...item}/>)}
-					</div>
+					{this.props.isLoggedIn ?
+						<div className="nav-right nav-menu">
+							<NavItem to="/settings" label="Settings" icon="fa-user"/>
+							<NavItem to="/start" label="Start" icon="fa-map"/>
+							<NavItem to="#" onClick={this.handleLogout} label="Logout" icon="fa-sign-out"/>
+						</div>
+						:
+						<div className="nav-right nav-menu">
+							<NavItem to="/login" label="Login" icon="fa-user"/>
+							<NavItem to="/signup" label="Sign Up" icon="fa-user-plus"/>
+						</div>
+					}
 				</div>
 			</header>
 		)
