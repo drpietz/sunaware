@@ -49,10 +49,8 @@ class Settings extends Component {
 
 	render () {
 		if (!this.props.user) {
-			console.log("not logged in")
 			return <h1>Entschuldigung, der redirect ist noch nicht implementiert</h1>
 		}
-		console.log("logged in")
 
 		return (
 			<PageBody>

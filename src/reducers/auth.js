@@ -17,7 +17,6 @@ export default function auth(state = initialState, action = {}) {
 		case USER_LOGOUT:
 			return { ...state, user: null, isLoggedIn: false }
 		case USER_PROFILE_UPDATE:
-			console.log(state)
 			return { ...state, user: action.payload}
 		default:
 			return state
