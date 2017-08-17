@@ -36,7 +36,7 @@ class NavBar extends Component {
 									 activeClassName="is-active"
 									 to="#"
 									 onClick={this.handleLogout}>
-								<span>Logout</span>
+								<span className="icon is-small"><i className="fa fa-cog"/></span><span>Logout</span>
 							</NavLink>
 						</div>
 						:
@@ -44,12 +44,12 @@ class NavBar extends Component {
 							<NavLink className="nav-item"
 									 activeClassName="is-active"
 									 to="/login">
-								<span> Login</span>
+								<span className="icon is-small"><i className="fa fa-user"/></span><span> Login</span>
 							</NavLink>
 							<NavLink className="nav-item"
 									 activeClassName="is-active"
 									 to="/signup">
-								<span> Sign Up</span>
+								<span className="icon is-small"><i className="fa fa-user-plus"/></span><span> Sign Up</span>
 							</NavLink>
 						</div>
 					}
