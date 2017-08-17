@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import PageBody from "../PageBody/PageBody";
 import Content from "../Content/Content";
 
-function WelcomeMessage(props) {
+function WelcomeMessage() {
 	return (
 		<PageBody>
 			<Content>
@@ -18,12 +18,12 @@ function WelcomeMessage(props) {
 
 				<div className="field is-grouped is-grouped-centered">
 					<div className="control">
-						<Link to="/start" className="button is-warning">
+						<Link to="/signup" className="button is-warning">
 							Sign up
 						</Link>
 					</div>
 					<div className="control">
-						<Link to="/account" className="button is-warning">
+						<Link to="/login" className="button is-warning">
 							Login
 						</Link>
 					</div>

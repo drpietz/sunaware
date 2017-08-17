@@ -9,10 +9,12 @@ import { fetchExistingReports, subscribeToNewReports } from "./actions/reports"
 import { connect, Provider } from 'react-redux'
 
 import SunawareLayout from './components/SunawareLayout/SunawareLayout'
-import Account from './components/Account/Account'
 import MakeEntry from './components/MakeEntry/MakeEntry'
 import WelcomeMessage from './components/WelcomeMessage/WelcomeMessage'
 import Start from './components/Start/Start'
+import Login from './components/Login/Login'
+import SignUp from './components/SignUp/SignUp'
+import Settings from "./components/Settings/Settings";
 
 
 class App extends Component {
@@ -30,7 +32,9 @@ class App extends Component {
 						<SunawareLayout>
 							<Switch>
 								<Route exact path="/" component={WelcomeMessage}/>
-								<Route path="/account" component={Account}/>
+								<Route exact path="/login" component={Login}/>
+								<Route exact path="/signup" component={SignUp}/>
+								<Route path="/settings" component={Settings}/>
 								<Route exact path="/start" component={Start}/>
 								<Route path="/start/entry" component={MakeEntry}/>
 							</Switch>
