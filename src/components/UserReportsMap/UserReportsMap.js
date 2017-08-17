@@ -8,7 +8,8 @@ const Map = withGoogleMap(props => (
 			defaultZoom={8}
 			defaultCenter={{ lat: 53.55, lng: 10.00 }}
 			defaultOptions={{
-				scrollwheel: false
+				scrollwheel: false,
+				streetViewControl: false
 			}} >
 			{props.markers.map((marker, index) => (
 				<Marker
@@ -22,8 +23,7 @@ const Map = withGoogleMap(props => (
 class UserReportsMap extends Component {
 
 	static getCloudEmoji(report) {
-		return "/img/noto/" + report.info.clouds + ".svg";
-	}
+		return "/img/noto/" + report.info.clouds + ".png"}
 
 	mapReportsToMarkers = reports => (
 		reports.map(report => ({
