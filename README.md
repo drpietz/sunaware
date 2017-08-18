@@ -6,11 +6,11 @@
 - [x] Wettermeldungen auf Karte darstellen - *Ben, Tim*
 - [x] Sonnenstunden der Nutzer aufzeichnen - *Tim*
 - [x] UV-Informationen nutzen um verbleibenden Zeit in der Sonne zu berechnen - *Tim*
-- [x] Redirects - *Tim*
+- [ ] Projektstruktur und Routing überarbeiten - *Tim*
 - [ ] Frontend & Baqend Validation - *Ben, Tim*
 - [ ] UV-Funktion überarbeiten - *Marcel*
 - [ ] Sonnentimer Design & Platzieren - *Tim*
-- [ ] Positionierung - *Anne*
+- [ ] User Positionierung - *Anne*
 - [ ] Anstatt Latitude, Longitude Eingabe Ort eingeben - *Ben*
 - [ ] User History (chartjs) - *Tim*
 - [ ] Regen auf Karte anzeigen - *Ben*
