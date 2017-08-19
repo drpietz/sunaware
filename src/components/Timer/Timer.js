@@ -89,7 +89,7 @@ class Timer extends Component {
 	}
 
 	render() {
-		return <span className="timer" onClick={this.handleTimerToggle}>{this.state.text}</span>
+		return <span className={"timer" + (this.props.className ? " " + this.props.className : "")} onClick={this.handleTimerToggle}>{this.state.text}</span>
 	}
 }
 
