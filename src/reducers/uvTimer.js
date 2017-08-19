@@ -1,26 +1,26 @@
-import { TOGGLE_TIMER } from '../actions/types'
+import {SYNCHRONIZE_TIMER, TOGGLE_TIMER} from '../actions/types'
 
 const initialState = {
-	isRunning: false,
-	startTime: null
+	timer: null
 }
 
 export default function reports(state = initialState, action = {}) {
 	switch (action.type) {
-		case TOGGLE_TIMER:
-			if (state.isRunning) {
-				return {
-					...state,
-					isRunning: false,
-					startTime: null
-				}
-			} else {
-				return {
-					...state,
-					isRunning: true,
-					startTime: new Date()
-				}
+		case SYNCHRONIZE_TIMER:
+			if (action.payload[0])
+				console.log(typeof action.payload[0].start)
+			return {
+				...state,
+				timer: action.payload[0]
 			}
+
+		case TOGGLE_TIMER:
+			return {
+				...state,
+				timer: action.payload
+			}
+
+
 		default:
 			return state
 	}

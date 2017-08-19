@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux'
 
 import {connect} from 'react-redux'
 
-import {toggleTimer} from "../../actions/uvTimer";
+import {synchronizeTimer, toggleTimer} from "../../actions/uvTimer";
 
 
 class Timer extends Component {
@@ -18,6 +18,8 @@ class Timer extends Component {
 	}
 
 	componentWillMount() {
+		this.props.actions.synchronizeTimer()
+
 		if (this.props.isRunning) {
 			this.startUpdateTimer()
 			this.setText()
@@ -64,7 +66,7 @@ class Timer extends Component {
 			})
 		} else {
 			this.setState({
-				text: '0:00'
+				text: '00:00'
 			})
 		}
 	}
@@ -94,14 +96,14 @@ class Timer extends Component {
 
 function mapStateToProps(state) {
 	return {
-		isRunning: state.uvTimer.isRunning,
-		startTime: state.uvTimer.startTime
+		isRunning: !!state.uvTimer.timer && !state.uvTimer.timer.end,
+		startTime: state.uvTimer.timer ? new Date(state.uvTimer.timer.start) : null // TODO: Why is the start time of type string instead of date?
 	}
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators({toggleTimer}, dispatch)
+		actions: bindActionCreators({synchronizeTimer, toggleTimer}, dispatch)
 	}
 }
 
