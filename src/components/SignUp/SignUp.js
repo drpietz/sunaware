@@ -57,7 +57,7 @@ class SignUp extends Component {
     }
 
     validateForm() {
-        this.setState({formValid: this.state.usernameValid && this.state.passwordValid});
+        this.setState({formValid: this.state.usernameValid && this.state.passwordValid && this.state.displaynameValid});
     }
 
     handleInputChange = event => {
