@@ -75,9 +75,9 @@ class SignUp extends Component {
 	};
 
     clearForm() {
-		this.state.displayname.value="";
-        this.state.username.value="";
-        this.state.password.value="";
+		this.refs.displayname.value="";
+        this.refs.username.value="";
+        this.refs.password.value="";
     }
 
 	render () {
@@ -130,7 +130,7 @@ class SignUp extends Component {
 							<button className="button is-warning"
 									disabled={!this.state.formValid}
 									onClick={this.handleSignUp}>Sign Up</button>
-							<button className="button is-link" onClick={this.clearForm}>Clear</button>
+							<button className="button is-link" onClick={this.refs.clearForm}>Clear</button>
 
 						</div>
 					</form>

@@ -74,9 +74,9 @@ class MakeEntry extends Component {
 	}
 
     clearForm() {
-        this.state.rain.value="";
-        this.state.clouds.value="";
-        this.state.temperature.value="";
+        this.refs.rain.value="";
+        this.refs.clouds.value="";
+        this.refs.temperature.value="";
     }
 
 	render() {
@@ -117,7 +117,7 @@ class MakeEntry extends Component {
 							<button className="button is-warning"
 									disabled={!this.state.formValid}
 									onClick={this.handleSubmit}>Submit</button>
-							<button className="button is-link" onClick={this.clearForm}>Clear</button>
+							<button className="button is-link" onClick={this.refs.clearForm}>Clear</button>
 							<Notifications />
 						</div>
 					</form>
