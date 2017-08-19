@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
+import { FormErrors } from './FormErrors'
 
 import {Link} from 'react-router-dom'
 
@@ -17,17 +18,49 @@ class Login extends Component {
 		super(props)
 
 		this.state = {
-			username: null,
-			password: null
+			username: '',
+			password: '',
+            formErrors: {username: '', password: ''},
+            usernameValid: false,
+            passwordValid: false,
+            formValid: false
 		}
 	}
 
+    validateField(fieldName, value) {
+        let fieldValidationErrors = this.state.formErrors;
+        let usernameValid = this.state.usernameValid;
+        let passwordValid = this.state.passwordValid;
+
+        switch(fieldName) {
+            case 'username':
+                usernameValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+                fieldValidationErrors.username = usernameValid ? '' : ' is invalid';
+                break;
+            case 'password':
+                passwordValid = value.length >= 3;
+                fieldValidationErrors.password = passwordValid ? '': ' is too short';
+                break;
+            default:
+                break;
+        }
+        this.setState({formErrors: fieldValidationErrors,
+            usernameValid: usernameValid,
+            passwordValid: passwordValid
+        }, this.validateForm);
+    }
+
+    validateForm() {
+        this.setState({formValid: this.state.usernameValid && this.state.passwordValid});
+    }
+
+
 	handleInputChange = event => {
 		event.preventDefault()
-
-		this.setState({
-			[event.target.name]: event.target.value
-		})
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({[name]: value},
+            () => { this.validateField(name, value) });
 	}
 
 	handleLogin = event => {
@@ -42,9 +75,12 @@ class Login extends Component {
 				<Content size="small">
 					<form onChange={this.handleInputChange}>
 						<div className="field">
+							<FormErrors formErrors={this.state.formErrors} />
 							<label className="label">E-Mail</label>
 							<div className="control has-icons-left">
-								<input className="input" name="username" type="text" placeholder="E-Mail address" />
+								<input className="input" name="username"
+									   value={this.state.username}
+									   type="text" placeholder="E-Mail address" />
 								<span className="icon is-small is-left">
 									<i className="fa fa-envelope"/>
 								</span>
@@ -55,7 +91,9 @@ class Login extends Component {
 							<label className="label">Password</label>
 
 							<div className="control has-icons-left">
-								<input className="input" name="password" type="password" placeholder="Password"/>
+								<input className="input" name="password"
+									   value={this.state.password}
+									   type="password" placeholder="Password"/>
 								<span className="icon is-small is-left">
 									<i className="fa fa-lock"/>
 								</span>
@@ -66,7 +104,8 @@ class Login extends Component {
 
 						<div className="elements-spaced">
 							<Link to="/" className="button is-warning">Back</Link>
-							<button className="button is-warning" onClick={this.handleLogin}>Login</button>
+							<button  type="submit" className="button is-warning"  disabled={!this.state.formValid}
+									 onClick={this.handleLogin}>Login</button>
 						</div>
 					</form>
 				</Content>
