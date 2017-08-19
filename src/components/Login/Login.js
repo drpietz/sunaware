@@ -54,6 +54,12 @@ class Login extends Component {
         this.setState({formValid: this.state.usernameValid && this.state.passwordValid});
     }
 
+    clearForm() {
+
+        this.state.username.value="";
+        this.state.password.value="";
+    }
+
 
 	handleInputChange = event => {
 		event.preventDefault()
@@ -76,6 +82,7 @@ class Login extends Component {
 					<form onChange={this.handleInputChange}>
 						<div className="field">
 							<FormErrors formErrors={this.state.formErrors} />
+
 							<label className="label">E-Mail</label>
 							<div className="control has-icons-left">
 								<input className="input" name="username"
@@ -103,9 +110,9 @@ class Login extends Component {
 						<br />
 
 						<div className="elements-spaced">
-							<Link to="/" className="button is-warning">Back</Link>
 							<button  type="submit" className="button is-warning"  disabled={!this.state.formValid}
 									 onClick={this.handleLogin}>Login</button>
+							<button className="button is-link" onClick={this.clearForm}>Clear</button>
 						</div>
 					</form>
 				</Content>

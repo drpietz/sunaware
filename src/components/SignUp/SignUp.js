@@ -37,6 +37,12 @@ class SignUp extends Component {
 		this.props.actions.register(this.state.username, this.state.password, this.state.displayname)
 	}
 
+    clearForm() {
+		this.state.displayname.value="";
+        this.state.username.value="";
+        this.state.password.value="";
+    }
+
 	render () {
 		return (
 			<PageBody>
@@ -76,8 +82,9 @@ class SignUp extends Component {
 						<br />
 
 						<div className="elements-spaced">
-							<Link to="/" className="button is-warning">Back</Link>
 							<button className="button is-warning" onClick={this.handleSignUp}>Sign Up</button>
+							<button className="button is-link" onClick={this.clearForm}>Clear</button>
+
 						</div>
 					</form>
 				</Content>

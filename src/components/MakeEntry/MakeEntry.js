@@ -31,6 +31,12 @@ class MakeEntry extends Component {
 		notify.show('Weather Reported!', 'success', 2000 )
 	}
 
+    clearForm() {
+        this.state.rain.value="";
+        this.state.clouds.value="";
+        this.state.temperature.value="";
+    }
+
 	render() {
 		return (
 			<PageBody>
@@ -62,8 +68,8 @@ class MakeEntry extends Component {
 							<input className="input" name="temperature" placeholder="Temperature in degrees"/>
 						</div>
 						<div className="field is-grouped is-grouped-centered elements-spaced">
-							<Link to="/start" className="button is-warning">Cancel</Link>
 							<button className="button is-warning" onClick={this.handleSubmit}>Submit</button>
+							<button className="button is-link" onClick={this.clearForm}>Clear</button>
 							<Notifications />
 						</div>
 					</form>
