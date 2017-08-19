@@ -4,10 +4,10 @@ import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
-import {toggleTimer} from "../../actions/uvTimer"
+import {toggleTimer} from "../../../actions/uvTimer"
 
-import Timer from '../Timer/Timer'
-import AllowanceClock from '../AllowanceClock/AllowanceClock'
+import Timer from './Timer/Timer'
+import AllowanceClock from './AllowanceClock/AllowanceClock'
 
 
 class SunClock extends Component {

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
-import {synchronizeAllowance} from "../../actions/uvTimer";
+import {synchronizeAllowance} from "../../../../actions/uvTimer";
 
 class AllowanceClock extends Component {
 
@@ -58,8 +58,6 @@ class AllowanceClock extends Component {
 	}
 
 	syncronizeAllowance = () => {
-		console.log("Syncronize allowance")
-
 		this.props.actions.synchronizeAllowance()
 	}
 
@@ -75,8 +73,6 @@ class AllowanceClock extends Component {
 		let text;
 		if (minutes === 1) text = "1 Minute"
 		else text = minutes + " Minuten"
-
-		console.log("Update allowance clock", remaining, minutes, text)
 
 		if (text !== this.state.text)
 			this.setState({text})

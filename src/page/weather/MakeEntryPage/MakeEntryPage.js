@@ -2,14 +2,14 @@ import React, {Component} from 'react'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { FormErrors } from '../../FormErrors'
+import { FormErrors } from '../../../FormErrors'
 
 import Notifications, {notify} from 'react-notify-toast';
-import { submitReport } from '../../actions/reports'
+import { submitReport } from '../../../actions/reports'
 
-import ImageSelect from '../ImageSelect/ImageSelect'
-import Content from "../Content/Content";
-import PageBody from "../PageBody/PageBody";
+import ImageSelect from '../../app/components/ImageSelect/ImageSelect'
+import Content from "../../app/layout/Content/Content";
+import PageBody from "../../app/layout/PageBody/PageBody";
 
 class MakeEntry extends Component {
 	constructor(props) {
@@ -73,7 +73,8 @@ class MakeEntry extends Component {
 		notify.show('Weather Reported!', 'success', 2000 )
 	}
 
-    clearForm() {
+    clearForm = event => {
+		event.preventDefault()
         this.refs.rain.value="";
         this.refs.clouds.value="";
         this.refs.temperature.value="";
@@ -117,7 +118,7 @@ class MakeEntry extends Component {
 							<button className="button is-warning"
 									disabled={!this.state.formValid}
 									onClick={this.handleSubmit}>Submit</button>
-							<button className="button is-link" onClick={this.refs.clearForm}>Clear</button>
+							<button className="button is-link" onClick={this.clearForm}>Clear</button>
 							<Notifications />
 						</div>
 					</form>

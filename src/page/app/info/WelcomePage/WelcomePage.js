@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import PageBody from "../PageBody/PageBody";
-import Content from "../Content/Content";
+import PageBody from "../../layout/PageBody/PageBody";
+import Content from "../../layout/Content/Content";
 
 function WelcomeMessage() {
 	return (

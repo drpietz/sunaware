@@ -1,5 +1,5 @@
 import './SunawareLayout.css'
-import NavBar from '../NavBar/NavBar'
+import NavBar from '../../navigation/NavBar/NavBar'
 import CloudFooter from '../CloudFooter/CloudFooter'
 
 import React from 'react'

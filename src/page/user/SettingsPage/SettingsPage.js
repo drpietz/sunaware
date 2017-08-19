@@ -3,14 +3,14 @@ import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
-import {updateProfile} from "../../actions/auth"
+import {updateProfile} from "../../../actions/auth"
 
 import Notifications, {notify} from 'react-notify-toast';
 
-import PageBody from '../PageBody/PageBody'
-import Content from '../Content/Content'
+import PageBody from '../../app/layout/PageBody/PageBody'
+import Content from '../../app/layout/Content/Content'
 
-import ImageSelect from '../ImageSelect/ImageSelect'
+import ImageSelect from '../../app/components/ImageSelect/ImageSelect'
 
 
 class Settings extends Component {

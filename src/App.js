@@ -8,15 +8,15 @@ import { bindActionCreators } from 'redux'
 import { fetchExistingReports, subscribeToNewReports } from "./actions/reports"
 import { connect, Provider } from 'react-redux'
 
-import SunawareLayout from './components/SunawareLayout/SunawareLayout'
-import MakeEntry from './components/MakeEntry/MakeEntry'
-import WelcomeMessage from './components/WelcomeMessage/WelcomeMessage'
-import Start from './components/Start/Start'
-import Login from './components/Login/Login'
-import SignUp from './components/SignUp/SignUp'
-import Settings from "./components/Settings/Settings";
-import GuardedRoute from './components/GuardedRoute/GuardedRoute'
-import GuardedRouteGroup from "./components/GuardedRouteGroup/GuardedRouteGroup";
+import SunawareLayout from './page/app/layout/SunawareLayout/SunawareLayout'
+import MakeEntry from './page/weather/MakeEntryPage/MakeEntryPage'
+import WelcomeMessage from './page/app/info/WelcomePage/WelcomePage'
+import Start from './page/weather/StartPage/StartPage'
+import Login from './page/user/LoginPage/LoginPage'
+import SignUp from './page/user/SignUpPage/SignUpPage'
+import Settings from "./page/user/SettingsPage/SettingsPage";
+import GuardedRoute from './page/app/routing/GuardedRoute/GuardedRoute'
+import GuardedRouteGroup from "./page/app/routing/GuardedRouteGroup/GuardedRouteGroup";
 
 
 class App extends Component {

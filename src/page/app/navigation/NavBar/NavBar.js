@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
-import {logout} from "../../actions/auth"
+import {logout} from "../../../../actions/auth"
 import NavItem from '../NavItem/NavItem'
 
 class NavBar extends Component {

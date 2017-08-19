@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux'
 
 import {connect} from 'react-redux'
 
-import {synchronizeTimer, toggleTimer} from "../../actions/uvTimer";
+import {synchronizeTimer, toggleTimer} from "../../../../actions/uvTimer";
 
 
 class Timer extends Component {
