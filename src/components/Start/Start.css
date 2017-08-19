@@ -1,10 +1,20 @@
-.bg-img {
-	background-image: url(/img/sunrise.jpeg) ;
-	background-position: center center;
-	background-repeat:  no-repeat;
-	background-attachment: fixed;
-	background-size:  cover;
-	background-color: #999;
+.overview-screen {
+	width: 100%;
+	height: calc(100vh - 3.25rem);
+	position: relative;
+	overflow: hidden
+}
+
+.overview-screen .report-map {
+	width: calc(100% - 5rem);
+}
+
+.overview-screen .report-feed {
+	width: 5rem;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
 nav a {
