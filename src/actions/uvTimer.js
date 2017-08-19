@@ -1,4 +1,4 @@
-import {SYNCHRONIZE_TIMER, TOGGLE_TIMER} from './types'
+import {SYNCHRONIZE_TIMER, TOGGLE_TIMER, SYNCHRONIZE_ALLOWANCE} from './types'
 
 export function synchronizeTimer() {
 	return {
@@ -23,6 +23,15 @@ export function toggleTimer() {
 					}
 				})
 			}
+		}
+	}
+}
+
+export function synchronizeAllowance() {
+	return {
+		'BAQEND': {
+			type: SYNCHRONIZE_ALLOWANCE,
+			payload: db => db.modules.post('UserService', {action: 'remainingAllowance'}).then(parseFloat)
 		}
 	}
 }

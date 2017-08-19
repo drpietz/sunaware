@@ -7,13 +7,14 @@ import {connect} from 'react-redux'
 import {toggleTimer} from "../../actions/uvTimer"
 
 import Timer from '../Timer/Timer'
+import AllowanceClock from '../AllowanceClock/AllowanceClock'
 
 
 class SunClock extends Component {
 	render() {
 		return (
 			<div className="sun-clock">
-				<span className="sun-remaining">24 Minuten</span>
+				<AllowanceClock className="sun-remaining"/>
 				<Timer/>
 			</div>
 		)
