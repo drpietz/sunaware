@@ -1,3 +1,5 @@
+import './Start.css'
+
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
@@ -13,10 +15,10 @@ class Start extends Component {
 	render() {
 		return (
 			<PageBody>
-				<div style={{ width: '100%', height: 'calc(100vh - 3.25rem)', position: 'relative', overflow: 'hidden'}}>
+				<div className="overview-screen">
 					<SunClock/>
-					<UserReportsMap style={{width: 'calc(100% - 5rem)'}} />
-					<UserReportsFeed style={{width: '5rem', height: '100%', position: 'absolute', top: '0', right: '0'}} />
+					<UserReportsMap/>
+					<UserReportsFeed/>
 				</div>
 				<br/>
 				<Content>
