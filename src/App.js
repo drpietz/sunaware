@@ -1,7 +1,7 @@
 import './App.css'
 import React, { Component } from 'react'
 
-import { Route, Switch } from 'react-router'
+import {Redirect, Route, Switch} from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
 
 import { bindActionCreators } from 'redux'
@@ -15,9 +15,19 @@ import Start from './components/Start/Start'
 import Login from './components/Login/Login'
 import SignUp from './components/SignUp/SignUp'
 import Settings from "./components/Settings/Settings";
+import GuardedRoute from './components/GuardedRoute/GuardedRoute'
+import GuardedRouteGroup from "./components/GuardedRouteGroup/GuardedRouteGroup";
 
 
 class App extends Component {
+
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			isLoggedIn: false
+		}
+	}
 
 	componentDidMount() {
 		this.props.actions.fetchExistingReports()
@@ -25,24 +35,34 @@ class App extends Component {
 	}
 
 	render() {
+		const loggedIn = this.props.isLoggedIn
+
 		return (
 			<Provider store={this.props.store}>
 				<BrowserRouter>
-					<div className="App">
-						<SunawareLayout>
-							<Switch>
-								<Route exact path="/" component={WelcomeMessage}/>
-								<Route exact path="/login" component={Login}/>
-								<Route exact path="/signup" component={SignUp}/>
-								<Route path="/settings" component={Settings}/>
-								<Route exact path="/start" component={Start}/>
-								<Route path="/start/entry" component={MakeEntry}/>
-							</Switch>
-						</SunawareLayout>
-					</div>
+					<SunawareLayout>
+						<Route exact path="/start" component={Start}/>
+
+						<GuardedRouteGroup active={loggedIn} redirect="/">
+							<GuardedRoute exact path="/settings" component={Settings} />
+							<GuardedRoute exact path="/start/entry" component={MakeEntry} />
+						</GuardedRouteGroup>
+
+						<GuardedRouteGroup active={!loggedIn} redirect="/start">
+							<GuardedRoute exact path="/" component={WelcomeMessage} />
+							<GuardedRoute exact path="/login" component={Login} />
+							<GuardedRoute exact path="/signup" redirect="/settings" component={SignUp} />
+						</GuardedRouteGroup>
+					</SunawareLayout>
 				</BrowserRouter>
 			</Provider>
 		)
+	}
+}
+
+function mapStateToProps(state) {
+	return {
+		isLoggedIn: state.auth.isLoggedIn
 	}
 }
 
@@ -52,4 +72,4 @@ function mapDispatchToProps(dispatch) {
 	}
 }
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
