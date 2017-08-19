@@ -7,8 +7,10 @@
 - [x] Sonnenstunden der Nutzer aufzeichnen - *Tim*
 - [x] UV-Informationen nutzen um verbleibende Zeit in der Sonne zu berechnen - *Tim*
 - [ ] Projektstruktur und Routing überarbeiten - *Tim*
-- [ ] Spezialfall: Keine Wetterdaten in der Nähe - *?*
-- [ ] Frontend & Baqend Validation - *Ben, Tim*
+- [ ] Spezialfall: Keine Wetterdaten in der Nähe - *Tim*
+- [ ] Spezialfall: Timer über Tagesgrenze - *Tim*
+- [ ] Baqend Validation - *Tim*
+- [ ] Frontend Validation - *Ben*
 - [ ] UV-Funktion überarbeiten - *Marcel*
 - [ ] Sonnentimer Design & Platzieren - *Tim*
 - [ ] User Positionierung - *Anne*
