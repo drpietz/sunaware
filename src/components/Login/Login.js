@@ -2,9 +2,7 @@ import React, {Component} from 'react'
 
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import { FormErrors } from './FormErrors'
-
-import {Link} from 'react-router-dom'
+import { FormErrors } from '../../FormErrors'
 
 import {login} from "../../actions/auth"
 
@@ -15,7 +13,7 @@ import Content from '../Content/Content'
 class Login extends Component {
 
 	constructor(props) {
-		super(props)
+		super(props);
 
 		this.state = {
 			username: '',
@@ -67,10 +65,10 @@ class Login extends Component {
         const value = event.target.value;
         this.setState({[name]: value},
             () => { this.validateField(name, value) });
-	}
+	};
 
 	handleLogin = event => {
-		event.preventDefault()
+		event.preventDefault();
 
 		this.props.actions.login(this.state.username, this.state.password)
 	}

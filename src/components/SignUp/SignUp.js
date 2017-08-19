@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
-import {Link} from 'react-router-dom'
+import { FormErrors } from '../../FormErrors'
 
 import {register} from "../../actions/auth"
 
@@ -14,28 +14,65 @@ import Content from '../Content/Content'
 class SignUp extends Component {
 
 	constructor(props) {
-		super(props)
-
+		super(props);
 		this.state = {
-			displayname: null,
-			username: null,
-			password: null
+			displayname: '',
+			username: '',
+			password: '',
+            formErrors: {displayname: '', username: '', password: ''},
+            displaynameValid: false,
+            usernameValid: false,
+            passwordValid: false,
+            formValid: false
 		}
 	}
 
-	handleInputChange = event => {
-		event.preventDefault()
+    validateField(fieldName, value) {
+        let fieldValidationErrors = this.state.formErrors;
+        let displaynameValid = this.state.displaynameValid;
+        let usernameValid = this.state.usernameValid;
+        let passwordValid = this.state.passwordValid;
 
-		this.setState({
-			[event.target.name]: event.target.value
-		})
-	}
+        switch(fieldName) {
+            case 'displayname':
+                displaynameValid = value.length >= 3;
+                fieldValidationErrors.displayname = displaynameValid ? '' : ' is invalid';
+                break;
+            case 'username':
+                usernameValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+                fieldValidationErrors.username = usernameValid ? '' : ' is invalid';
+                break;
+            case 'password':
+                passwordValid = value.length >= 3;
+                fieldValidationErrors.password = passwordValid ? '': ' is too short';
+                break;
+            default:
+                break;
+        }
+        this.setState({formErrors: fieldValidationErrors,
+			displaynameValid: displaynameValid,
+            usernameValid: usernameValid,
+            passwordValid: passwordValid
+        }, this.validateForm);
+    }
+
+    validateForm() {
+        this.setState({formValid: this.state.usernameValid && this.state.passwordValid});
+    }
+
+    handleInputChange = event => {
+		event.preventDefault();
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({[name]: value},
+            () => { this.validateField(name, value) });
+	};
 
 	handleSignUp = event => {
-		event.preventDefault()
+		event.preventDefault();
 
 		this.props.actions.register(this.state.username, this.state.password, this.state.displayname)
-	}
+	};
 
     clearForm() {
 		this.state.displayname.value="";
@@ -49,9 +86,13 @@ class SignUp extends Component {
 				<Content size="small">
 					<form onChange={this.handleInputChange}>
 						<div className="field">
+							<FormErrors formErrors={this.state.formErrors} />
+
 							<label className="label">Name</label>
 							<div className="control has-icons-left has-icons-right">
-								<input className="input" name="displayname" type="text" placeholder="Displayname" />
+								<input className="input" name="displayname"
+									   value={this.state.displayname}
+									   type="text" placeholder="Displayname" />
 								<span className="icon is-small is-left">
 										<i className="fa fa-user"/>
 									</span>
@@ -61,7 +102,9 @@ class SignUp extends Component {
 						<div className="field">
 							<label className="label">E-Mail</label>
 							<div className="control has-icons-left">
-								<input className="input" name="username" type="text" placeholder="E-Mail address" />
+								<input className="input" name="username"
+									   value={this.state.username}
+									   type="text" placeholder="E-Mail address" />
 								<span className="icon is-small is-left">
 									<i className="fa fa-envelope"/>
 								</span>
@@ -72,7 +115,9 @@ class SignUp extends Component {
 							<label className="label">Password</label>
 
 							<div className="control has-icons-left">
-								<input className="input" name="password" type="password" placeholder="Password"/>
+								<input className="input" name="password"
+									   value={this.state.password}
+									   type="password" placeholder="Password"/>
 								<span className="icon is-small is-left">
 									<i className="fa fa-lock"/>
 								</span>
@@ -82,7 +127,9 @@ class SignUp extends Component {
 						<br />
 
 						<div className="elements-spaced">
-							<button className="button is-warning" onClick={this.handleSignUp}>Sign Up</button>
+							<button className="button is-warning"
+									disabled={!this.state.formValid}
+									onClick={this.handleSignUp}>Sign Up</button>
 							<button className="button is-link" onClick={this.clearForm}>Clear</button>
 
 						</div>
