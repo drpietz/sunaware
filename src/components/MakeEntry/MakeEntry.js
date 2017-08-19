@@ -43,7 +43,7 @@ class MakeEntry extends Component {
                 fieldValidationErrors.clouds = cloudsValid ? '' : ' is invalid';
                 break;
             case 'temperature':
-                temperatureValid = value.length <= 3;
+                temperatureValid = value.length <= 3; //TODO sich was besseres als length3 einfallen lassen >(
                 fieldValidationErrors.temperature = temperatureValid ? '': ' is invalid';
      			 break;
             default:
