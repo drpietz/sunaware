@@ -23,8 +23,8 @@
 	background-color: white;
 }
 
-.image-select label:not(:last-child) {
-	margin-right: 1rem
+.image-select label {
+	margin: 0.2rem 0.5rem
 }
 
 .image-select img {
