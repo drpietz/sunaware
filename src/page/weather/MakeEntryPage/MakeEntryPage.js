@@ -69,7 +69,7 @@ class MakeEntry extends Component {
 
 	handleSubmit = event => {
 		event.preventDefault()
-		this.props.actions.submitReport(this.state.clouds, this.state.rain, this.state.temparature)
+		this.props.actions.submitReport(this.state.clouds, this.state.rain, this.state.temperature)
 		notify.show('Weather Reported!', 'success', 2000 )
 	}
 
