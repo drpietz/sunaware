@@ -9,12 +9,12 @@
 - [x] Projektstruktur und Routing überarbeiten - *Tim*
 - [ ] Spezialfall: Keine Wetterdaten in der Nähe - *Tim*
 - [ ] Spezialfall: Timer über Tagesgrenze - *Tim*
-- [ ] Baqend Validation - *Tim*
+- [x] Baqend Validation - *Tim*
 - [ ] Frontend Validation - *Ben*
 - [ ] UV-Funktion überarbeiten - *Marcel*
 - [ ] Sonnentimer überarbeiten - *Tim*
 - [ ] User Positionierung - *Anne*
-- [ ] Positionseingabe per Ortsname (Maps API) - *Ben*
+- [x] Positionseingabe per Ortsname (Maps API) - *Ben*
 - [ ] User History (chartjs) - *Tim*
 - [ ] Regen auf Karte anzeigen - *Ben*
 - [ ] Kartenobjekte klickbar machen (kompletten Report anzeigen) - *?*
