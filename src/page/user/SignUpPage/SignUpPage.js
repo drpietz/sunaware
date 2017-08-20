@@ -40,7 +40,7 @@ class SignUp extends Component {
                 break;
             case 'username':
                 usernameValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-                fieldValidationErrors.username = usernameValid ? '' : ' is not an email address';
+                fieldValidationErrors.username = usernameValid ? '' : ' has to be an email address';
                 break;
             case 'password':
                 passwordValid = value.length >= 3;

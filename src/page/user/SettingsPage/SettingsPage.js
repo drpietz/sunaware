@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import './SettingsPage.css'
 
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
@@ -6,6 +7,8 @@ import {connect} from 'react-redux'
 import {updateProfile} from "../../../actions/auth"
 
 import Notifications, {notify} from 'react-notify-toast';
+import Geosuggest from 'react-geosuggest';
+
 
 import PageBody from '../../app/layout/PageBody/PageBody'
 import Content from '../../app/layout/Content/Content'
@@ -18,22 +21,25 @@ class Settings extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			skinType: null,
+			skinType: '',
 			positioningEnabled: null,
 			latitude: null,
-			longitude: null
-		}
+			longitude: null,
+            position: ""
+
+        }
 	}
 
-	handleInputChange = (event) => {
+    	handleInputChange = (event) => {
 		const target = event.target;
 		const value = target.type === 'checkbox' ? target.checked : target.value;
 		const name = target.name;
 
-		this.setState({
-			[name]: value
-		})
-	}
+            this.setState({
+                [name]: value
+            })
+        }
+
 
 	handleUpdate = (event) => {
 		event.preventDefault()
@@ -41,7 +47,8 @@ class Settings extends Component {
 			positioningEnabled: this.state.positioningEnabled,
 			latitude: this.state.latitude,
 			longitude: this.state.longitude,
-			skinType: this.state.skinType
+			skinType: this.state.skinType,
+            position: this.state.position
 		})
 
 		notify.show('Account updated', 'success', 2000)
@@ -75,7 +82,16 @@ class Settings extends Component {
 								</label>
 							</div>
 						</div>
-
+<div className="field">
+	<label className="label">Location</label>
+						<Geosuggest inputClassName="input"
+									placeholder="Choose your location"
+									name="position"
+									defaultValue={this.props.user.position}
+									onSuggestSelect={this.location}
+									autoActivateFirstSuggest={true}
+									/>
+</div>
 						<div className="field">
 							<label className="label">Latitude</label>
 							<input className="input" name="latitude"
