@@ -40,14 +40,21 @@ export function updateProfile(fields) {
 		'BAQEND': {
 			type: USER_PROFILE_UPDATE,
 			payload: (db) => db.User.me.load().then(user => {
-				if (!user.position)
-					user.position = new GeoPoint();
+				if (fields.latitude !== null || fields.longitude !== null) {
+					let lat, lon = 0;
+					if (user.position) {
+						lat = user.position.latitude;
+						lon = user.position.longitude;
+					}
 
-				if (fields.latitude !== null)
-					user.position.latitude = parseFloat(fields.latitude)
+					if (fields.latitude !== null)
+						lat = parseFloat(fields.latitude)
 
-				if (fields.longitude !== null)
-					user.position.longitude = parseFloat(fields.longitude)
+					if (fields.longitude !== null)
+						lon = parseFloat(fields.longitude)
+
+					user.position = new GeoPoint(lat, lon);
+				}
 
 				if (fields.positioningEnabled !== null)
 					user.positioningEnabled = fields.positioningEnabled
