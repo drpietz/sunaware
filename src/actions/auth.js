@@ -39,24 +39,22 @@ export function updateProfile(fields) {
 	return {
 		'BAQEND': {
 			type: USER_PROFILE_UPDATE,
-			payload: (db) => {
-				let command = db.User.me.partialUpdate()
+			payload: (db) => db.User.me.load().then(user => {
 
 				// TODO: Nur Latitude ODER Longitude geändert => nur eins von beiden null, trotzdem update?
 				if (fields.latitude !== null && fields.longitude !== null) {
-					let position = new GeoPoint(parseFloat(fields.latitude), parseFloat(fields.longitude))
-					command.set('position', position)
+					user.position = new GeoPoint(parseFloat(fields.latitude), parseFloat(fields.longitude))
 				}
 
 				if (fields.positioningEnabled !== null) {
-					command.set('positioningEnabled', fields.positioningEnabled)
+					user.positioningEnabled = fields.positioningEnabled
 				}
 
 				if (fields.skinType !== null)
-					command.set('skinType', fields.skinType)
+					user.skinType = fields.skinType
 
-				return command.execute()
-			}
+				return user.save()
+			})
 		}
 	}
 }
