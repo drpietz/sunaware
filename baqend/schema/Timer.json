@@ -12,16 +12,27 @@
       "/db/Role/1": "allow"
     }
   },
+  "metadata": {},
   "fields": {
+    "user": {
+      "name": "user",
+      "type": "/db/User",
+      "order": 0
+    },
+    "position": {
+      "name": "position",
+      "type": "/db/GeoPoint",
+      "order": 1
+    },
     "start": {
       "name": "start",
       "type": "/db/DateTime",
-      "order": 0
+      "order": 2
     },
     "end": {
       "name": "end",
       "type": "/db/DateTime",
-      "order": 1
+      "order": 3
     }
   }
 }

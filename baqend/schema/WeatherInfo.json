@@ -26,8 +26,8 @@
       "type": "/db/Integer",
       "order": 2
     },
-    "temparature": {
-      "name": "temparature",
+    "temperature": {
+      "name": "temperature",
       "type": "/db/Double",
       "order": 3
     }
