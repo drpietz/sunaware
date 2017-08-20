@@ -1,38 +1,42 @@
-.geosuggest__input:focus {
-    border-color: #267dc0;
-    box-shadow: 0 0 0 transparent;
+.geosuggest__suggests-wrapper {
+	position: relative;
+	width: 100%;
 }
+
 .geosuggest__suggests {
-.box
-box-sizing: border-box;
-     background: #fff;
-    border: 2px solid #e4c369;
-    overflow-x: hidden;
-    overflow-y: auto;
-    list-style: none;
+	margin: 0 !important;
+	position: absolute;
+	z-index: 100;
+	width: 100%;
+	box-sizing: border-box;
+	background: #fff;
+	border: 1px solid #e4c369;
+	border-top-width: 0;
+	list-style: none !important;
 }
+
 .geosuggest__suggests--hidden {
-    max-height: 0;
-    overflow: hidden;
-    border-width: 0;
+	display: none;
 }
 
 .geosuggest__item {
-    padding: .5em .65em;
-    cursor: pointer;
+	margin: 0 !important;
+	padding: .5em .65em;
+	font-size: 0.85rem;
+	cursor: pointer;
 }
 .geosuggest__item:hover,
 .geosuggest__item:focus {
-    background: #ffe6bb;
+	background: #ffe6bb;
 }
 .geosuggest__item--active {
-    background: #e4c369;
-    color: #fff;
+	background: #e4c369;
+	color: #fff;
 }
 .geosuggest__item--active:hover,
 .geosuggest__item--active:focus {
-    background: #ccc;
+	background: #ccc;
 }
 .geosuggest__item__matched-text {
-    font-weight: bold;
+	font-weight: bold;
 }
