@@ -40,15 +40,17 @@ export function updateProfile(fields) {
 		'BAQEND': {
 			type: USER_PROFILE_UPDATE,
 			payload: (db) => db.User.me.load().then(user => {
+				if (!user.position)
+					user.position = new GeoPoint();
 
-				// TODO: Nur Latitude ODER Longitude geändert => nur eins von beiden null, trotzdem update?
-				if (fields.latitude !== null && fields.longitude !== null) {
-					user.position = new GeoPoint(parseFloat(fields.latitude), parseFloat(fields.longitude))
-				}
+				if (fields.latitude !== null)
+					user.position.latitude = parseFloat(fields.latitude)
 
-				if (fields.positioningEnabled !== null) {
+				if (fields.longitude !== null)
+					user.position.longitude = parseFloat(fields.longitude)
+
+				if (fields.positioningEnabled !== null)
 					user.positioningEnabled = fields.positioningEnabled
-				}
 
 				if (fields.skinType !== null)
 					user.skinType = fields.skinType
