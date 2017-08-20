@@ -52,13 +52,6 @@ class Login extends Component {
         this.setState({formValid: this.state.usernameValid && this.state.passwordValid});
     }
 
-    clearForm() {
-
-        this.refs.username.value="";
-        this.refs.password.value="";
-    }
-
-
 	handleInputChange = event => {
 		event.preventDefault()
         const name = event.target.name;
@@ -110,7 +103,6 @@ class Login extends Component {
 						<div className="elements-spaced">
 							<button  type="submit" className="button is-warning"  disabled={!this.state.formValid}
 									 onClick={this.handleLogin}>Login</button>
-							<button className="button is-link" onClick={this.refs.clearForm}>Clear</button>
 						</div>
 					</form>
 				</Content>

@@ -48,10 +48,6 @@ class Settings extends Component {
 	}
 
 	render () {
-		if (!this.props.user) {
-			return <h1>Entschuldigung, der redirect ist noch nicht implementiert</h1>
-		}
-
 		return (
 			<PageBody>
 				<Notifications />
@@ -73,7 +69,8 @@ class Settings extends Component {
 						<div className="field">
 							<div className="control">
 								<label className="checkbox">
-									<input type="checkbox" name="positioningEnabled" defaultChecked={this.props.user.positioningEnabled}/>
+									<input type="checkbox" name="positioningEnabled"
+										   defaultChecked={this.props.user.positioningEnabled}/>
 									GPS enabled
 								</label>
 							</div>
@@ -81,12 +78,16 @@ class Settings extends Component {
 
 						<div className="field">
 							<label className="label">Latitude</label>
-							<input className="input" name="latitude" type="number" step="any" placeholder="Latitude" defaultValue={this.props.user.position ? this.props.user.position.latitude : null}/>
+							<input className="input" name="latitude"
+								   type="number" step="any" placeholder="Latitude"
+								   defaultValue={this.props.user.position ? this.props.user.position.latitude : null}/>
 						</div>
 
 						<div className="field">
 							<label className="label">Longitude</label>
-							<input className="input" name="longitude" type="number" step="any" placeholder="Longitude" defaultValue={this.props.user.position ? this.props.user.position.longitude : null}/>
+							<input className="input" name="longitude"
+								   type="number" step="any" placeholder="Longitude"
+								   defaultValue={this.props.user.position ? this.props.user.position.longitude : null}/>
 						</div>
 
 						<br/>

@@ -43,7 +43,7 @@ class MakeEntry extends Component {
                 fieldValidationErrors.clouds = cloudsValid ? '' : ' is invalid';
                 break;
             case 'temperature':
-                temperatureValid = value.length <= 3; //TODO sich was besseres als length3 einfallen lassen >(
+                temperatureValid = value.match(/^-?\d{1,2}$/g); //TODO Handle inputs of -99 or 99 degrees
                 fieldValidationErrors.temperature = temperatureValid ? '': ' is invalid';
      			 break;
             default:
@@ -72,13 +72,6 @@ class MakeEntry extends Component {
 		this.props.actions.submitReport(this.state.clouds, this.state.rain, this.state.temparature)
 		notify.show('Weather Reported!', 'success', 2000 )
 	}
-
-    clearForm = event => {
-		event.preventDefault()
-        this.refs.rain.value="";
-        this.refs.clouds.value="";
-        this.refs.temperature.value="";
-    }
 
 	render() {
 		return (
@@ -118,7 +111,6 @@ class MakeEntry extends Component {
 							<button className="button is-warning"
 									disabled={!this.state.formValid}
 									onClick={this.handleSubmit}>Submit</button>
-							<button className="button is-link" onClick={this.clearForm}>Clear</button>
 							<Notifications />
 						</div>
 					</form>

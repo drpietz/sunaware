@@ -36,11 +36,11 @@ class SignUp extends Component {
         switch(fieldName) {
             case 'displayname':
                 displaynameValid = value.length >= 3;
-                fieldValidationErrors.displayname = displaynameValid ? '' : ' is invalid';
+                fieldValidationErrors.displayname = displaynameValid ? '' : ' is too short';
                 break;
             case 'username':
                 usernameValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-                fieldValidationErrors.username = usernameValid ? '' : ' is invalid';
+                fieldValidationErrors.username = usernameValid ? '' : ' is not an email address';
                 break;
             case 'password':
                 passwordValid = value.length >= 3;
@@ -73,12 +73,6 @@ class SignUp extends Component {
 
 		this.props.actions.register(this.state.username, this.state.password, this.state.displayname)
 	};
-
-    clearForm() {
-		this.refs.displayname.value="";
-        this.refs.username.value="";
-        this.refs.password.value="";
-    }
 
 	render () {
 		return (
@@ -130,8 +124,6 @@ class SignUp extends Component {
 							<button className="button is-warning"
 									disabled={!this.state.formValid}
 									onClick={this.handleSignUp}>Sign Up</button>
-							<button className="button is-link" onClick={this.refs.clearForm}>Clear</button>
-
 						</div>
 					</form>
 				</Content>
