@@ -19,15 +19,10 @@
       "type": "/db/User",
       "order": 0
     },
-    "timestamp": {
-      "name": "timestamp",
-      "type": "/db/DateTime",
-      "order": 1
-    },
     "info": {
       "name": "info",
       "type": "/db/WeatherInfo",
-      "order": 2
+      "order": 1
     }
   }
 }

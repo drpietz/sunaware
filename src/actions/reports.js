@@ -1,6 +1,6 @@
 import { REPORT_SUBMIT, FETCH_OLD_REPORTS, RECEIVE_NEW_REPORTS } from './types'
 
-export function submitReport(clouds, rain, temparature) {
+export function submitReport(clouds, rain, temperature) {
 	return {
 		'BAQEND': {
 			type: REPORT_SUBMIT,
@@ -9,7 +9,7 @@ export function submitReport(clouds, rain, temparature) {
 					position: db.User.me.position,
 					clouds,
 					rain,
-					temparature
+					temperature
 				})
 
 				let report = new db.UserReport({
