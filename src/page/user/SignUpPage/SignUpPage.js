@@ -121,7 +121,7 @@ class SignUp extends Component {
 						<br />
 
 						<div className="elements-spaced">
-							<button className="button is-warning"
+							<button className={"button is-warning" + (this.props.isPending ? " is-loading" : "")}
 									disabled={!this.state.formValid}
 									onClick={this.handleSignUp}>Sign Up</button>
 						</div>
@@ -132,6 +132,12 @@ class SignUp extends Component {
 	}
 }
 
+function mapStateToProps(state) {
+	return {
+		isPending: state.auth.register.isPending,
+		errors: state.auth.register.errors
+	}
+}
 
 function mapDispatchToProps(dispatch) {
 	return {
@@ -140,4 +146,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(null, mapDispatchToProps)(SignUp)
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

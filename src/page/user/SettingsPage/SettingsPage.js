@@ -108,7 +108,7 @@ class Settings extends Component {
 
 						<br/>
 						<div className="field is-grouped is-grouped-centered elements-spaced">
-							<button className="button is-warning" onClick={this.handleUpdate}>Update</button>
+							<button className={"button is-warning" + (this.props.isPending ? " is-loading" : "")} onClick={this.handleUpdate}>Update</button>
 						</div>
 					</form>
 				</Content>
@@ -120,7 +120,9 @@ class Settings extends Component {
 
 function mapStateToProps(state) {
 	return {
-		user: state.auth.user
+		user: state.auth.user,
+		isPending: state.auth.update.isPending,
+		errors: state.auth.update.errors,
 	}
 }
 

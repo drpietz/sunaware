@@ -101,7 +101,7 @@ class Login extends Component {
 						<br />
 
 						<div className="elements-spaced">
-							<button  type="submit" className="button is-warning"  disabled={!this.state.formValid}
+							<button  type="submit" className={"button is-warning" + (this.props.isPending ? " is-loading" : "")}  disabled={!this.state.formValid}
 									 onClick={this.handleLogin}>Login</button>
 						</div>
 					</form>
@@ -112,6 +112,13 @@ class Login extends Component {
 }
 
 
+function mapStateToProps(state) {
+	return {
+		isPending: state.auth.login.isPending,
+		errors: state.auth.login.errors
+	}
+}
+
 function mapDispatchToProps(dispatch) {
 	return {
 		actions: bindActionCreators({login}, dispatch)
@@ -119,4 +126,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

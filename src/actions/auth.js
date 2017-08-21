@@ -1,10 +1,20 @@
-import { USER_LOGIN, USER_REGISTER, USER_LOGOUT, USER_PROFILE_UPDATE } from './types'
+import {
+	USER_LOGIN_PENDING, USER_LOGIN_SUCCESS, USER_LOGIN_ERROR,
+	USER_REGISTER_PENDING, USER_REGISTER_SUCCESS, USER_REGISTER_ERROR,
+	USER_LOGOUT,
+	USER_PROFILE_UPDATE_PENDING, USER_PROFILE_UPDATE_SUCCESS, USER_PROFILE_UPDATE_ERROR
+} from './types'
+
 import { GeoPoint } from 'baqend/realtime'
 
 export function login(username, password) {
 	return {
 		'BAQEND': {
-			type: USER_LOGIN,
+			types: [
+				USER_LOGIN_PENDING,
+				USER_LOGIN_SUCCESS,
+				USER_LOGIN_ERROR
+			],
 			payload: (db) => db.User.login(username, password)
 		}
 	}
@@ -13,7 +23,11 @@ export function login(username, password) {
 export function register(username, password, displayname) {
 	return {
 		'BAQEND': {
-			type: USER_REGISTER,
+			types: [
+				USER_REGISTER_PENDING,
+				USER_REGISTER_SUCCESS,
+				USER_REGISTER_ERROR
+			],
 			payload: (db) => {
 				let user = new db.User({
 					username: username,
@@ -38,7 +52,11 @@ export function logout() {
 export function updateProfile(fields) {
 	return {
 		'BAQEND': {
-			type: USER_PROFILE_UPDATE,
+			types: [
+				USER_PROFILE_UPDATE_PENDING,
+				USER_PROFILE_UPDATE_SUCCESS,
+				USER_PROFILE_UPDATE_ERROR
+			],
 			payload: (db) => db.User.me.load().then(user => {
 				if (fields.latitude !== null || fields.longitude !== null) {
 					let lat, lon = 0;
