@@ -35,16 +35,16 @@ class SignUp extends Component {
 
         switch(fieldName) {
             case 'displayname':
-                displaynameValid = value.length >= 3;
-                fieldValidationErrors.displayname = displaynameValid ? '' : ' is too short';
+                displaynameValid = value.match(/^([a-z0-9]{3,})$/i);
+                fieldValidationErrors.displayname = displaynameValid ? '' : 'not a valid name';
                 break;
             case 'username':
                 usernameValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-                fieldValidationErrors.username = usernameValid ? '' : ' has to be an email address';
+                fieldValidationErrors.username = usernameValid ? '' : ' not an email address';
                 break;
             case 'password':
                 passwordValid = value.length >= 3;
-                fieldValidationErrors.password = passwordValid ? '': ' is too short';
+                fieldValidationErrors.password = passwordValid ? '': ' password is too short';
                 break;
             default:
                 break;
@@ -80,23 +80,18 @@ class SignUp extends Component {
 				<Content size="small">
 					<form onChange={this.handleInputChange}>
 						<div className="box">
-						<div className="field">
-							<div className="panel panel-default">
-								<FormErrors formErrors={this.state.formErrors} />
-							</div>
-
+						 <div className="field">
 							<div className="control has-icons-left has-icons-right">
 								<input className="input" name="displayname"
 									   value={this.state.displayname}
 									   type="text" placeholder="Displayname" />
-								<span className="icon is-small is-left">
+							    	<span className="icon is-small is-left">
 										<i className="fa fa-user"/>
 									</span>
+								<FormErrors formErrors={this.state.formErrors} />
 							</div>
-						</div>
-
+						  </div>
 						<div className="field">
-
 							<div className="control has-icons-left">
 								<input className="input" name="username"
 									   value={this.state.username}
@@ -106,9 +101,7 @@ class SignUp extends Component {
 								</span>
 							</div>
 						</div>
-
 						<div className="field">
-
 							<div className="control has-icons-left">
 								<input className="input" name="password"
 									   value={this.state.password}
@@ -118,9 +111,6 @@ class SignUp extends Component {
 								</span>
 							</div>
 						</div>
-
-						<br />
-
 						<div className="elements-spaced">
 							<button className={"button is-warning" + (this.props.isPending ? " is-loading" : "")}
 									disabled={!this.state.formValid}

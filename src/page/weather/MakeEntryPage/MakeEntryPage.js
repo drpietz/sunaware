@@ -20,10 +20,10 @@ class MakeEntry extends Component {
 			clouds: '',
 			temperature: '',
             formErrors: {rain: '', clouds: '', temperature: ''},
-            rainValid: false,
-            cloudsValid: false,
-            temperatureValid: false,
-            formValid: false
+            formValid: false,
+			rainValid: false,
+			cloudsValid: false,
+			temperatureValid: false
 		}
 	}
 
@@ -36,15 +36,15 @@ class MakeEntry extends Component {
         switch(fieldName) {
             case 'rain':
                 rainValid = value.match(/^([0,1,2,3])$/i);
-                fieldValidationErrors.rain = rainValid ? '' : ' is invalid';
+                fieldValidationErrors.rain = rainValid ? '' : ' input is invalid';
                 break;
             case 'clouds':
                 cloudsValid = value.match(/^([0,1,2,3,4])$/i);
-                fieldValidationErrors.clouds = cloudsValid ? '' : ' is invalid';
+                fieldValidationErrors.clouds = cloudsValid ? '' : ' input is invalid';
                 break;
             case 'temperature':
-                temperatureValid = value.match(/^-?\d{1,2}$/g); //TODO Handle inputs of -99 or 99 degrees
-                fieldValidationErrors.temperature = temperatureValid ? '': ' is invalid';
+                temperatureValid = value.match(/^-?\d{1,2}$/g);
+                fieldValidationErrors.temperature = temperatureValid ? '': 'please select an Input between -99 and 99 degrees';
      			 break;
             default:
                 break;
@@ -72,6 +72,10 @@ class MakeEntry extends Component {
 		this.props.actions.submitReport(this.state.clouds, this.state.rain, this.state.temperature)
 		notify.show('Weather Reported!', 'success', 2000 )
 	}
+
+    handleBlur = (field) => (event) =>  {
+      //TODO: Implement handleBLur
+        }
 
 	render() {
 		return (
@@ -103,10 +107,17 @@ class MakeEntry extends Component {
 							}/>
 						</div>
 						<div className="field">
-							<input className="input" name="temperature" value={this.state.temperature} placeholder="Temperature in degrees"/>
+							<div className="control">
+							<input className={"input" + (!this.state.temperatureValid ? " is-danger" : "")}
+								   onBlur={this.handleBlur('temperature')}
+								   name="temperature" value={this.state.temperature}
+								   placeholder="Temperature in degrees"/>
+								<FormErrors formErrors={this.state.formErrors} />
+							</div>
 						</div>
 						<div className="panel panel-default">
-							<FormErrors formErrors={this.state.formErrors} />
+
+
 						</div>
 						<div className="field is-grouped is-grouped-centered elements-spaced">
 							<button className="button is-warning"

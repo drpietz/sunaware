@@ -33,11 +33,11 @@ class Login extends Component {
         switch(fieldName) {
             case 'username':
                 usernameValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-                fieldValidationErrors.username = usernameValid ? '' : ' is invalid';
+                fieldValidationErrors.username = usernameValid ? '' : ' not an email address';
                 break;
             case 'password':
                 passwordValid = value.length >= 3;
-                fieldValidationErrors.password = passwordValid ? '': ' is too short';
+                fieldValidationErrors.password = passwordValid ? '': 'Password is too short';
                 break;
             default:
                 break;
@@ -72,9 +72,6 @@ class Login extends Component {
 				<Content size="small">
 					<form onChange={this.handleInputChange}>
 						<div className="box">
-							<div className="panel panel-default">
-								<FormErrors formErrors={this.state.formErrors} />
-							</div>
 						<div className="field">
 							<div className="control has-icons-left">
 								<input className={"input"+ (this.props.errors ? " is-danger" : "")} name="username"
@@ -83,6 +80,7 @@ class Login extends Component {
 								<span className="icon is-small is-left">
 									<i className="fa fa-envelope"/>
 								</span>
+								<FormErrors formErrors={this.state.formErrors} />
 							</div>
 						</div>
 

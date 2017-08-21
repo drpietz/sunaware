@@ -1,14 +1,14 @@
 import React from 'react'
 
 export const FormErrors = ({formErrors}) =>
-    <div className='formErrors'>
+    <p className='formErrors'>
         {Object.keys(formErrors).map((fieldName, i) => {
             if(formErrors[fieldName].length > 0){
                 return (
-                    <p className="tag is-danger" key={i}>{fieldName} {formErrors[fieldName]}</p>
+                    <p className="help is-danger" key={i}> {formErrors[fieldName]}</p>
                 )
             } else {
                 return '';
             }
         })}
-    </div>
+    </p>
