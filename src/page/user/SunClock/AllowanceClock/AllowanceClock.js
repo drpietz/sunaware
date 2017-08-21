@@ -19,7 +19,7 @@ class AllowanceClock extends Component {
 
 		if (this.props.timerIsRunning) {
 			this.startUpdateTimer()
-			this.setText()
+			this.updateText()
 		}
 	}
 
