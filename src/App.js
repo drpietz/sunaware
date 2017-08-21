@@ -8,15 +8,16 @@ import { bindActionCreators } from 'redux'
 import { fetchExistingReports, subscribeToNewReports } from "./actions/reports"
 import { connect, Provider } from 'react-redux'
 
+import Positioning from './page/user/Positioning/Positioning'
 import SunawareLayout from './page/app/layout/SunawareLayout/SunawareLayout'
 import MakeEntry from './page/weather/MakeEntryPage/MakeEntryPage'
 import WelcomeMessage from './page/app/info/WelcomePage/WelcomePage'
 import Start from './page/weather/StartPage/StartPage'
 import Login from './page/user/LoginPage/LoginPage'
 import SignUp from './page/user/SignUpPage/SignUpPage'
-import Settings from "./page/user/SettingsPage/SettingsPage";
+import Settings from "./page/user/SettingsPage/SettingsPage"
 import GuardedRoute from './page/app/routing/GuardedRoute/GuardedRoute'
-import GuardedRouteGroup from "./page/app/routing/GuardedRouteGroup/GuardedRouteGroup";
+import GuardedRouteGroup from "./page/app/routing/GuardedRouteGroup/GuardedRouteGroup"
 
 
 class App extends Component {
@@ -41,10 +42,11 @@ class App extends Component {
 			<Provider store={this.props.store}>
 				<BrowserRouter>
 					<SunawareLayout>
-						<Route exact path="/start" component={Start}/>
-
 						<GuardedRouteGroup active={loggedIn} redirect="/">
+							<GuardedRoute path="/" component={Positioning} />
+
 							<GuardedRoute exact path="/settings" component={Settings} />
+							<GuardedRoute exact path="/start" component={Start}/>
 							<GuardedRoute exact path="/start/entry" component={MakeEntry} />
 						</GuardedRouteGroup>
 
