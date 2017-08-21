@@ -81,7 +81,9 @@ class SignUp extends Component {
 					<form onChange={this.handleInputChange}>
 						<div className="box">
 						<div className="field">
+							<div className="panel panel-default">
 								<FormErrors formErrors={this.state.formErrors} />
+							</div>
 
 							<div className="control has-icons-left has-icons-right">
 								<input className="input" name="displayname"

@@ -72,11 +72,12 @@ class Login extends Component {
 				<Content size="small">
 					<form onChange={this.handleInputChange}>
 						<div className="box">
+							<div className="panel panel-default">
+								<FormErrors formErrors={this.state.formErrors} />
+							</div>
 						<div className="field">
-							<FormErrors formErrors={this.state.formErrors} />
-
 							<div className="control has-icons-left">
-								<input className="input" name="username"
+								<input className={"input"+ (this.props.errors ? " is-danger" : "")} name="username"
 									   value={this.state.username}
 									   type="text" placeholder="E-Mail address" />
 								<span className="icon is-small is-left">
@@ -87,7 +88,7 @@ class Login extends Component {
 
 						<div className="field">
 							<div className="control has-icons-left">
-								<input className="input" name="password"
+								<input className={"input" + (this.props.errors ? " is-danger" : "")} name="password"
 									   value={this.state.password}
 									   type="password" placeholder="Password"/>
 								<span className="icon is-small is-left">

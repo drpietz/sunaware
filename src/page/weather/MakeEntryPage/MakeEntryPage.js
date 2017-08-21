@@ -82,7 +82,6 @@ class MakeEntry extends Component {
 							Let us know about the weather at your place.
 						</p>
 						<div className="field">
-							<FormErrors formErrors={this.state.formErrors} />
 							<label className="label is-small">Rain type</label>
 							<ImageSelect name="rain"
 										 value={this.state.rain}
@@ -105,6 +104,9 @@ class MakeEntry extends Component {
 						</div>
 						<div className="field">
 							<input className="input" name="temperature" value={this.state.temperature} placeholder="Temperature in degrees"/>
+						</div>
+						<div className="panel panel-default">
+							<FormErrors formErrors={this.state.formErrors} />
 						</div>
 						<div className="field is-grouped is-grouped-centered elements-spaced">
 							<button className="button is-warning"
