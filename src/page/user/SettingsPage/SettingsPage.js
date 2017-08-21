@@ -48,7 +48,7 @@ class Settings extends Component {
 			latitude: this.state.latitude,
 			longitude: this.state.longitude,
 			skinType: this.state.skinType,
-            position: this.state.position
+			handlePositioning: this.state.position
 		})
 
 		notify.show('Account updated', 'success', 2000)
@@ -64,7 +64,6 @@ class Settings extends Component {
 					<br/><br/>
 					<form onChange={this.handleInputChange}>
 						<div className="field">
-							<label className="label">Skin type</label>
 							<ImageSelect name="skinType" defaultValue={this.props.user.skinType} values={
 								[0,1,2,3,4,5].map(v => ({
 									value: v,
@@ -82,29 +81,36 @@ class Settings extends Component {
 								</label>
 							</div>
 						</div>
-<div className="field">
-	<label className="label">Location</label>
+<div className="field is-horizontal">
+	<div className="field-label is-small">
+		<label className="label">Location</label></div>
+	<div className="field-body">
 						<Geosuggest inputClassName="input"
 									placeholder="Choose your location"
 									name="position"
 									defaultValue={this.props.user.position}
-									onSuggestSelect={this.location}
+									onSuggestSelect={console.log}
 									autoActivateFirstSuggest={true}
-									/>
+						/></div>
 </div>
-						<div className="field">
+						<div className="field is-horizontal">
+							<div className="field-label is-small">
 							<label className="label">Latitude</label>
-							<input className="input" name="latitude"
+							</div>
+							<div className="field-body">
+								<input className="input" name="latitude"
 								   type="number" step="any" placeholder="Latitude"
 								   defaultValue={this.props.user.position ? this.props.user.position.latitude : null}/>
-						</div>
+								</div></div>
 
-						<div className="field">
-							<label className="label">Longitude</label>
+						<div className="field is-horizontal">
+							<div className="field-label is-small">
+								<label className="label">Longitude</label></div>
+							<div className="field-body">
 							<input className="input" name="longitude"
 								   type="number" step="any" placeholder="Longitude"
 								   defaultValue={this.props.user.position ? this.props.user.position.longitude : null}/>
-						</div>
+							</div></div>
 
 						<br/>
 						<div className="field is-grouped is-grouped-centered elements-spaced">

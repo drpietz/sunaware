@@ -83,7 +83,7 @@ class MakeEntry extends Component {
 						</p>
 						<div className="field">
 							<FormErrors formErrors={this.state.formErrors} />
-							<label className="label">Rain type</label>
+							<label className="label is-small">Rain type</label>
 							<ImageSelect name="rain"
 										 value={this.state.rain}
 										 values={[0,1,2,3].map(v => ({
@@ -94,7 +94,7 @@ class MakeEntry extends Component {
                             }/>
 						</div>
 						<div className="field">
-							<label className="label">Cloudiness</label>
+							<label className="label is-small">Cloudiness</label>
 							<ImageSelect name="clouds"
 										 value={this.state.clouds}
 										 values={[0,1,2,3,4].map(v => ({
@@ -104,7 +104,6 @@ class MakeEntry extends Component {
 							}/>
 						</div>
 						<div className="field">
-							<label className="label">Temperature</label>
 							<input className="input" name="temperature" value={this.state.temperature} placeholder="Temperature in degrees"/>
 						</div>
 						<div className="field is-grouped is-grouped-centered elements-spaced">
