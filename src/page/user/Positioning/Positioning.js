@@ -2,17 +2,17 @@ import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
-import {updateProfile} from "../../../actions/auth";
+import {disablePositioning, updatePosition} from "../../../actions/auth";
 
 
 class Positioning extends Component {
 	updatePosition = () => {
 		if (this.props.positioningEnabled) {
 			console.log("Is enabled -> position update!")
-			/*this.actions.updateProfile({
-				latitude: latitude,
-				longitude: longitude
-			})*/
+			/*
+			* this.props.actions.disablePositioning()
+			* this.props.actions.updatePosition(latitude, longitude)
+			*/
 		}
 	}
 
@@ -39,7 +39,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators({updateProfile}, dispatch)
+		actions: bindActionCreators({disablePositioning, updatePosition}, dispatch)
 	}
 }
 
