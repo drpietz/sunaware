@@ -30,15 +30,15 @@ class Settings extends Component {
         }
 	}
 
-    	handleInputChange = (event) => {
-		const target = event.target;
-		const value = target.type === 'checkbox' ? target.checked : target.value;
-		const name = target.name;
+	handleInputChange = (event) => {
+	const target = event.target;
+	const value = target.type === 'checkbox' ? target.checked : target.value;
+	const name = target.name;
 
-            this.setState({
-                [name]: value
-            })
-        }
+		this.setState({
+			[name]: value
+		})
+	}
 
 
 	handleUpdate = (event) => {
@@ -81,38 +81,43 @@ class Settings extends Component {
 								</label>
 							</div>
 						</div>
-<div className="field is-horizontal">
-	<div className="field-label is-small">
-		<label className="label">Location</label></div>
-	<div className="field-body">
-						<Geosuggest inputClassName="input"
-									placeholder="Choose your location"
-									name="position"
-									defaultValue={this.props.user.position}
-									onSuggestSelect={console.log}
-									autoActivateFirstSuggest={true}
-						/></div>
-</div>
 						<div className="field is-horizontal">
 							<div className="field-label is-small">
-							<label className="label">Latitude</label>
+								<label className="label">Location</label>
+							</div>
+							<div className="field-body">
+								<Geosuggest inputClassName="input"
+											placeholder="Choose your location"
+											name="position"
+											defaultValue={this.props.user.position}
+											onSuggestSelect={console.log}
+											autoActivateFirstSuggest={true} />
+							</div>
+						</div>
+						<div className="field is-horizontal">
+							<div className="field-label is-small">
+								<label className="label">Latitude</label>
 							</div>
 							<div className="field-body">
 								<input className="input" name="latitude"
 								   type="number" step="any" placeholder="Latitude"
 								   defaultValue={this.props.user.position ? this.props.user.position.latitude : null}/>
-								</div></div>
+							</div>
+						</div>
 
 						<div className="field is-horizontal">
 							<div className="field-label is-small">
-								<label className="label">Longitude</label></div>
+								<label className="label">Longitude</label>
+							</div>
 							<div className="field-body">
-							<input className="input" name="longitude"
-								   type="number" step="any" placeholder="Longitude"
-								   defaultValue={this.props.user.position ? this.props.user.position.longitude : null}/>
-							</div></div>
+								<input className="input" name="longitude"
+									   type="number" step="any" placeholder="Longitude"
+									   defaultValue={this.props.user.position ? this.props.user.position.longitude : null}/>
+							</div>
+						</div>
 
 						<br/>
+
 						<div className="field is-grouped is-grouped-centered elements-spaced">
 							<button className={"button is-warning" + (this.props.isPending ? " is-loading" : "")} onClick={this.handleUpdate}>Update</button>
 						</div>
