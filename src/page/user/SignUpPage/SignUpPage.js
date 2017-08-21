@@ -79,10 +79,10 @@ class SignUp extends Component {
 			<PageBody>
 				<Content size="small">
 					<form onChange={this.handleInputChange}>
+						<div className="box">
 						<div className="field">
-							<FormErrors formErrors={this.state.formErrors} />
+								<FormErrors formErrors={this.state.formErrors} />
 
-							<label className="label">Name</label>
 							<div className="control has-icons-left has-icons-right">
 								<input className="input" name="displayname"
 									   value={this.state.displayname}
@@ -94,7 +94,7 @@ class SignUp extends Component {
 						</div>
 
 						<div className="field">
-							<label className="label">E-Mail</label>
+
 							<div className="control has-icons-left">
 								<input className="input" name="username"
 									   value={this.state.username}
@@ -106,7 +106,6 @@ class SignUp extends Component {
 						</div>
 
 						<div className="field">
-							<label className="label">Password</label>
 
 							<div className="control has-icons-left">
 								<input className="input" name="password"
@@ -124,7 +123,7 @@ class SignUp extends Component {
 							<button className="button is-warning"
 									disabled={!this.state.formValid}
 									onClick={this.handleSignUp}>Sign Up</button>
-						</div>
+						</div></div>
 					</form>
 				</Content>
 			</PageBody>
