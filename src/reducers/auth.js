@@ -24,30 +24,51 @@ const initialState = {
 	user: null
 }
 
+function getPendingState() {
+	return {
+		isPending: true,
+		errors: null
+	}
+}
+
+function getSuccessState() {
+	return {
+		isPending: false,
+		errors: null
+	}
+}
+
+function getErrorState(action) {
+	return {
+		isPending: false,
+		errors: action.payload.cause
+	}
+}
+
 export default function auth(state = initialState, action = {}) {
 	switch (action.type) {
 		case BAQEND_CONNECTED:
 			return { ...state, user: action.user, isLoggedIn: !!action.user }
 		case USER_LOGIN_PENDING:
-			return { ...state, login: {isPending: true, errors: null}}
+			return { ...state, login: getPendingState()}
 		case USER_LOGIN_SUCCESS:
-			return { ...state, user: action.payload, isLoggedIn: true, login: {isPending: false, errors: null}}
+			return { ...state, user: action.payload, isLoggedIn: true, login: getSuccessState()}
 		case USER_LOGIN_ERROR:
-			return { ...state, login: {isPending: false, errors: action.payload.cause}}
+			return { ...state, login: getErrorState(action)}
 		case USER_REGISTER_PENDING:
-			return { ...state, register: {isPending: true, errors: null}}
+			return { ...state, register: getPendingState()}
 		case USER_REGISTER_SUCCESS:
-			return { ...state, user: action.payload, isLoggedIn: true, register: {isPending: false, errors: null}}
+			return { ...state, user: action.payload, isLoggedIn: true, register: getSuccessState()}
 		case USER_REGISTER_ERROR:
-			return { ...state, register: {isPending: false, errors: action.payload.cause}}
+			return { ...state, register: getErrorState(action)}
 		case USER_LOGOUT:
 			return { ...state, user: null, isLoggedIn: false }
 		case USER_PROFILE_UPDATE_PENDING:
-			return { ...state, update: {isPending: true, errors: null}}
+			return { ...state, update: getPendingState()}
 		case USER_PROFILE_UPDATE_SUCCESS:
-			return { ...state, update: {isPending: false, errors: null}}
+			return { ...state, update: getSuccessState()}
 		case USER_PROFILE_UPDATE_ERROR:
-			return { ...state, update: {isPending: false, errors: action.payload.cause}}
+			return { ...state, update: getErrorState(action)}
 		default:
 			return state
 	}
