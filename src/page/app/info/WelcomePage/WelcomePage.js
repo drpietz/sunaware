@@ -2,32 +2,33 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PageBody from "../../layout/PageBody/PageBody";
 import Content from "../../layout/Content/Content";
+import {Control, Field, Subtitle, Title} from "bloomer";
 
 function WelcomeMessage() {
 	return (
 		<PageBody>
 			<Content>
-				<h1 className="title">
+				<Title>
 					<strong>Welcome to Sunaware</strong>
-				</h1>
+				</Title>
 
-				<p className="subtitle">
+				<Subtitle isSize={4}>
 					We are providing you with the latest information about weather, your local UV index and how to protect yourself from UV radiation considering your personal skin type.
 					Additionally, users can give you real-time information about their current weather situations.
-				</p>
+				</Subtitle>
 
-				<div className="field is-grouped is-grouped-centered">
-					<div className="control">
+				<Field isGrouped="centered">
+					<Control>
 						<Link to="/signup" className="button is-warning">
 							Sign up
 						</Link>
-					</div>
-					<div className="control">
+					</Control>
+					<Control>
 						<Link to="/login" className="button is-warning">
 							Login
 						</Link>
-					</div>
-				</div>
+					</Control>
+				</Field>
 			</Content>
 		</PageBody>
 	)

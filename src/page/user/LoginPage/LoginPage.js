@@ -8,6 +8,7 @@ import {login} from "../../../actions/auth"
 
 import PageBody from '../../app/layout/PageBody/PageBody'
 import Content from '../../app/layout/Content/Content'
+import {Box, Button, Control, Field, Icon, Input} from "bloomer";
 
 
 class Login extends Component {
@@ -71,36 +72,44 @@ class Login extends Component {
 			<PageBody>
 				<Content size="small">
 					<form onChange={this.handleInputChange}>
-						<div className="box">
-						<div className="field">
-							<div className="control has-icons-left">
-								<input className={"input"+ (this.props.errors ? " is-danger" : "")} name="username"
-									   value={this.state.username}
-									   type="text" placeholder="E-Mail address" />
-								<span className="icon is-small is-left">
-									<i className="fa fa-envelope"/>
-								</span>
-								<FormErrors formErrors={this.state.formErrors} />
-							</div>
-						</div>
+						<Box>
+							<Field>
+								<Control hasIcons="left">
+									<Input name="username" placeholder="E-Mail address"
+										   isColor={this.props.errors && "danger"} />
 
-						<div className="field">
-							<div className="control has-icons-left">
-								<input className={"input" + (this.props.errors ? " is-danger" : "")} name="password"
-									   value={this.state.password}
-									   type="password" placeholder="Password"/>
-								<span className="icon is-small is-left">
-									<i className="fa fa-lock"/>
-								</span>
-							</div>
-						</div>
+									<Icon isSize='small' isAlign='left'>
+										<i className="fa fa-envelope" />
+									</Icon>
 
-						<br />
+									<FormErrors formErrors={this.state.formErrors} />
+								</Control>
+							</Field>
 
-						<div className="elements-spaced">
-							<button  type="submit" className={"button is-warning" + (this.props.isPending ? " is-loading" : "")}  disabled={!this.state.formValid}
-									 onClick={this.handleLogin}>Login</button>
-						</div></div>
+							<Field>
+								<Control hasIcons="left">
+									<Input name="password" placeholder="Password"
+										   isColor={this.props.errors && "danger"} />
+
+									<Icon isSize='small' isAlign='left'>
+										<i className="fa fa-lock" />
+									</Icon>
+
+									<FormErrors formErrors={this.state.formErrors} />
+								</Control>
+							</Field>
+
+							<br />
+
+							<Field isGrouped="centered">
+								<Button isColor="warning"
+										isLoading={this.props.isPending}
+										disabled={!this.state.formValid}
+										onClick={this.handleLogin}>
+									Login
+								</Button>
+							</Field>
+						</Box>
 					</form>
 				</Content>
 			</PageBody>

@@ -1,5 +1,6 @@
 import React from 'react'
 import './Content.css'
+import {Container} from "bloomer";
 
 function Content(props) {
 	let size;
@@ -9,9 +10,9 @@ function Content(props) {
 		size = ""
 
 	return (
-		<div className={"content container has-text-centered" + size}>
+		<Container hasTextAlign="centered" className={"content" + size}>
 			{props.children}
-		</div>
+		</Container>
 	)
 }
 

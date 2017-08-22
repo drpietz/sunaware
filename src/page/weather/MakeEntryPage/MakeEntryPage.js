@@ -10,6 +10,7 @@ import { submitReport } from '../../../actions/reports'
 import ImageSelect from '../../app/components/ImageSelect/ImageSelect'
 import Content from "../../app/layout/Content/Content";
 import PageBody from "../../app/layout/PageBody/PageBody";
+import {Button, Control, Field, Input, Label, Subtitle} from "bloomer";
 
 class MakeEntry extends Component {
 	constructor(props) {
@@ -82,49 +83,58 @@ class MakeEntry extends Component {
 			<PageBody>
 				<Content size="medium">
 					<form onChange={this.handleInputChange}>
-						<p className="subtitle">
+						<Subtitle isSize={4}>
 							Let us know about the weather at your place.
-						</p>
-						<div className="field">
-							<label className="label is-small">Rain type</label>
-							<ImageSelect name="rain"
-										 value={this.state.rain}
-										 values={[0,1,2,3].map(v => ({
+						</Subtitle>
+
+						<Field>
+							<Label>
+								Rain type
+							</Label>
+
+							<ImageSelect
+								name="rain"
+								value={this.state.rain}
+								values={[0,1,2,3].map(v => ({
 									value: v,
 									img: '/img/weather/rain/' + v + '.png'
-								}))
+								}))} />
+						</Field>
 
-                            }/>
-						</div>
-						<div className="field">
-							<label className="label is-small">Cloudiness</label>
-							<ImageSelect name="clouds"
-										 value={this.state.clouds}
-										 values={[0,1,2,3,4].map(v => ({
+						<Field>
+							<Label>
+								Cloudiness
+							</Label>
+
+							<ImageSelect
+								name="clouds"
+								value={this.state.clouds}
+								values={[0,1,2,3,4].map(v => ({
 									value: v,
 									img: '/img/weather/clouds/' + v + '.png'
-								}))
-							}/>
-						</div>
-						<div className="field">
-							<div className="control">
-							<input className={"input" + (!this.state.temperatureValid ? " is-danger" : "")}
-								   onBlur={this.handleBlur('temperature')}
-								   name="temperature" value={this.state.temperature}
-								   placeholder="Temperature in degrees"/>
+								}))} />
+						</Field>
+
+						<Field>
+							<Control>
+								<Input name="temperature" placeholder="Temperature in degrees"
+									   isColor={this.props.temperatureValid && "danger"}
+									   onBlur={this.handleBlur('temperature')} />
+
 								<FormErrors formErrors={this.state.formErrors} />
-							</div>
-						</div>
-						<div className="panel panel-default">
+							</Control>
+						</Field>
 
+						<br />
 
-						</div>
-						<div className="field is-grouped is-grouped-centered elements-spaced">
-							<button className="button is-warning"
+						<Field isGrouped="centered">
+							<Button isColor="warning"
+									isLoading={this.props.isPending}
 									disabled={!this.state.formValid}
-									onClick={this.handleSubmit}>Submit</button>
-							<Notifications />
-						</div>
+									onClick={this.handleSubmit}>
+								Submit
+							</Button>
+						</Field>
 					</form>
 				</Content>
 			</PageBody>

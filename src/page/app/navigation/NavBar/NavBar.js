@@ -1,3 +1,5 @@
+import './NavBar.css'
+
 import React, {Component} from 'react'
 
 import {bindActionCreators} from 'redux'
@@ -5,6 +7,7 @@ import {connect} from 'react-redux'
 
 import {logout} from "../../../../actions/auth"
 import NavItem from '../NavItem/NavItem'
+import {Container, Navbar, NavbarBurger, NavbarEnd, NavbarMenu} from "bloomer";
 
 class NavBar extends Component {
 
@@ -12,13 +15,13 @@ class NavBar extends Component {
 		super(props)
 
 		this.state = {
-			menuIsActive: false
+			isActive: false
 		}
 	}
 
 	toggleNavbar = () => {
 		this.setState({
-			menuIsActive: !this.state.menuIsActive
+			isActive: !this.state.isActive
 		})
 	}
 
@@ -29,25 +32,25 @@ class NavBar extends Component {
 
 	render() {
 		return (
-			<header className="nav">
-				<div className="container">
-					<span className="nav-toggle" onClick={this.toggleNavbar}>
-						<span/><span/><span/>
-					</span>
-					{this.props.isLoggedIn ?
-						<div className={"nav-right nav-menu" + (this.state.menuIsActive ? " is-active" : "")}>
-							<NavItem to="/settings" label="Settings" icon="fa-user"/>
-							<NavItem to="/start" label="Start" icon="fa-map"/>
-							<NavItem to="#" onClick={this.handleLogout} label="Logout" icon="fa-sign-out"/>
-						</div>
-						:
-						<div className="nav-right nav-menu">
-							<NavItem to="/login" label="Login" icon="fa-user"/>
-							<NavItem to="/signup" label="Sign Up" icon="fa-user-plus"/>
-						</div>
-					}
-				</div>
-			</header>
+			<Navbar>
+				<Container>
+					<NavbarBurger isActive={this.state.isActive} onClick={this.toggleNavbar} />
+					<NavbarMenu isActive={this.state.isActive} onClick={this.toggleNavbar} >
+						{this.props.isLoggedIn ?
+							<NavbarEnd>
+								<NavItem to="/settings" label="Settings" icon="fa-user"/>
+								<NavItem to="/start" label="Start" icon="fa-map"/>
+								<NavItem to="#" onClick={this.handleLogout} label="Logout" icon="fa-sign-out"/>
+							</NavbarEnd>
+							:
+							<NavbarEnd>
+								<NavItem to="/login" label="Login" icon="fa-user"/>
+								<NavItem to="/signup" label="Sign Up" icon="fa-user-plus"/>
+							</NavbarEnd>
+						}
+					</NavbarMenu>
+				</Container>
+			</Navbar>
 		)
 	}
 }

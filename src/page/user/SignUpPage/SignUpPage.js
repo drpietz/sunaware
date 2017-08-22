@@ -9,6 +9,7 @@ import {register} from "../../../actions/auth"
 
 import PageBody from '../../app/layout/PageBody/PageBody'
 import Content from '../../app/layout/Content/Content'
+import {Box, Button, Control, Field, Icon, Input} from "bloomer";
 
 
 class SignUp extends Component {
@@ -79,43 +80,50 @@ class SignUp extends Component {
 			<PageBody>
 				<Content size="small">
 					<form onChange={this.handleInputChange}>
-						<div className="box">
-						 <div className="field">
-							<div className="control has-icons-left has-icons-right">
-								<input className={"input"+ (this.props.errors ? " is-danger" : "")} name="displayname"
-									   value={this.state.displayname}
-									   type="text" placeholder="Displayname" />
-							    	<span className="icon is-small is-left">
-										<i className="fa fa-user"/>
-									</span>
-								<FormErrors formErrors={this.state.formErrors} />
-							</div>
-						  </div>
-						<div className="field">
-							<div className="control has-icons-left">
-								<input className={"input"+ (this.props.errors ? " is-danger" : "")} name="username"
-									   value={this.state.username}
-									   type="text" placeholder="E-Mail address" />
-								<span className="icon is-small is-left">
-									<i className="fa fa-envelope"/>
-								</span>
-							</div>
-						</div>
-						<div className="field">
-							<div className="control has-icons-left">
-								<input className="input" name="password"
-									   value={this.state.password}
-									   type="password" placeholder="Password"/>
-								<span className="icon is-small is-left">
-									<i className="fa fa-lock"/>
-								</span>
-							</div>
-						</div>
-						<div className="elements-spaced">
-							<button className={"button is-warning" + (this.props.isPending ? " is-loading" : "")}
-									disabled={!this.state.formValid}
-									onClick={this.handleSignUp}>Sign Up</button>
-						</div></div>
+						<Box>
+							<Field>
+								<Control hasIcons="left">
+									<Input name="displayname" placeholder="Displayname"
+										   isColor={this.props.errors && "danger"} />
+
+									<Icon isSize='small' isAlign='left'>
+										<i className="fa fa-user" />
+									</Icon>
+
+									<FormErrors formErrors={this.state.formErrors} />
+								</Control>
+							</Field>
+
+							<Field>
+								<Control hasIcons="left">
+									<Input name="username" placeholder="E-Mail address"
+										   isColor={this.props.errors && "danger"} />
+
+									<Icon isSize='small' isAlign='left'>
+										<i className="fa fa-envelope" />
+									</Icon>
+								</Control>
+							</Field>
+
+							<Field>
+								<Control hasIcons="left">
+									<Input name="password" placeholder="Password" type="password" />
+
+									<Icon isSize='small' isAlign='left'>
+										<i className="fa fa-lock" />
+									</Icon>
+								</Control>
+							</Field>
+
+							<Field isGrouped="centered">
+								<Button isColor="warning"
+										isLoading={this.props.isPending}
+										disabled={!this.state.formValid}
+										onClick={this.handleSignUp}>
+									Login
+								</Button>
+							</Field>
+						</Box>
 					</form>
 				</Content>
 			</PageBody>

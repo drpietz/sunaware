@@ -3,20 +3,21 @@ import NavBar from '../../navigation/NavBar/NavBar'
 import CloudFooter from '../CloudFooter/CloudFooter'
 
 import React from 'react'
+import {Hero, HeroFooter, HeroHeader} from "bloomer";
 
 function SunawareLayout(props) {
 	return (
-		<section className="welcome-page hero is-fullheight">
-			<div className="hero-head">
+		<Hero isFullHeight className="welcome-page">
+			<HeroHeader>
 				<NavBar/>
-			</div>
+			</HeroHeader>
 
 			{props.children}
 
-			<div className="welcome-foot hero-foot">
+			<HeroFooter className="welcome-foot">
 				<CloudFooter/>
-			</div>
-		</section>
+			</HeroFooter>
+		</Hero>
 	);
 }
 
