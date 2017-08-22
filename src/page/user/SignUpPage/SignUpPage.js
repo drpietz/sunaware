@@ -35,7 +35,7 @@ class SignUp extends Component {
 
         switch(fieldName) {
             case 'displayname':
-                displaynameValid = value.match(/^([a-z0-9]{3,})$/i);
+                displaynameValid = value.match(/^((\s*[a-z0-9]){3,20})$/i);
                 fieldValidationErrors.displayname = displaynameValid ? '' : 'not a valid name';
                 break;
             case 'username':
@@ -82,7 +82,7 @@ class SignUp extends Component {
 						<div className="box">
 						 <div className="field">
 							<div className="control has-icons-left has-icons-right">
-								<input className="input" name="displayname"
+								<input className={"input"+ (this.props.errors ? " is-danger" : "")} name="displayname"
 									   value={this.state.displayname}
 									   type="text" placeholder="Displayname" />
 							    	<span className="icon is-small is-left">
@@ -93,7 +93,7 @@ class SignUp extends Component {
 						  </div>
 						<div className="field">
 							<div className="control has-icons-left">
-								<input className="input" name="username"
+								<input className={"input"+ (this.props.errors ? " is-danger" : "")} name="username"
 									   value={this.state.username}
 									   type="text" placeholder="E-Mail address" />
 								<span className="icon is-small is-left">
