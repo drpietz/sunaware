@@ -14,6 +14,7 @@ import PageBody from '../../app/layout/PageBody/PageBody'
 import Content from '../../app/layout/Content/Content'
 
 import ImageSelect from '../../app/components/ImageSelect/ImageSelect'
+import {Button, Checkbox, Control, Field, FieldBody, FieldLabel, Input, Label} from "bloomer";
 
 
 class Settings extends Component {
@@ -26,7 +27,6 @@ class Settings extends Component {
 			latitude: null,
 			longitude: null,
             position: ""
-
         }
 	}
 
@@ -72,64 +72,72 @@ class Settings extends Component {
 					Welcome, { this.props.user.displayname }
 					<br/><br/>
 					<form onChange={this.handleInputChange}>
-						<div className="field">
+						<Field>
 							<ImageSelect name="skinType" defaultValue={this.props.user.skinType} values={
 								[0,1,2,3,4,5].map(v => ({
 									value: v,
 									img: '/img/user/skintypes/' + v + '.png'
 								}))
 							}/>
-						</div>
+						</Field>
 
-						<div className="field">
-							<div className="control">
-								<label className="checkbox">
-									<input type="checkbox" name="positioningEnabled"
-										   defaultChecked={this.props.user.positioningEnabled}/>
+						<Field>
+							<Control>
+								<Checkbox name="positioningEnabled" defaultChecked={this.props.user.positioningEnabled}>
 									GPS enabled
-								</label>
-							</div>
-						</div>
-						<div className="field is-horizontal">
-							<div className="field-label is-small">
-								<label className="label">Location</label>
-							</div>
-							<div className="field-body">
+								</Checkbox>
+							</Control>
+						</Field>
+
+
+						<Field isHorizontal>
+							<FieldLabel isSize="small">
+								<Label>Location</Label>
+							</FieldLabel>
+
+							<FieldBody>
 								<Geosuggest inputClassName="input"
 											placeholder="Choose your location"
 											name="position"
 											defaultValue={this.props.user.position}
 											onSuggestSelect={console.log}
 											autoActivateFirstSuggest={true} />
-							</div>
-						</div>
-						<div className="field is-horizontal">
-							<div className="field-label is-small">
-								<label className="label">Latitude</label>
-							</div>
-							<div className="field-body">
-								<input className="input" name="latitude"
-								   type="number" step="any" placeholder="Latitude"
-								   defaultValue={this.props.user.position ? this.props.user.position.latitude : null}/>
-							</div>
-						</div>
+							</FieldBody>
+						</Field>
 
-						<div className="field is-horizontal">
-							<div className="field-label is-small">
-								<label className="label">Longitude</label>
-							</div>
-							<div className="field-body">
-								<input className="input" name="longitude"
-									   type="number" step="any" placeholder="Longitude"
-									   defaultValue={this.props.user.position ? this.props.user.position.longitude : null}/>
-							</div>
-						</div>
+						<Field isHorizontal>
+							<FieldLabel isSize="small">
+								<Label>Latitude</Label>
+							</FieldLabel>
+
+							<FieldBody>
+								<Input name="latitude" placeholder="Latitude"
+									   type="number" step="any"
+									   defaultValue={this.props.user.position ? this.props.user.position.latitude : null} />
+							</FieldBody>
+						</Field>
+
+						<Field isHorizontal>
+							<FieldLabel isSize="small">
+								<Label>Longitude</Label>
+							</FieldLabel>
+
+							<FieldBody>
+								<Input name="longitude" placeholder="Longitude"
+									   type="number" step="any"
+									   defaultValue={this.props.user.position ? this.props.user.position.longitude : null} />
+							</FieldBody>
+						</Field>
 
 						<br/>
 
-						<div className="field is-grouped is-grouped-centered elements-spaced">
-							<button className={"button is-warning" + (this.props.isPending ? " is-loading" : "")} onClick={this.handleUpdate}>Update</button>
-						</div>
+						<Field isGrouped="centered">
+							<Button isColor="warning"
+									isLoading={this.props.isPending}
+									onClick={this.handleUpdate}>
+								Update
+							</Button>
+						</Field>
 					</form>
 				</Content>
 			</PageBody>
