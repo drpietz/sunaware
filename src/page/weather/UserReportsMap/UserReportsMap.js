@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 
+import {styles} from './style.json'
+
 
 const Map = withGoogleMap(props => (
 		<GoogleMap
@@ -11,8 +13,10 @@ const Map = withGoogleMap(props => (
 			defaultCenter={{ lat: 53.55, lng: 10.00 }}
 			defaultOptions={{
 				scrollwheel: false,
-				streetViewControl: false
-			}} >
+				streetViewControl: false,
+				styles
+			}}
+			>
 			{props.markers.map((marker, index) => (
 				<Marker
 					{...marker}
