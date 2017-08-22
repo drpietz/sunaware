@@ -1,20 +1,39 @@
 import './ImageSelect.css'
-import React from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
-function ImageSelect({name, values, defaultValue}) {
-	return (
-		<div className="image-select">
-			{values.map(value => (
-				<label className="rad" key={value.value}>
-					<input type="radio" name={name} value={value.value} defaultChecked={value.value === defaultValue}/>
-					<div>
+class ImageSelect extends Component {
+
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			value: props.defaultValue !== undefined ? props.defaultValue : null
+		}
+	}
+
+	handleValueChange = value => {
+		this.setState({
+			value: value
+		})
+	}
+
+	render() {
+		let {name, values} = this.props;
+
+		return (
+			<div className="image-select">
+				<input type="hidden" name={name} value={this.state.value} />
+				{values.map(value => (
+					<div value={value.value} key={value.value}
+						 className={(this.state.value === value.value) ? "selected" : null}
+						 onClick={() => this.handleValueChange(value.value)}>
 						<img className="image" src={value.img}/>
 					</div>
-				</label>
-			))}
-		</div>
-	)
+				))}
+			</div>
+		)
+	}
 }
 
 ImageSelect.propTypes = {

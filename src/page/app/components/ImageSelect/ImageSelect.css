@@ -1,16 +1,8 @@
-.image-select label {
-	display: inline-block;
-}
-
-.image-select input {
-	visibility: hidden;
-	position: absolute;
-}
-
 .image-select div {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	margin: 0.2rem 0.5rem;
 	box-sizing: content-box;
 	width: 96px;
 	height: 96px;
@@ -23,15 +15,11 @@
 	background-color: white;
 }
 
-.image-select label {
-	margin: 0.2rem 0.5rem
+.image-select div.selected {
+	border: 2px solid rgba(0, 0, 0, 0.7)
 }
 
 .image-select img {
 	max-width: 86px;
 	max-height: 86px;
-}
-
-.image-select input:checked + div {
-	border: 2px solid rgba(0, 0, 0, 0.7)
 }
