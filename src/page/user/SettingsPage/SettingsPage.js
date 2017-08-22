@@ -30,6 +30,17 @@ class Settings extends Component {
         }
 	}
 
+
+	componentWillReceiveProps(nextProps) {
+		if (this.props.isPending && !nextProps.isPending) {
+			if (nextProps.errors)
+				notify.show(nextProps.errors.message, 'error', 2000)
+			else
+				notify.show('Account updated!', 'success', 2000)
+
+		}
+	}
+
 	handleInputChange = (event) => {
 	const target = event.target;
 	const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -50,8 +61,6 @@ class Settings extends Component {
 			skinType: this.state.skinType,
 			handlePositioning: this.state.position
 		})
-
-		notify.show('Account updated', 'success', 2000)
 	}
 
 	render () {
