@@ -89,6 +89,7 @@ class Login extends Component {
 							<Field>
 								<Control hasIcons="left">
 									<Input name="password" placeholder="Password"
+										   type="password"
 										   isColor={this.props.errors && "danger"} />
 
 									<Icon isSize='small' isAlign='left'>
