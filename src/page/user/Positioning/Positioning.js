@@ -6,14 +6,28 @@ import {disablePositioning, updatePosition} from "../../../actions/auth";
 
 
 class Positioning extends Component {
+
 	updatePosition = () => {
 		if (this.props.positioningEnabled) {
 			console.log("Is enabled -> position update!")
-			/*
-			* this.props.actions.disablePositioning()
-			* this.props.actions.updatePosition(latitude, longitude)
-			*/
+			this.getLocation();
 		}
+	}
+
+	getLocation = () => {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition( ({coords}) => {
+				this.props.actions.updatePosition(coords.latitude, coords.longitude)
+				}
+			);
+		} else {
+				this.props.actions.disablePositioning();
+		}
+	}
+
+	showPosition = (position) => {
+		console.log("Latitude: " + position.coords.latitude +
+			"<br>Longitude: " + position.coords.longitude);
 	}
 
 	componentWillMount() {
