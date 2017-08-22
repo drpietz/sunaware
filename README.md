@@ -17,9 +17,9 @@
 - [x] Positionseingabe per Ortsname (Maps API) - *Ben*
 - [ ] User History (chartjs) - *Tim*
 - [ ] Regen auf Karte anzeigen - *Ben*
-- [ ] Kartenobjekte klickbar machen (kompletten Report anzeigen) - *?*
+- [ ] Kartenobjekte klickbar machen (kompletten Report anzeigen) - *Anne, Ben, Tim*
 - [ ] Object access permissions - *Tim*
-- [ ] svg Icons auf der Karte - *Tim*
+- [x] svg Icons auf der Karte - *Anne*
 - [x] Kartenstil (Farben) - *Anne, Tim, Ben*
 - [ ] Icons auf der Karte zusammenfassen - *Tim*
 - [ ] ~~Unterschiedliche Sonnenschutzgrade~~
