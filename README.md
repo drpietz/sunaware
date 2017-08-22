@@ -1,4 +1,4 @@
-# Sunaware
+﻿# Sunaware
 ## TODO
 - [x] Wettermeldungen von Nutzern entgegen nehmen - *Anne, Ben, Tim*
 - [x] Meldungen im Umkreis zusammenfassen - *Anne*
@@ -11,16 +11,16 @@
 - [ ] Spezialfall: Timer über Tagesgrenze - *Tim*
 - [x] Baqend Validation - *Tim*
 - [ ] Frontend Validation - *Ben*
-- [ ] UV-Funktion überarbeiten - *Marcel*
+- [x] UV-Funktion überarbeiten - *Marcel*
 - [ ] Sonnentimer überarbeiten - *Tim*
-- [ ] User Positionierung - *Anne*
+- [x] User Positionierung - *Anne*
 - [x] Positionseingabe per Ortsname (Maps API) - *Ben*
 - [ ] User History (chartjs) - *Tim*
 - [ ] Regen auf Karte anzeigen - *Ben*
 - [ ] Kartenobjekte klickbar machen (kompletten Report anzeigen) - *?*
 - [ ] Object access permissions - *Tim*
 - [ ] svg Icons auf der Karte - *Tim*
-- [ ] Kartenstil (Farben) - *?*
+- [x] Kartenstil (Farben) - *Anne, Tim, Ben*
 - [ ] Icons auf der Karte zusammenfassen - *Tim*
 - [ ] ~~Unterschiedliche Sonnenschutzgrade~~
 - [ ] ~~Produktempfehlungen~~
