@@ -66,7 +66,13 @@ class MakeEntry extends Component {
         const value = event.target.value;
         this.setState({[name]: value},
             () => { this.validateField(name, value) });
-	};
+	}
+
+	handleReactInputChange = (value, field) => {
+		this.setState({
+			[field]: value
+		})
+	}
 
 	handleSubmit = event => {
 		event.preventDefault()
@@ -94,7 +100,8 @@ class MakeEntry extends Component {
 
 							<ImageSelect
 								name="rain"
-								value={this.state.rain}
+								defaultValue={this.state.rain}
+								onChange={this.handleReactInputChange}
 								values={[0,1,2,3].map(v => ({
 									value: v,
 									img: '/img/weather/rain/' + v + '.png'
@@ -108,7 +115,8 @@ class MakeEntry extends Component {
 
 							<ImageSelect
 								name="clouds"
-								value={this.state.clouds}
+								defaultValue={this.state.clouds}
+								onChange={this.handleReactInputChange}
 								values={[0,1,2,3,4].map(v => ({
 									value: v,
 									img: '/img/weather/clouds/' + v + '.png'

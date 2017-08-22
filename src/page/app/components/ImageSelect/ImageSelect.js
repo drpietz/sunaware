@@ -16,6 +16,8 @@ class ImageSelect extends Component {
 		this.setState({
 			value: value
 		})
+
+		this.props.onChange(value, this.props.name)
 	}
 
 	render() {

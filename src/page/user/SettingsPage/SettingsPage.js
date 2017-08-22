@@ -51,6 +51,12 @@ class Settings extends Component {
 		})
 	}
 
+	handleReactInputChange = (value, field) => {
+		this.setState({
+			[field]: value
+		})
+	}
+
 
 	handleUpdate = (event) => {
 		event.preventDefault()
@@ -73,7 +79,10 @@ class Settings extends Component {
 					<br/><br/>
 					<form onChange={this.handleInputChange}>
 						<Field>
-							<ImageSelect name="skinType" defaultValue={this.props.user.skinType} values={
+							<ImageSelect name="skinType"
+										 onChange={this.handleReactInputChange}
+										 defaultValue={this.props.user.skinType}
+										 values={
 								[0,1,2,3,4,5].map(v => ({
 									value: v,
 									img: '/img/user/skintypes/' + v + '.png'
