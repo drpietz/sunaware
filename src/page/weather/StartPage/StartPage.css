@@ -11,10 +11,21 @@
 
 .overview-screen .report-feed {
 	width: 5rem;
-	height: 100%;
+	height: calc(100% - 3.25rem);
 	position: absolute;
+	top: 3.25rem;
+	right: 0;
+}
+
+.report-weather-button {
+	position: absolute !important;
 	top: 0;
 	right: 0;
+	width: 5rem;
+	height: 3.25rem !important;
+	font-size: 2rem !important;
+	font-weight: 600;
+	color: rgba(0, 0, 0, 0.4) !important;
 }
 
 nav a {
