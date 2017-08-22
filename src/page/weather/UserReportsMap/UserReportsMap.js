@@ -29,7 +29,7 @@ const Map = withGoogleMap(props => (
 class UserReportsMap extends Component {
 
 	static getCloudEmoji(report) {
-		return "/img/noto/" + report.info.clouds + ".png"}
+		return "/img/noto/" + report.info.clouds + ".svg"}
 
 	mapReportsToMarkers = reports => (
 		reports.map(report => ({
@@ -40,7 +40,9 @@ class UserReportsMap extends Component {
 			defaultAnimation: 2,
 			key: report.id,
 			options: {
-				icon: UserReportsMap.getCloudEmoji(report)
+				icon: new window.google.maps.MarkerImage(UserReportsMap.getCloudEmoji(report),
+					null, null, null,
+					new window.google.maps.Size(30,30))
 			}
 		}))
 	)
