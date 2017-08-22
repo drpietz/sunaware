@@ -19,7 +19,7 @@
 - [ ] Regen auf Karte anzeigen - *Ben*
 - [ ] Kartenobjekte klickbar machen (kompletten Report anzeigen) - *?*
 - [ ] Object access permissions - *Tim*
-- [ ] svg Icons auf der Karte - *Tim*
+- [x] svg Icons auf der Karte - *Anne*
 - [x] Kartenstil (Farben) - *Anne, Tim, Ben*
 - [ ] Icons auf der Karte zusammenfassen - *Tim*
 - [ ] ~~Unterschiedliche Sonnenschutzgrade~~
