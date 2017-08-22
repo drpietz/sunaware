@@ -59,7 +59,7 @@ class UserReportsMap extends Component {
 				lng: report.info.position.longitude
 			},
 			key: report.id,
-			infoContent: (<div>Hallooooooo</div>),
+			infoContent: (("Weather: " + report.info.temperature + " Degrees")	),
 			options: {
 				icon: new window.google.maps.MarkerImage(UserReportsMap.getCloudEmoji(report),
 					null, null, null,

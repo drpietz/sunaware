@@ -83,7 +83,7 @@ class MakeEntry extends Component {
 			<PageBody>
 				<Content size="medium">
 					<form onChange={this.handleInputChange}>
-						<Subtitle isSize={4}>
+						<Subtitle isSize={5}>
 							Let us know about the weather at your place.
 						</Subtitle>
 
@@ -124,8 +124,6 @@ class MakeEntry extends Component {
 								<FormErrors formErrors={this.state.formErrors} />
 							</Control>
 						</Field>
-
-						<br />
 
 						<Field isGrouped="centered">
 							<Button isColor="warning"
