@@ -22,11 +22,11 @@ class Settings extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			skinType: '',
+			skinType: null,
 			positioningEnabled: null,
 			latitude: null,
 			longitude: null,
-            position: ""
+            position: null
         }
 	}
 
