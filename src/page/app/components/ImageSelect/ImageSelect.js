@@ -1,6 +1,7 @@
 import './ImageSelect.css'
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 class ImageSelect extends Component {
 
@@ -13,6 +14,9 @@ class ImageSelect extends Component {
 	}
 
 	handleValueChange = value => {
+		if (this.props.isFixed)
+			return;
+
 		this.setState({
 			value: value
 		})
@@ -21,14 +25,13 @@ class ImageSelect extends Component {
 	}
 
 	render() {
-		let {name, values} = this.props;
-
 		return (
-			<div className="image-select">
-				<input type="hidden" name={name} value={this.state.value} />
-				{values.map(value => (
+			<div className={classNames("image-select", { "fixed": this.props.isFixed })} >
+				<input type="hidden"
+					   name={this.props.name} value={this.state.value}/>
+				{this.props.values.map(value => (
 					<div value={value.value} key={value.value}
-						 className={(this.state.value === value.value) ? "selected" : null}
+						 className={classNames({"selected": this.state.value === value.value})}
 						 onClick={() => this.handleValueChange(value.value)}>
 						<img className="image" src={value.img}/>
 					</div>
@@ -52,7 +55,8 @@ ImageSelect.propTypes = {
 	defaultValue: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number
-	])
+	]),
+	isFixed: PropTypes.bool
 }
 
 

@@ -80,6 +80,7 @@ class Settings extends Component {
 					<form onChange={this.handleInputChange}>
 						<Field>
 							<ImageSelect name="skinType"
+										 isFixed={this.props.user.skinType !== null} // Hauttyp darf nicht geändert werden
 										 onChange={this.handleReactInputChange}
 										 defaultValue={this.props.user.skinType}
 										 values={
