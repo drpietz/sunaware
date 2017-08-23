@@ -66,7 +66,7 @@ export default function auth(state = initialState, action = {}) {
 		case USER_PROFILE_UPDATE_PENDING:
 			return { ...state, update: getPendingState()}
 		case USER_PROFILE_UPDATE_SUCCESS:
-			return { ...state, update: getSuccessState()}
+			return { ...state, user: action.payload, update: getSuccessState()}
 		case USER_PROFILE_UPDATE_ERROR:
 			return { ...state, update: getErrorState(action)}
 		default:
