@@ -18,40 +18,9 @@ class Login extends Component {
 
 		this.state = {
 			username: null,
-			password: null,
-            formErrors: {username: '', password: ''},
-            usernameValid: false,
-            passwordValid: false,
-            formValid: false
+			password: null
 		}
 	}
-
-    validateField(fieldName, value) {
-        let fieldValidationErrors = this.state.formErrors;
-        let usernameValid = this.state.usernameValid;
-        let passwordValid = this.state.passwordValid;
-
-        switch(fieldName) {
-            case 'username':
-                usernameValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-                fieldValidationErrors.username = usernameValid ? '' : ' not an email address';
-                break;
-            case 'password':
-                passwordValid = value.length >= 3;
-                fieldValidationErrors.password = passwordValid ? '': 'Password is too short';
-                break;
-            default:
-                break;
-        }
-        this.setState({formErrors: fieldValidationErrors,
-            usernameValid: usernameValid,
-            passwordValid: passwordValid
-        }, this.validateForm);
-    }
-
-    validateForm() {
-        this.setState({formValid: this.state.usernameValid && this.state.passwordValid});
-    }
 
 	handleInputChange = event => {
 		event.preventDefault()
@@ -81,8 +50,6 @@ class Login extends Component {
 									<Icon isSize='small' isAlign='left'>
 										<i className="fa fa-envelope" />
 									</Icon>
-
-									<FormErrors formErrors={this.state.formErrors} />
 								</Control>
 							</Field>
 
@@ -96,13 +63,9 @@ class Login extends Component {
 									</Icon>
 								</Control>
 							</Field>
-
-							<br />
-
 							<Field isGrouped="centered">
 								<Button isColor="warning"
 										isLoading={this.props.isPending}
-										disabled={!this.state.formValid}
 										onClick={this.handleLogin}>
 									Login
 								</Button>

@@ -15,7 +15,7 @@
     "react-geosuggest": "^2.5.0",
     "react-google-maps": "^7.2.0",
     "react-loading-indicator": "^1.0.2",
-    "react-notify-toast": "^0.3.1",
+    "react-notify-toast": "^0.3.2",
     "react-redux": "^5.0.6",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
