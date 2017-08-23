@@ -55,7 +55,12 @@ class UserReportsMap extends Component {
 	}
 
 	static getCloudEmoji(report) {
-		return "/img/noto/" + report.info.clouds + ".svg"
+		if(report.info.rain === 0) {
+			return "/img/noto/" + report.info.clouds + ".svg";
+		}
+		else {
+			return "/img/noto/6.svg";
+		}
 	}
 
 	mapReportsToMarkers = reports => (

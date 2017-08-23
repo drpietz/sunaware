@@ -10,7 +10,13 @@ class UserReportsFeed extends Component {
 	}
 
 	static getCloudEmoji(report) {
-		return <img className="emoji" src={"/img/noto/" + report.info.clouds + ".svg"}/>
+		if(report.info.rain === 0) {
+			return <img className="emoji" src={"/img/noto/" + report.info.clouds + ".svg"}/>
+		}
+		else {
+			return <img className="emoji" src={"/img/noto/6.svg"}/>
+		}
+
 	}
 
 	render() {
