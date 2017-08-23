@@ -7,67 +7,64 @@ import {connect} from 'react-redux'
 
 import {synchronizeTimer, toggleTimer} from "../../../../actions/uvTimer";
 
+import classNames from 'classnames'
+
 
 class Timer extends Component {
 	constructor(props) {
 		super(props)
 
 		this.state = {
-			text: '00:00'
+			value: this
 		}
 	}
 
 	componentWillMount() {
 		this.props.actions.synchronizeTimer()
-
-		if (this.props.isRunning) {
-			this.startUpdateTimer()
-			this.setText()
-		}
-	}
-
-	componentWillReceiveProps(nextProps) {
-		if (this.props.isRunning && !nextProps.isRunning)
-			this.stopUpdateTimer()
-		else if (!this.props.isRunning && nextProps.isRunning) {
-			this.startUpdateTimer()
-		}
+		this.timer = setInterval(this.updateValue, 200)
+		this.updateValue()
 	}
 
 	componentWillUnmount() {
-		if (this.props.isRunning)
-			this.stopUpdateTimer()
-	}
-
-	startUpdateTimer = () => {
-		this.timer = setInterval(this.tick, 1000)
-	}
-
-	stopUpdateTimer = () => {
 		clearInterval(this.timer)
 	}
 
-	tick = () => {
-		this.setText()
+	componentWillReceiveProps(nextProps) {
+		this.updateValue(nextProps)
 	}
 
-	setText = () => {
-		if (this.props.startTime) {
-			let now = new Date()
-			let diff = now - this.props.startTime
+	updateValue = (props = this.props) => {
+		let value;
+		if (props.isPending) {
+			value = <i className="fa fa-spinner"/>
+		} else if (this.timerIsObsolete(props)) {
+			value = <i className="fa fa-play"/>
+		} else {
+			value = this.getTimerText(props)
+		}
+
+		this.setState({value})
+	}
+
+	timerIsObsolete = (props = this.props) => {
+		if (!props.stopTime)
+			return false
+
+		// Obsolete if stopped more than 5s ago
+		return Date.now() - props.stopTime.getTime() > 5000
+	}
+
+	getTimerText = (props = this.props) => {
+		if (props.startTime) {
+			let end = props.stopTime || new Date()
+			let diff = Math.max(0, end - props.startTime)
 
 			let seconds = Math.floor(diff / 1000) % 60
 			let minutes = Math.floor(diff / 60000)
 
-			let diffText = this.pad(minutes, 2) + ':' + this.pad(seconds, 2)
-
-			this.setState({
-				text: diffText
-			})
+			return this.pad(minutes, 2) + ':' + this.pad(seconds, 2)
 		} else {
-			this.setState({
-				text: '00:00'
-			})
+			return '00:00'
 		}
 	}
 
@@ -89,15 +86,18 @@ class Timer extends Component {
 	}
 
 	render() {
-		return <span className={"timer" + (this.props.className ? " " + this.props.className : "")} onClick={this.handleTimerToggle}>{this.state.text}</span>
+		return <span className={classNames("timer", this.props.className)} onClick={this.handleTimerToggle}>{this.state.value}</span>
 	}
 }
 
 
 function mapStateToProps(state) {
 	return {
+		isPending: state.uvTimer.toggleState.isPending,
+		errors: state.uvTimer.toggleState.errors,
 		isRunning: !!state.uvTimer.timer && !state.uvTimer.timer.end,
-		startTime: state.uvTimer.timer ? new Date(state.uvTimer.timer.start) : null // TODO: Why is the start time of type string instead of date?
+		startTime: state.uvTimer.timer ? new Date(state.uvTimer.timer.start) : null, // TODO: Why is the start time of type string instead of date?
+		stopTime: state.uvTimer.timer && state.uvTimer.timer.end ? new Date(state.uvTimer.timer.end) : null
 	}
 }
 

@@ -1,4 +1,7 @@
-import {SYNCHRONIZE_TIMER, TOGGLE_TIMER, SYNCHRONIZE_ALLOWANCE} from './types'
+import {
+	SYNCHRONIZE_TIMER, SYNCHRONIZE_ALLOWANCE,
+	TOGGLE_TIMER_PENDING, TOGGLE_TIMER_SUCCESS, TOGGLE_TIMER_ERROR
+} from './types'
 
 export function synchronizeTimer() {
 	return {
@@ -12,7 +15,11 @@ export function synchronizeTimer() {
 export function toggleTimer() {
 	return {
 		'BAQEND': {
-			type: TOGGLE_TIMER,
+			types: [
+				TOGGLE_TIMER_PENDING,
+				TOGGLE_TIMER_SUCCESS,
+				TOGGLE_TIMER_ERROR
+			],
 			payload: db => {
 				return db.Timer.find().equal('user', db.User.me).descending('start').singleResult(timer => {
 					if (!timer || timer.end) {
