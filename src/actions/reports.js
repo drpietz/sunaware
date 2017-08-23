@@ -1,7 +1,22 @@
 import {
 	FETCH_OLD_REPORTS, RECEIVE_NEW_REPORTS,
+	SELECT_REPORT, DESELECT_REPORT,
 	REPORT_SUBMIT_PENDING, REPORT_SUBMIT_SUCCESS, REPORT_SUBMIT_ERROR
 } from './types'
+
+
+export function selectReport(report) {
+	return {
+		type: SELECT_REPORT,
+		report: report
+	}
+}
+
+export function deselectReport() {
+	return {
+		type: DESELECT_REPORT
+	}
+}
 
 export function submitReport(clouds, rain, temperature) {
 	return {

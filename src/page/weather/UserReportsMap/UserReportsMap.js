@@ -2,10 +2,12 @@
 import "./UserReportsMap.css"
 
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
 
 import {styles} from './style.json'
+import {deselectReport, selectReport} from "../../../actions/reports";
 
 
 const Map = withGoogleMap(props => (
@@ -28,7 +30,7 @@ const Map = withGoogleMap(props => (
 					showInfo={false}
 					position={marker.position}
 					options={marker.options}
-					onClick={() =>  props.onMarkerClick(marker)}>
+					onClick={() =>  props.onMarkerClick(marker.report)}>
 
 					{marker.showInfo && (
 						<InfoWindow className="popup" onCloseClick={() => props.onMarkerClose(marker)}>
@@ -48,10 +50,6 @@ class UserReportsMap extends Component {
 
 		this.cloud = ["clear", "slightly clouded", "party cloudy", "cloudy", "heavily clouded"];
 		this.rainy = ["none", "drizzling", "heavily raining", "storming"];
-
-		this.state = {
-			selected: null
-		}
 	}
 
 	static getCloudEmoji(report) {
@@ -70,6 +68,7 @@ class UserReportsMap extends Component {
 			let minutes = ('0' + createdAt.getMinutes()).slice(-2);
 
 			return {
+				report: report,
 				position: {
 					lat: report.info.position.latitude,
 					lng: report.info.position.longitude
@@ -87,23 +86,17 @@ class UserReportsMap extends Component {
 						null, null, null,
 						new window.google.maps.Size(30,30))
 				},
-				showInfo: this.state.selected === report.id
+				showInfo: report === this.props.selected
 			}
 		})
 	)
 
-	handleMarkerClick = (targetMarker) => {
-		this.setState({
-			...this.getState,
-			selected: targetMarker.key
-		})
+	handleMarkerClick = (report) => {
+		this.props.actions.selectReport(report)
 	}
 
-	handleMarkerClose = (targetMarker) => {
-		this.setState({
-			...this.getState,
-			selected: null
-		})
+	handleMarkerClose = (report) => {
+		this.props.actions.deselectReport()
 	}
 
 	render() {
@@ -134,8 +127,15 @@ class UserReportsMap extends Component {
 function mapStateToProps(state) {
 	return {
 		reports: state.reports.all,
+		selected: state.reports.selected,
 		userPosition: state.auth.user.position
 	}
 }
 
-export default connect(mapStateToProps, null)(UserReportsMap)
+function mapDispatchToProps(dispatch) {
+	return {
+		actions: bindActionCreators({selectReport, deselectReport}, dispatch)
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserReportsMap)
