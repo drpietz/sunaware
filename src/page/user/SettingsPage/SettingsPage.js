@@ -108,20 +108,24 @@ class Settings extends Component {
 							</Control>
 						</Field>
 
-						<Field isHorizontal>
-							<FieldLabel isSize="small">
-								<Label>Location</Label>
-							</FieldLabel>
+						{ !(this.state.positioningEnabled !== null ? this.state.positioningEnabled : this.props.user.positioningEnabled) ?
+							<Field isHorizontal>
+								<FieldLabel isSize="small">
+									<Label>Location</Label>
+								</FieldLabel>
 
-							<FieldBody>
-								<Geosuggest inputClassName="input"
-											placeholder="Choose your location"
-											name="position"
-											initialValue={this.props.user.address}
-											onSuggestSelect={this.handlePositionSelect}
-											autoActivateFirstSuggest={true} />
-							</FieldBody>
-						</Field>
+								<FieldBody>
+									<Geosuggest inputClassName="input"
+												placeholder="Choose your location"
+												name="position"
+												initialValue={this.props.user.address}
+												onSuggestSelect={this.handlePositionSelect}
+												autoActivateFirstSuggest={true}/>
+								</FieldBody>
+							</Field>
+							:
+							null
+						}
 
 						<br/>
 
