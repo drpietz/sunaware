@@ -17,8 +17,8 @@ class Login extends Component {
 		super(props);
 
 		this.state = {
-			username: '',
-			password: '',
+			username: null,
+			password: null,
             formErrors: {username: '', password: ''},
             usernameValid: false,
             passwordValid: false,
@@ -91,12 +91,9 @@ class Login extends Component {
 									<Input name="password" placeholder="Password"
 										   type="password"
 										   isColor={this.props.errors && "danger"} />
-
 									<Icon isSize='small' isAlign='left'>
 										<i className="fa fa-lock" />
 									</Icon>
-
-									<FormErrors formErrors={this.state.formErrors} />
 								</Control>
 							</Field>
 

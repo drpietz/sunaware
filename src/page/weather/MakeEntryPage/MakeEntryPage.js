@@ -17,8 +17,8 @@ class MakeEntry extends Component {
 		super(props);
 
 		this.state = {
-			rain: '',
-			clouds: '',
+			rain: null,
+			clouds: null,
 			temperature: '',
             formErrors: {rain: '', clouds: '', temperature: ''},
             formValid: false,
@@ -36,11 +36,11 @@ class MakeEntry extends Component {
 
         switch(fieldName) {
             case 'rain':
-                rainValid = value.match(/^([0,1,2,3])$/i);
+                rainValid = value !== null;
                 fieldValidationErrors.rain = rainValid ? '' : ' input is invalid';
                 break;
             case 'clouds':
-                cloudsValid = value.match(/^([0,1,2,3,4])$/i);
+                cloudsValid = value !== null;
                 fieldValidationErrors.clouds = cloudsValid ? '' : ' input is invalid';
                 break;
             case 'temperature':
@@ -64,14 +64,17 @@ class MakeEntry extends Component {
 	handleInputChange = event => {
         const name = event.target.name;
         const value = event.target.value;
-        this.setState({[name]: value},
-            () => { this.validateField(name, value) });
+        this.setState(
+        	{[name]: value},
+            () => { this.validateField(name, value) }
+		);
 	}
 
 	handleReactInputChange = (value, field) => {
-		this.setState({
-			[field]: value
-		})
+		this.setState(
+			{[field]: value},
+			() => { this.validateField(field, value) }
+		)
 	}
 
 	handleSubmit = event => {
@@ -80,13 +83,11 @@ class MakeEntry extends Component {
 		notify.show('Weather Reported!', 'success', 2000 )
 	}
 
-    handleBlur = (field) => (event) =>  {
-      //TODO: Implement handleBLur
-        }
 
 	render() {
 		return (
 			<PageBody>
+				<Notifications />
 				<Content size="medium">
 					<form onChange={this.handleInputChange}>
 						<Subtitle isSize={5}>
@@ -127,7 +128,7 @@ class MakeEntry extends Component {
 							<Control>
 								<Input name="temperature" placeholder="Temperature in degrees"
 									   isColor={this.props.temperatureValid && "danger"}
-									   onBlur={this.handleBlur('temperature')} />
+									    />
 
 								<FormErrors formErrors={this.state.formErrors} />
 							</Control>

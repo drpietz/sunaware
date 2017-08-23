@@ -108,7 +108,6 @@ class Settings extends Component {
 							</Control>
 						</Field>
 
-
 						<Field isHorizontal>
 							<FieldLabel isSize="small">
 								<Label>Location</Label>

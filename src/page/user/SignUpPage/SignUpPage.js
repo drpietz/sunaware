@@ -120,7 +120,7 @@ class SignUp extends Component {
 										isLoading={this.props.isPending}
 										disabled={!this.state.formValid}
 										onClick={this.handleSignUp}>
-									Login
+									Sign Up
 								</Button>
 							</Field>
 						</Box>
