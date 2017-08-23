@@ -2,7 +2,8 @@ import {
 	USER_LOGIN_PENDING, USER_LOGIN_SUCCESS, USER_LOGIN_ERROR,
 	USER_REGISTER_PENDING, USER_REGISTER_SUCCESS, USER_REGISTER_ERROR,
 	USER_LOGOUT,
-	USER_PROFILE_UPDATE_PENDING, USER_PROFILE_UPDATE_SUCCESS, USER_PROFILE_UPDATE_ERROR
+	USER_PROFILE_UPDATE_PENDING, USER_PROFILE_UPDATE_SUCCESS, USER_PROFILE_UPDATE_ERROR,
+	USER_POSITIONING_DISABLE, USER_LOCATION_UPDATE
 } from '../actions/types'
 
 import { BAQEND_CONNECTED } from 'redux-baqend'
@@ -49,6 +50,9 @@ export default function auth(state = initialState, action = {}) {
 			return { ...state, user: action.payload, update: getSuccessState()}
 		case USER_PROFILE_UPDATE_ERROR:
 			return { ...state, update: getErrorState(action)}
+		case USER_POSITIONING_DISABLE:
+		case USER_LOCATION_UPDATE:
+			return { ...state, user: action.payload}
 		default:
 			return state
 	}
