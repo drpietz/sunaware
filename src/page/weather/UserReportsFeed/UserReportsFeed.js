@@ -2,6 +2,7 @@ import './UserReportsFeed.css'
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import classNames from 'classnames'
 
 
 class UserReportsFeed extends Component {
@@ -23,7 +24,9 @@ class UserReportsFeed extends Component {
 		return (
 			<ul style={this.props.style} className="report-feed">
 				{this.props.reports.map(report => (
-					<li key={report.id}>{UserReportsFeed.getCloudEmoji(report)}</li>
+					<li key={report.id} className={classNames({"selected": report === this.props.selected})}>
+						{UserReportsFeed.getCloudEmoji(report)}
+					</li>
 				))}
 			</ul>
 		)
@@ -33,7 +36,8 @@ class UserReportsFeed extends Component {
 
 function mapStateToProps(state) {
 	return {
-		reports: state.reports.all
+		reports: state.reports.all,
+		selected: state.reports.selected
 	}
 }
 
