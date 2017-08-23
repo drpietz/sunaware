@@ -17,9 +17,9 @@ class SignUp extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			displayname: '',
-			username: '',
-			password: '',
+			displayname: null,
+			username: null,
+			password: null,
             formErrors: {displayname: '', username: '', password: ''},
             displaynameValid: false,
             usernameValid: false,

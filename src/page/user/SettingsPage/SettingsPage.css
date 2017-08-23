@@ -11,7 +11,7 @@
 	width: 100%;
 	box-sizing: border-box;
 
-	border: 1px solid #e4c369;
+	border: 1px solid turquoise;
 	border-top-width: 0;
 	border-radius: 0 0 0.3rem 0.3rem;
 	box-shadow: 0 4px 3px rgba(0,0,0,0.1);
@@ -32,15 +32,15 @@
 }
 .geosuggest__item:hover,
 .geosuggest__item:focus {
-	background: #ffe6bb;
+	background: paleturquoise;
 }
 .geosuggest__item--active {
-	background: #e4c369;
+	background: turquoise;
 	color: #fff;
 }
 .geosuggest__item--active:hover,
 .geosuggest__item--active:focus {
-	background: #ccc;
+	background: darkturquoise;
 }
 .geosuggest__item__matched-text {
 	font-weight: bold;

@@ -29,7 +29,6 @@ class Settings extends Component {
 		}
 	}
 
-
 	componentWillReceiveProps(nextProps) {
 		if (this.props.isPending && !nextProps.isPending) {
 			if (nextProps.errors)
@@ -65,7 +64,6 @@ class Settings extends Component {
 			}
 		})
 	}
-
 
 	handleUpdate = (event) => {
 		event.preventDefault()
@@ -109,26 +107,17 @@ class Settings extends Component {
 						</Field>
 
 						{ !(this.state.positioningEnabled !== null ? this.state.positioningEnabled : this.props.user.positioningEnabled) ?
-							<Field isHorizontal>
-								<FieldLabel isSize="small">
-									<Label>Location</Label>
-								</FieldLabel>
-
-								<FieldBody>
+							<Field>
 									<Geosuggest inputClassName="input"
 												placeholder="Choose your location"
 												name="position"
 												initialValue={this.props.user.address}
 												onSuggestSelect={this.handlePositionSelect}
 												autoActivateFirstSuggest={true}/>
-								</FieldBody>
 							</Field>
 							:
 							null
 						}
-
-						<br/>
-
 						<Field isGrouped="centered">
 							<Button isColor="warning"
 									isLoading={this.props.isPending}
@@ -142,7 +131,6 @@ class Settings extends Component {
 		)
 	}
 }
-
 
 function mapStateToProps(state) {
 	return {
