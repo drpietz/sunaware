@@ -18,6 +18,9 @@ const Map = withGoogleMap(props => (
 				styles
 			}}
 			>
+
+			<Marker key="user" position={props.user.position} />
+
 			{props.markers.map((marker, index) => (
 				<Marker
 					key={marker.key}
@@ -94,6 +97,12 @@ class UserReportsMap extends Component {
 						<div style={{ height: '100%' }} />
 					}
 					markers={this.mapReportsToMarkers(this.props.reports)}
+					user={{
+						position: {
+							lat: this.props.userPosition.latitude,
+							lng: this.props.userPosition.longitude
+						}
+					}}
 					onMarkerClick={this.handleMarkerClick}
 					onMarkerClose={this.handleMarkerClose}
 					/>
@@ -104,7 +113,8 @@ class UserReportsMap extends Component {
 
 function mapStateToProps(state) {
 	return {
-		reports: state.reports.all
+		reports: state.reports.all,
+		userPosition: state.auth.user.position
 	}
 }
 
