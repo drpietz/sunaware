@@ -86,7 +86,7 @@ class UserReportsMap extends Component {
 						null, null, null,
 						new window.google.maps.Size(30,30))
 				},
-				showInfo: report === this.props.selected
+				showInfo: this.props.selected && (report.id === this.props.selected.id)  // TODO: Comparison with selected report?
 			}
 		})
 	)

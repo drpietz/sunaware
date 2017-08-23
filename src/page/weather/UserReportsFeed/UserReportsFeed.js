@@ -27,11 +27,11 @@ class UserReportsFeed extends Component {
 	}
 
 	render() {
-		return (
+		return ( // TODO: Comparison with selected report?
 			<ul style={this.props.style} className="report-feed">
 				{this.props.reports.map(report => (
 					<li key={report.id}
-						className={classNames({"selected": report === this.props.selected})}
+						className={classNames({"selected": this.props.selected && (report.id === this.props.selected.id)})}
 						onClick={() => this.handleReportSelect(report)}>
 						{UserReportsFeed.getCloudEmoji(report)}
 					</li>
