@@ -40,7 +40,7 @@
 }
 .geosuggest__item--active:hover,
 .geosuggest__item--active:focus {
-	background: #ccc;
+	background: darkturquoise;
 }
 .geosuggest__item__matched-text {
 	font-weight: bold;
