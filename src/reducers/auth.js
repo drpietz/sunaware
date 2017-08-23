@@ -6,6 +6,7 @@ import {
 } from '../actions/types'
 
 import { BAQEND_CONNECTED } from 'redux-baqend'
+import {getErrorState, getPendingState, getSuccessState} from "./index";
 
 const initialState = {
 	login: {
@@ -22,27 +23,6 @@ const initialState = {
 	},
 	isLoggedIn: false,
 	user: null
-}
-
-function getPendingState() {
-	return {
-		isPending: true,
-		errors: null
-	}
-}
-
-function getSuccessState() {
-	return {
-		isPending: false,
-		errors: null
-	}
-}
-
-function getErrorState(action) {
-	return {
-		isPending: false,
-		errors: action.payload.cause
-	}
 }
 
 export default function auth(state = initialState, action = {}) {

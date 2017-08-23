@@ -61,6 +61,16 @@ class MakeEntry extends Component {
         this.setState({formValid: this.state.rainValid && this.state.cloudsValid && this.state.temperatureValid});
     }
 
+	componentWillReceiveProps(nextProps) {
+		if (this.props.isPending && !nextProps.isPending) {
+			if (nextProps.errors)
+				notify.show(nextProps.errors.message, 'error', 2000)
+			else
+				notify.show('Weather Reported!', 'success', 2000)
+
+		}
+	}
+
 	handleInputChange = event => {
         const name = event.target.name;
         const value = event.target.value;
@@ -80,7 +90,6 @@ class MakeEntry extends Component {
 	handleSubmit = event => {
 		event.preventDefault()
 		this.props.actions.submitReport(this.state.clouds, this.state.rain, this.state.temperature)
-		notify.show('Weather Reported!', 'success', 2000 )
 	}
 
 
@@ -149,8 +158,16 @@ class MakeEntry extends Component {
 	}
 }
 
+
+function mapStateToProps(state) {
+	return {
+		isPending: state.reports.submit.isPending,
+		errors: state.reports.submit.errors
+	}
+}
+
 function mapDispatchToProps(dispatch) {
 	return { actions: bindActionCreators({ submitReport }, dispatch) }
 }
 
-export default connect(null, mapDispatchToProps)(MakeEntry)
+export default connect(mapStateToProps, mapDispatchToProps)(MakeEntry)

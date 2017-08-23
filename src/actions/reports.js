@@ -1,9 +1,16 @@
-import { REPORT_SUBMIT, FETCH_OLD_REPORTS, RECEIVE_NEW_REPORTS } from './types'
+import {
+	FETCH_OLD_REPORTS, RECEIVE_NEW_REPORTS,
+	REPORT_SUBMIT_PENDING, REPORT_SUBMIT_SUCCESS, REPORT_SUBMIT_ERROR
+} from './types'
 
 export function submitReport(clouds, rain, temperature) {
 	return {
 		'BAQEND': {
-			type: REPORT_SUBMIT,
+			types: [
+				REPORT_SUBMIT_PENDING,
+				REPORT_SUBMIT_SUCCESS,
+				REPORT_SUBMIT_ERROR
+			],
 			payload: db => {
 				let info = new db.WeatherInfo({
 					position: db.User.me.position,
