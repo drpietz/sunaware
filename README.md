@@ -7,7 +7,7 @@
 - [x] Sonnenstunden der Nutzer aufzeichnen - *Tim*
 - [x] UV-Informationen nutzen um verbleibende Zeit in der Sonne zu berechnen - *Tim*
 - [x] Projektstruktur und Routing überarbeiten - *Tim*
-- [ ] Spezialfall: Keine Wetterdaten in der Nähe - *Tim*
+- [x] Spezialfall: Keine Wetterdaten in der Nähe - *Tim*
 - [ ] Spezialfall: Timer über Tagesgrenze - *Tim*
 - [x] Baqend Validation - *Tim*
 - [ ] Frontend Validation - *Ben*
@@ -16,7 +16,7 @@
 - [x] User Positionierung - *Anne*
 - [ ] User History (chartjs) - *Tim*
 - [x] Positionseingabe per Ortsname (Maps API) - *Ben*
-- [ ] Regen auf Karte anzeigen - *Ben*
+- [x] Regen auf Karte anzeigen - *Anne*
 - [x] Kartenobjekte klickbar machen (kompletten Report anzeigen) - *Anne, Ben, Tim*
 - [ ] Object access permissions - *Tim*
 - [x] svg Icons auf der Karte - *Anne*
