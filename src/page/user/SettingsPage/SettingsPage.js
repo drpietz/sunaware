@@ -24,10 +24,9 @@ class Settings extends Component {
 		this.state = {
 			skinType: null,
 			positioningEnabled: null,
-			latitude: null,
-			longitude: null,
-            position: null
-        }
+			address: null,
+			position: null
+		}
 	}
 
 
@@ -42,9 +41,9 @@ class Settings extends Component {
 	}
 
 	handleInputChange = (event) => {
-	const target = event.target;
-	const value = target.type === 'checkbox' ? target.checked : target.value;
-	const name = target.name;
+		const target = event.target;
+		const value = target.type === 'checkbox' ? target.checked : target.value;
+		const name = target.name;
 
 		this.setState({
 			[name]: value
@@ -57,16 +56,26 @@ class Settings extends Component {
 		})
 	}
 
+	handlePositionSelect = ({description, location: {lat, lng}}) => {
+		this.setState({
+			address: description,
+			position: {
+				latitude: lat,
+				longitude: lng
+			}
+		})
+	}
+
 
 	handleUpdate = (event) => {
 		event.preventDefault()
-		this.props.actions.updateProfile({
-			positioningEnabled: this.state.positioningEnabled,
-			latitude: this.state.latitude,
-			longitude: this.state.longitude,
-			skinType: this.state.skinType,
-			handlePositioning: this.state.position
-		})
+
+		this.props.actions.updateProfile(
+			this.state.skinType,
+			this.state.positioningEnabled,
+			this.state.position,
+			this.state.address
+		)
 	}
 
 	render () {
@@ -94,7 +103,7 @@ class Settings extends Component {
 						<Field>
 							<Control>
 								<Checkbox name="positioningEnabled" defaultChecked={this.props.user.positioningEnabled}>
-									GPS enabled
+									Positioning enabled
 								</Checkbox>
 							</Control>
 						</Field>
@@ -109,33 +118,9 @@ class Settings extends Component {
 								<Geosuggest inputClassName="input"
 											placeholder="Choose your location"
 											name="position"
-											defaultValue={this.props.user.position}
-											onSuggestSelect={console.log}
+											initialValue={this.props.user.address}
+											onSuggestSelect={this.handlePositionSelect}
 											autoActivateFirstSuggest={true} />
-							</FieldBody>
-						</Field>
-
-						<Field isHorizontal>
-							<FieldLabel isSize="small">
-								<Label>Latitude</Label>
-							</FieldLabel>
-
-							<FieldBody>
-								<Input name="latitude" placeholder="Latitude"
-									   type="number" step="any"
-									   defaultValue={this.props.user.position ? this.props.user.position.latitude : null} />
-							</FieldBody>
-						</Field>
-
-						<Field isHorizontal>
-							<FieldLabel isSize="small">
-								<Label>Longitude</Label>
-							</FieldLabel>
-
-							<FieldBody>
-								<Input name="longitude" placeholder="Longitude"
-									   type="number" step="any"
-									   defaultValue={this.props.user.position ? this.props.user.position.longitude : null} />
 							</FieldBody>
 						</Field>
 

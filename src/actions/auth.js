@@ -7,8 +7,6 @@ import {
 	USER_POSITIONING_DISABLE
 } from './types'
 
-import { GeoPoint } from 'baqend/realtime'
-
 export function login(username, password) {
 	return {
 		'BAQEND': {
@@ -68,14 +66,14 @@ export function updatePosition(latitude, longitude) {
 		'BAQEND': {
 			type: USER_LOCATION_UPDATE,
 			payload: db => db.User.me.load().then(user => {
-				user.position = new GeoPoint(latitude, longitude)
+				user.position = new db.GeoPoint(latitude, longitude)
 				return user.save()
 			})
 		}
 	}
 }
 
-export function updateProfile(fields) {
+export function updateProfile(skinType, positioningEnabled, position, address) {
 	return {
 		'BAQEND': {
 			types: [
@@ -84,27 +82,17 @@ export function updateProfile(fields) {
 				USER_PROFILE_UPDATE_ERROR
 			],
 			payload: (db) => db.User.me.load().then(user => {
-				if (fields.latitude !== null || fields.longitude !== null) {
-					let lat, lon = 0;
-					if (user.position) {
-						lat = user.position.latitude;
-						lon = user.position.longitude;
-					}
+				if (skinType !== null)
+					user.skinType = skinType
 
-					if (fields.latitude !== null)
-						lat = parseFloat(fields.latitude)
+				if (positioningEnabled !== null)
+					user.positioningEnabled = positioningEnabled
 
-					if (fields.longitude !== null)
-						lon = parseFloat(fields.longitude)
+				if (position !== null)
+					user.position = new db.GeoPoint(position)
 
-					user.position = new GeoPoint(lat, lon);
-				}
-
-				if (fields.positioningEnabled !== null)
-					user.positioningEnabled = fields.positioningEnabled
-
-				if (fields.skinType !== null)
-					user.skinType = fields.skinType
+				if (address !== null)
+					user.address = address
 
 				return user.save()
 			})
