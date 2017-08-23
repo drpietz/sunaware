@@ -18,6 +18,7 @@ import SignUp from './page/user/SignUpPage/SignUpPage'
 import Settings from "./page/user/SettingsPage/SettingsPage"
 import GuardedRoute from './page/app/routing/GuardedRoute/GuardedRoute'
 import GuardedRouteGroup from "./page/app/routing/GuardedRouteGroup/GuardedRouteGroup"
+import LoadingPage from "./page/app/info/LoadingPage/LoadingPage";
 
 
 class App extends Component {
@@ -42,19 +43,25 @@ class App extends Component {
 			<Provider store={this.props.store}>
 				<BrowserRouter>
 					<SunawareLayout>
-						<GuardedRouteGroup active={loggedIn} redirect="/">
-							<GuardedRoute path="/" component={Positioning} />
+						{ !this.props.isConnected ?
+							<LoadingPage />
+							:
+							<div>
+								<GuardedRouteGroup active={loggedIn} redirect="/">
+									<GuardedRoute path="/" component={Positioning} />
 
-							<GuardedRoute exact path="/settings" component={Settings} />
-							<GuardedRoute exact path="/start" component={Start}/>
-							<GuardedRoute exact path="/start/entry" component={MakeEntry} />
-						</GuardedRouteGroup>
+									<GuardedRoute exact path="/settings" component={Settings} />
+									<GuardedRoute exact path="/start" component={Start}/>
+									<GuardedRoute exact path="/start/entry" component={MakeEntry} />
+								</GuardedRouteGroup>
 
-						<GuardedRouteGroup active={!loggedIn} redirect="/start">
-							<GuardedRoute exact path="/" component={WelcomeMessage} />
-							<GuardedRoute exact path="/login" component={Login} />
-							<GuardedRoute exact path="/signup" redirect="/settings" component={SignUp} />
-						</GuardedRouteGroup>
+								<GuardedRouteGroup active={!loggedIn} redirect="/start">
+									<GuardedRoute exact path="/" component={WelcomeMessage} />
+									<GuardedRoute exact path="/login" component={Login} />
+									<GuardedRoute exact path="/signup" redirect="/settings" component={SignUp} />
+								</GuardedRouteGroup>
+							</div>
+						}
 					</SunawareLayout>
 				</BrowserRouter>
 			</Provider>
@@ -64,7 +71,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
 	return {
-		isLoggedIn: state.auth.isLoggedIn
+		isLoggedIn: state.auth.isLoggedIn,
+		isConnected: state.baqend.connected
 	}
 }
 
