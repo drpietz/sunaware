@@ -2,7 +2,9 @@ import './UserReportsFeed.css'
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import {bindActionCreators} from "redux";
 import classNames from 'classnames'
+import {selectReport} from "../../../actions/reports";
 
 
 class UserReportsFeed extends Component {
@@ -20,11 +22,17 @@ class UserReportsFeed extends Component {
 
 	}
 
+	handleReportSelect = (report) => {
+		this.props.actions.selectReport(report)
+	}
+
 	render() {
 		return (
 			<ul style={this.props.style} className="report-feed">
 				{this.props.reports.map(report => (
-					<li key={report.id} className={classNames({"selected": report === this.props.selected})}>
+					<li key={report.id}
+						className={classNames({"selected": report === this.props.selected})}
+						onClick={() => this.handleReportSelect(report)}>
 						{UserReportsFeed.getCloudEmoji(report)}
 					</li>
 				))}
@@ -41,4 +49,10 @@ function mapStateToProps(state) {
 	}
 }
 
-export default connect(mapStateToProps, null)(UserReportsFeed)
+function mapDispatchToProps(dispatch) {
+	return {
+		actions: bindActionCreators({selectReport}, dispatch)
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserReportsFeed)
