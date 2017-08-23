@@ -17,7 +17,7 @@
 - [x] Positionseingabe per Ortsname (Maps API) - *Ben*
 - [ ] User History (chartjs) - *Tim*
 - [ ] Regen auf Karte anzeigen - *Ben*
-- [ ] Kartenobjekte klickbar machen (kompletten Report anzeigen) - *Anne, Ben, Tim*
+- [x] Kartenobjekte klickbar machen (kompletten Report anzeigen) - *Anne, Ben, Tim*
 - [ ] Object access permissions - *Tim*
 - [x] svg Icons auf der Karte - *Anne*
 - [x] Kartenstil (Farben) - *Anne, Tim, Ben*

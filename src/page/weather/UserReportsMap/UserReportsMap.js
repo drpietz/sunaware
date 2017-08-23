@@ -46,6 +46,9 @@ class UserReportsMap extends Component {
 	constructor(props) {
 		super(props)
 
+		this.cloud = ["clear", "slightly clouded", "party cloudy", "cloudy", "heavily clouded"];
+		this.rainy = ["none", "drizzling", "heavily raining", "storming"];
+
 		this.state = {
 			selected: null
 		}
@@ -56,20 +59,32 @@ class UserReportsMap extends Component {
 	}
 
 	mapReportsToMarkers = reports => (
-		reports.map(report => ({
-			position: {
-				lat: report.info.position.latitude,
-				lng: report.info.position.longitude
-			},
-			key: report.id,
-			infoContent: (("Weather: " + report.info.temperature + " Degrees")	),
-			options: {
-				icon: new window.google.maps.MarkerImage(UserReportsMap.getCloudEmoji(report),
-					null, null, null,
-					new window.google.maps.Size(30,30))
-			},
-			showInfo: this.state.selected === report.id
-		}))
+		reports.map(report => {
+			let createdAt = new Date(report.createdAt);
+			let hours = ('0' + createdAt.getHours()).slice(-2);
+			let minutes = ('0' + createdAt.getMinutes()).slice(-2);
+
+			return {
+				position: {
+					lat: report.info.position.latitude,
+					lng: report.info.position.longitude
+				},
+				key: report.id,
+				infoContent: (
+					<div>
+						<span>Submitted: {hours} : {minutes}</span> <br/>
+						<span>Weather: {report.info.temperature} Degrees</span> <br/>
+						<span>Sky: {this.cloud[report.info.clouds]}</span> <br/>
+						<span>Rain: {this.rainy[report.info.rain]}</span>
+					</div>),
+				options: {
+					icon: new window.google.maps.MarkerImage(UserReportsMap.getCloudEmoji(report),
+						null, null, null,
+						new window.google.maps.Size(30,30))
+				},
+				showInfo: this.state.selected === report.id
+			}
+		})
 	)
 
 	handleMarkerClick = (targetMarker) => {
