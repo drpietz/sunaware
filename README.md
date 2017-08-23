@@ -12,16 +12,15 @@
 - [x] Baqend Validation - *Tim*
 - [ ] Frontend Validation - *Ben*
 - [x] UV-Funktion überarbeiten - *Marcel*
-- [ ] Sonnentimer überarbeiten - *Tim*
+- [x] Sonnentimer überarbeiten - *Tim*
 - [x] User Positionierung - *Anne*
-- [x] Positionseingabe per Ortsname (Maps API) - *Ben*
 - [ ] User History (chartjs) - *Tim*
+- [x] Positionseingabe per Ortsname (Maps API) - *Ben*
 - [ ] Regen auf Karte anzeigen - *Ben*
 - [x] Kartenobjekte klickbar machen (kompletten Report anzeigen) - *Anne, Ben, Tim*
 - [ ] Object access permissions - *Tim*
 - [x] svg Icons auf der Karte - *Anne*
 - [x] Kartenstil (Farben) - *Anne, Tim, Ben*
-- [ ] Icons auf der Karte zusammenfassen - *Tim*
 - [ ] ~~Unterschiedliche Sonnenschutzgrade~~
 - [ ] ~~Produktempfehlungen~~
 - [ ] ~~Tracken des Vitamin D3 Haushaltes eines Nutzers~~

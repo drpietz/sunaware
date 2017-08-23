@@ -72,10 +72,10 @@ class UserReportsMap extends Component {
 				key: report.id,
 				infoContent: (
 					<div>
-						<span>Submitted: {hours} : {minutes}</span> <br/>
-						<span>Weather: {report.info.temperature} Degrees</span> <br/>
-						<span>Sky: {this.cloud[report.info.clouds]}</span> <br/>
-						<span>Rain: {this.rainy[report.info.rain]}</span>
+						<span><strong>Submitted:</strong></span> <span>{hours} : {minutes}</span> <br/>
+						<span><strong>Weather:</strong></span> <span>{report.info.temperature} Degrees</span> <br/>
+						<span><strong>Sky:</strong></span> <span>{this.cloud[report.info.clouds]}</span> <br/>
+						<span><strong>Rain:</strong></span> <span>{this.rainy[report.info.rain]}</span>
 					</div>),
 				options: {
 					icon: new window.google.maps.MarkerImage(UserReportsMap.getCloudEmoji(report),
