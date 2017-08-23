@@ -29,7 +29,6 @@ class Settings extends Component {
 		}
 	}
 
-
 	componentWillReceiveProps(nextProps) {
 		if (this.props.isPending && !nextProps.isPending) {
 			if (nextProps.errors)
@@ -65,7 +64,6 @@ class Settings extends Component {
 			}
 		})
 	}
-
 
 	handleUpdate = (event) => {
 		event.preventDefault()
@@ -120,9 +118,6 @@ class Settings extends Component {
 							:
 							null
 						}
-
-						<br/>
-
 						<Field isGrouped="centered">
 							<Button isColor="warning"
 									isLoading={this.props.isPending}
@@ -136,7 +131,6 @@ class Settings extends Component {
 		)
 	}
 }
-
 
 function mapStateToProps(state) {
 	return {
