@@ -16,12 +16,16 @@ class Positioning extends Component {
 
 	getLocation = () => {
 		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition( ({coords}) => {
-				this.props.actions.updatePosition(coords.latitude, coords.longitude)
+			navigator.geolocation.getCurrentPosition(
+				({coords}) => {
+					this.props.actions.updatePosition(coords.latitude, coords.longitude)
+				},
+				() => {
+					this.props.actions.disablePositioning()
 				}
 			);
 		} else {
-				this.props.actions.disablePositioning();
+			this.props.actions.disablePositioning();
 		}
 	}
 

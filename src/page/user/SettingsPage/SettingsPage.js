@@ -111,7 +111,7 @@ class Settings extends Component {
 									<Geosuggest inputClassName="input"
 												placeholder="Choose your location"
 												name="position"
-												initialValue={this.props.user.address}
+												initialValue={this.props.user.address || ""}
 												onSuggestSelect={this.handlePositionSelect}
 												autoActivateFirstSuggest={true}/>
 							</Field>
