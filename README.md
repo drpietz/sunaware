@@ -21,6 +21,7 @@
 - [x] Object access permissions - *Tim*
 - [x] svg Icons auf der Karte - *Anne*
 - [x] Kartenstil (Farben) - *Anne, Tim, Ben*
+- [ ] Mehrere WeatherReport Submits kurz hintereinander verhindern - *?*
 - [ ] ~~Unterschiedliche Sonnenschutzgrade~~
 - [ ] ~~Produktempfehlungen~~
 - [ ] ~~Tracken des Vitamin D3 Haushaltes eines Nutzers~~
