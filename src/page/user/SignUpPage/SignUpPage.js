@@ -89,8 +89,6 @@ class SignUp extends Component {
 									<Icon isSize='small' isAlign='left'>
 										<i className="fa fa-user" />
 									</Icon>
-
-									<FormErrors formErrors={this.state.formErrors} />
 								</Control>
 							</Field>
 
@@ -124,6 +122,7 @@ class SignUp extends Component {
 								</Button>
 							</Field>
 						</Box>
+						<FormErrors formErrors={this.state.formErrors} />
 					</form>
 				</Content>
 			</PageBody>
