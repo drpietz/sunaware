@@ -39,7 +39,7 @@ class NavBar extends Component {
 						{this.props.isLoggedIn ?
 							<NavbarEnd>
 								<NavItem to="/settings" label="Settings" icon="fa-user"/>
-								<NavItem to="/start" label="Start" icon="fa-map"/>
+								<NavItem to="/start" label="Start" disabled={!this.props.profileFilled} icon="fa-map"/>
 								<NavItem to="#" onClick={this.handleLogout} label="Logout" icon="fa-sign-out"/>
 							</NavbarEnd>
 							:
@@ -57,7 +57,8 @@ class NavBar extends Component {
 
 function mapStateToProps(state) {
 	return {
-		isLoggedIn: state.auth.isLoggedIn
+		isLoggedIn: state.auth.isLoggedIn,
+		profileFilled: state.auth.user && state.auth.user.skinType !== null && state.auth.user.position !== null
 	}
 }
 
