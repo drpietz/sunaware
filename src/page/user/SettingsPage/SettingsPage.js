@@ -4,7 +4,7 @@ import './SettingsPage.css'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
-import {updateProfile} from "../../../actions/auth"
+import {triggerPositionUpdate, updateProfile} from "../../../actions/auth"
 
 import {notify} from 'react-notify-toast';
 import Geosuggest from 'react-geosuggest';
@@ -50,6 +50,12 @@ class Settings extends Component {
 			else
 				notify.show('Account updated!', 'success', 2000)
 
+		}
+	}
+
+	componentWillUpdate(nextProps, nextState) {
+		if (!this.state.positioningEnabled && nextState.positioningEnabled) {
+			this.props.actions.triggerPositionUpdate()
 		}
 	}
 
@@ -154,7 +160,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators({updateProfile}, dispatch)
+		actions: bindActionCreators({updateProfile, triggerPositionUpdate}, dispatch)
 	}
 }
 
