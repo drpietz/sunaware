@@ -2,29 +2,16 @@ import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
-import {disablePositioning, updatePosition} from "../../../actions/auth";
+import {disablePositioning, triggerPositionUpdate} from "../../../actions/auth"
 
 
 class Positioning extends Component {
-
 	updatePosition = () => {
 		if (this.props.positioningEnabled) {
-			console.log("Is enabled -> position update!")
-			this.getLocation();
+			this.props.actions.triggerPositionUpdate()
+			this.getLocation()
 		}
 	}
-
-	getLocation = () => {
-		navigator.geolocation.getCurrentPosition(
-			({coords}) => {
-				this.props.actions.updatePosition(coords.latitude, coords.longitude)
-			},
-			() => {
-				this.props.actions.disablePositioning()
-			}
-		);
-	}
-
 
 	componentWillMount() {
 		this.updatePosition()
@@ -43,13 +30,13 @@ class Positioning extends Component {
 
 function mapStateToProps(state) {
 	return {
-		positioningEnabled: state.auth.user ? state.auth.user.positioningEnabled : false
+		enabled: state.auth.user ? state.auth.user.positioningEnabled : false
 	}
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators({disablePositioning, updatePosition}, dispatch)
+		actions: bindActionCreators({disablePositioning, triggerPositionUpdate}, dispatch)
 	}
 }
 

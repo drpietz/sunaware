@@ -16,10 +16,17 @@ export function getSuccessState() {
 	}
 }
 
-export function getErrorState(action) {
+export function getBaqendErrorState(action) {
 	return {
 		isPending: false,
 		errors: action.payload.cause
+	}
+}
+
+export function getErrorState(error) {
+	return {
+		isPending: false,
+		errors: error
 	}
 }
 
