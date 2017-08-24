@@ -14,22 +14,36 @@ import PageBody from '../../app/layout/PageBody/PageBody'
 import Content from '../../app/layout/Content/Content'
 
 import ImageSelect from '../../app/components/ImageSelect/ImageSelect'
-import {Button, Checkbox, Control, Field, FieldBody, FieldLabel, Input, Label} from "bloomer";
+import {Button, Checkbox, Control, Field} from "bloomer";
 
 
 class Settings extends Component {
+
 
 	constructor(props) {
 		super(props)
 		this.state = {
 			skinType: null,
-			positioningEnabled: null,
+			positioningEnabled: props.user ? props.user.positioningEnabled : true,
 			address: null,
 			position: null
 		}
 	}
 
+
+	setCheckedUserFields = (user) => {
+		if (!user)
+			return
+
+		this.setState({
+			positioningEnabled: user.positioningEnabled
+		})
+	}
+
+
 	componentWillReceiveProps(nextProps) {
+		this.setCheckedUserFields(nextProps.user)
+
 		if (this.props.isPending && !nextProps.isPending) {
 			if (nextProps.errors)
 				notify.show(nextProps.errors.message, 'error', 2000)
@@ -100,7 +114,7 @@ class Settings extends Component {
 
 						<Field>
 							<Control>
-								<Checkbox name="positioningEnabled" defaultChecked={this.props.user.positioningEnabled}>
+								<Checkbox name="positioningEnabled" checked={this.state.positioningEnabled}>
 									Positioning enabled
 								</Checkbox>
 							</Control>
