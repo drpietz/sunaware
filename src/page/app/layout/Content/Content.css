@@ -1,14 +1,14 @@
 .container.is-small {
-	width: 300px;
-	margin: auto;
+	padding: 0 1rem;
+	max-width: 20rem;
 }
 
 .container.is-medium {
-	width: 500px;
-	margin: auto;
+	padding: 0 1rem;
+	max-width: 30rem;
 }
 
 .container.is-large {
-	width: 700px;
-	margin: auto;
+	padding: 0 1rem;
+	max-width: 45rem;
 }

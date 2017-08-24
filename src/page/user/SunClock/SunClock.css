@@ -1,25 +1,39 @@
 .sun-clock {
-	position: absolute;
-	top: -17.5rem;
-	left: calc(50% - 12.5rem);
-
-	width: 25rem;
-	height: 25rem;
-
-	padding-top: 19rem;
-	padding-bottom: 2rem;
-
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 
-	border-radius: 12.5rem;
 	border: 3px solid #e4c369;
 	background-color: #ffdc7e;
+}
 
-	cursor: default;
-	z-index: 1;
+@media screen and (min-width: 1008px) {
+	.sun-clock {
+		position: absolute;
+		top: -17.5rem;
+		left: calc(50% - 12.5rem);
+
+		width: 25rem;
+		height: 25rem;
+
+		padding-top: 19rem;
+		padding-bottom: 2rem;
+
+		border-radius: 12.5rem;
+
+		cursor: default;
+		z-index: 1;
+	}
+}
+
+@media screen and (max-width: 1007px) {
+	.sun-clock {
+		width: calc(100% - 5rem);
+		height: 5rem;
+
+		cursor: default;
+	}
 }
 
 .sun-remaining {
