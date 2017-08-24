@@ -19,7 +19,7 @@
 	background-color: #ffdc7e;
 
 	cursor: default;
-	z-index: 100;
+	z-index: 1;
 }
 
 .sun-remaining {

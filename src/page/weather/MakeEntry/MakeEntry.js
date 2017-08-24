@@ -1,3 +1,5 @@
+import './MakeEntry.css'
+
 import React, {Component} from 'react'
 
 import { bindActionCreators } from 'redux'
@@ -9,8 +11,11 @@ import { submitReport } from '../../../actions/reports'
 
 import ImageSelect from '../../app/components/ImageSelect/ImageSelect'
 import Content from "../../app/layout/Content/Content";
-import PageBody from "../../app/layout/PageBody/PageBody";
-import {Button, Control, Field, Input, Label, Subtitle} from "bloomer";
+import {
+	Box, Button, Control, Field, Input, Label, Modal, ModalBackground, ModalClose, ModalContent,
+	Subtitle
+} from "bloomer";
+import {withRouter} from "react-router";
 
 class MakeEntry extends Component {
 	constructor(props) {
@@ -92,68 +97,79 @@ class MakeEntry extends Component {
 		this.props.actions.submitReport(this.state.clouds, this.state.rain, this.state.temperature)
 	}
 
+	handleModalClose = event => {
+		event.preventDefault()
+		this.props.history.push('/start')
+	}
+
 
 	render() {
 		return (
-			<PageBody>
+			<Modal isActive>
 				<Notifications />
-				<Content size="medium">
-					<form onChange={this.handleInputChange}>
-						<Subtitle isSize={5}>
-							Let us know about the weather at your place.
-						</Subtitle>
+				<ModalBackground onClick={this.handleModalClose} />
+				<ModalClose onClick={this.handleModalClose} />
+				<ModalContent>
+					<Content size="medium">
+						<Box className="make-entry-box">
+							<form onChange={this.handleInputChange}>
+								<Subtitle isSize={5}>
+									Let us know about the weather at your place.
+								</Subtitle>
 
-						<Field>
-							<Label>
-								Rain type
-							</Label>
+								<Field>
+									<Label>
+										Rain type
+									</Label>
 
-							<ImageSelect
-								name="rain"
-								defaultValue={this.state.rain}
-								onChange={this.handleReactInputChange}
-								values={[0,1,2,3].map(v => ({
-									value: v,
-									img: '/img/weather/rain/' + v + '.png'
-								}))} />
-						</Field>
+									<ImageSelect
+										name="rain"
+										defaultValue={this.state.rain}
+										onChange={this.handleReactInputChange}
+										values={[0,1,2,3].map(v => ({
+											value: v,
+											img: '/img/weather/rain/' + v + '.png'
+										}))} />
+								</Field>
 
-						<Field>
-							<Label>
-								Cloudiness
-							</Label>
+								<Field>
+									<Label>
+										Cloudiness
+									</Label>
 
-							<ImageSelect
-								name="clouds"
-								defaultValue={this.state.clouds}
-								onChange={this.handleReactInputChange}
-								values={[0,1,2,3,4].map(v => ({
-									value: v,
-									img: '/img/weather/clouds/' + v + '.png'
-								}))} />
-						</Field>
+									<ImageSelect
+										name="clouds"
+										defaultValue={this.state.clouds}
+										onChange={this.handleReactInputChange}
+										values={[0,1,2,3,4].map(v => ({
+											value: v,
+											img: '/img/weather/clouds/' + v + '.png'
+										}))} />
+								</Field>
 
-						<Field>
-							<Control>
-								<Input name="temperature" placeholder="Temperature in degrees"
-									   isColor={this.props.temperatureValid && "danger"}
-									    />
+								<Field>
+									<Control>
+										<Input name="temperature" placeholder="Temperature in degrees"
+											   isColor={this.props.temperatureValid && "danger"}
+												/>
 
-								<FormErrors formErrors={this.state.formErrors} />
-							</Control>
-						</Field>
+										<FormErrors formErrors={this.state.formErrors} />
+									</Control>
+								</Field>
 
-						<Field isGrouped="centered">
-							<Button isColor="warning"
-									isLoading={this.props.isPending}
-									disabled={!this.state.formValid}
-									onClick={this.handleSubmit}>
-								Submit
-							</Button>
-						</Field>
-					</form>
-				</Content>
-			</PageBody>
+								<Field isGrouped="centered">
+									<Button isColor="warning"
+											isLoading={this.props.isPending}
+											disabled={!this.state.formValid}
+											onClick={this.handleSubmit}>
+										Submit
+									</Button>
+								</Field>
+							</form>
+						</Box>
+					</Content>
+				</ModalContent>
+			</Modal>
 		);
 	}
 }
@@ -170,4 +186,4 @@ function mapDispatchToProps(dispatch) {
 	return { actions: bindActionCreators({ submitReport }, dispatch) }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MakeEntry)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MakeEntry))
