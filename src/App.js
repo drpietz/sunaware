@@ -11,6 +11,7 @@ import Positioning from './page/user/Positioning/Positioning'
 import SunawareLayout from './page/app/layout/SunawareLayout/SunawareLayout'
 import WelcomeMessage from './page/app/info/WelcomePage/WelcomePage'
 import Start from './page/weather/StartPage/StartPage'
+import StatsPage from './page/app/info/StatsPage/StatsPage'
 import Login from './page/user/LoginPage/LoginPage'
 import SignUp from './page/user/SignUpPage/SignUpPage'
 import Settings from "./page/user/SettingsPage/SettingsPage"
@@ -56,6 +57,7 @@ class App extends Component {
 									<GuardedRoute exact path="/settings" component={Settings} />
 									<GuardedRoute path="/start" component={Start}/>
 									<GuardedRoute exact path="/start/entry" component={MakeEntry} />
+									<GuardedRoute exact path="/settings/stats" component={StatsPage} />
 								</GuardedRouteGroup>
 
 								<GuardedRouteGroup active={!loggedIn} redirect="/start">
