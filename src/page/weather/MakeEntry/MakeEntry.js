@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { FormErrors } from '../../../FormErrors'
 
-import Notifications, {notify} from 'react-notify-toast';
+import {notify} from 'react-notify-toast';
 import { submitReport } from '../../../actions/reports'
 
 import ImageSelect from '../../app/components/ImageSelect/ImageSelect'
@@ -105,7 +105,6 @@ class MakeEntry extends Component {
 	render() {
 		return (
 			<Modal isActive>
-				<Notifications />
 				<ModalBackground onClick={this.handleModalClose} />
 				<ModalClose onClick={this.handleModalClose} />
 				<ModalContent>

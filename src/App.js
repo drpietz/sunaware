@@ -19,6 +19,8 @@ import GuardedRouteGroup from "./page/app/routing/GuardedRouteGroup/GuardedRoute
 import LoadingPage from "./page/app/info/LoadingPage/LoadingPage";
 import MakeEntry from "./page/weather/MakeEntry/MakeEntry";
 
+import Notifications from 'react-notify-toast';
+
 
 class App extends Component {
 
@@ -42,6 +44,8 @@ class App extends Component {
 			<Provider store={this.props.store}>
 				<BrowserRouter>
 					<SunawareLayout>
+						<Notifications />
+
 						{ !this.props.isConnected ?
 							<LoadingPage />
 							:

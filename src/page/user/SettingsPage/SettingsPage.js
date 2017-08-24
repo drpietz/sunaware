@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 
 import {updateProfile} from "../../../actions/auth"
 
-import Notifications, {notify} from 'react-notify-toast';
+import {notify} from 'react-notify-toast';
 import Geosuggest from 'react-geosuggest';
 
 
@@ -93,8 +93,6 @@ class Settings extends Component {
 	render () {
 		return (
 			<PageBody>
-				<Notifications />
-
 				<Content size="medium">
 					Welcome, { this.props.user.displayname }
 					<br/><br/>
