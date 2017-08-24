@@ -71,8 +71,7 @@ class MakeEntry extends Component {
 			if (nextProps.errors)
 				notify.show(nextProps.errors.message, 'error', 2000)
 			else
-				notify.show('Weather Reported!', 'success', 2000)
-
+				this.props.history.push('/start')
 		}
 	}
 
