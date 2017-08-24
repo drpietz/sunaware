@@ -37,21 +37,13 @@ class Timer extends Component {
 		let value;
 		if (props.isPending) {
 			value = <i className="fa fa-spinner"/>
-		} else if (this.timerIsObsolete(props)) {
-			value = <i className="fa fa-play"/>
-		} else {
+		} else if (this.props.isRunning) {
 			value = this.getTimerText(props)
+		} else {
+			value = <i className="fa fa-play"/>
 		}
 
 		this.setState({value})
-	}
-
-	timerIsObsolete = (props = this.props) => {
-		if (!props.stopTime)
-			return false
-
-		// Obsolete if stopped more than 5s ago
-		return Date.now() - props.stopTime.getTime() > 5000
 	}
 
 	getTimerText = (props = this.props) => {
