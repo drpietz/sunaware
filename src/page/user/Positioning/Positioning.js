@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 
 import {disablePositioning, triggerPositionUpdate} from "../../../actions/auth"
 
+import {notify} from 'react-notify-toast'
 
 class Positioning extends Component {
 	updatePosition = () => {
@@ -15,11 +16,38 @@ class Positioning extends Component {
 
 	componentWillMount() {
 		this.updatePosition()
-		this.timer = setInterval(this.updatePosition, 5 * 60 * 1000)
+		this.setTimer(this.props.enabled)
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if (!this.props.errors && nextProps.errors) {
+			notify.show("Please enable positioning in the browser settings", "error")
+		}
+
+		this.setTimer(nextProps.enabled)
 	}
 
 	componentWillUnmount() {
-		clearInterval(this.timer)
+		this.stopUpdateTimer()
+	}
+
+	setTimer = enabled => {
+		if (enabled)
+			this.startUpdateTimer()
+		else
+			this.stopUpdateTimer()
+	}
+
+	startUpdateTimer = () => {
+		if (this.timer === null || this.timer === undefined)
+			this.timer = setInterval(this.updatePosition, 5 * 60 * 1000)
+	}
+
+	stopUpdateTimer = () => {
+		if (this.timer) {
+			clearInterval(this.timer)
+			this.timer = null
+		}
 	}
 
 	render() {
@@ -30,6 +58,7 @@ class Positioning extends Component {
 
 function mapStateToProps(state) {
 	return {
+		errors: state.auth.positioning.errors,
 		enabled: state.auth.user ? state.auth.user.positioningEnabled : false
 	}
 }
