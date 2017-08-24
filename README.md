@@ -18,7 +18,7 @@
 - [x] Positionseingabe per Ortsname (Maps API) - *Ben*
 - [x] Regen auf Karte anzeigen - *Anne*
 - [x] Kartenobjekte klickbar machen (kompletten Report anzeigen) - *Anne, Ben, Tim*
-- [ ] Object access permissions - *Tim*
+- [x] Object access permissions - *Tim*
 - [x] svg Icons auf der Karte - *Anne*
 - [x] Kartenstil (Farben) - *Anne, Tim, Ben*
 - [ ] ~~Unterschiedliche Sonnenschutzgrade~~
