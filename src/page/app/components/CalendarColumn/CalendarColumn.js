@@ -1,6 +1,6 @@
 import React from 'react'
-import '../../../app/components/CalendarCard/CalendarCard'
-import CalendarCard from "../CalendarCard/CalendarCard";
+import '../CalendarField/CalendarField'
+import CalendarField from "../CalendarField/CalendarField";
 import {Column, Columns} from "bloomer";
 
 function CalendarColumn(props) {
@@ -8,9 +8,9 @@ function CalendarColumn(props) {
 		<Columns isMobile>
 			{ props.values.map(value => (
 			<Column>
-				<CalendarCard>
+				<CalendarField>
 					{value}
-				</CalendarCard>
+				</CalendarField>
 			</Column>
 			))}
 		</Columns>

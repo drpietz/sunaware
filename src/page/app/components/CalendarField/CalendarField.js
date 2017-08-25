@@ -1,11 +1,11 @@
-import './CalendarCard.css'
+import './CalendarField.css'
 import React from 'react'
 import {Card, CardContent} from "bloomer";
 
-function CalendarCard(props) {
+function CalendarField(props) {
 
 	return (
-		<Card  className="calender-card">
+		<Card className="calender-field">
 			<CardContent isPaddingless>
 				{props.children}
 			</CardContent>
@@ -13,4 +13,4 @@ function CalendarCard(props) {
 	)
 }
 
-export default CalendarCard
+export default CalendarField

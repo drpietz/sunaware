@@ -58,11 +58,11 @@ body {font-family: Verdana, sans-serif;}
 	padding: 10px 0;
 }
 
-.weekdays .calender-card {
+.weekdays .calender-field {
 	background-color: #bababa !important;
 }
 
-.calendar .calender-card {
+.calendar .calender-field {
 	background-color: #ffffff !important;
 	text-align: end;
 }
