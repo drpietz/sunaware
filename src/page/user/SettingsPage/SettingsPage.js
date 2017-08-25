@@ -68,8 +68,10 @@ class Settings extends Component {
 		let value = state.address.value
 		let errors = []
 
-		if (value === null)
-			errors.push('address is required')
+		if (state.positioningEnabled.value)
+			return []
+		else if (value === null)
+			errors.push('Address is required')
 
 		return errors
 	}
