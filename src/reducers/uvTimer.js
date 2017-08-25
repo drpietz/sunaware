@@ -3,7 +3,7 @@ import {
 	TOGGLE_TIMER_PENDING, TOGGLE_TIMER_SUCCESS, TOGGLE_TIMER_ERROR
 } from '../actions/types'
 
-import {getPendingState, getSuccessState, getErrorState} from "./index";
+import {getPendingState, getSuccessState, getBaqendErrorState} from "./index";
 
 const initialState = {
 	timer: null,
@@ -36,7 +36,7 @@ export default function reports(state = initialState, action = {}) {
 		case TOGGLE_TIMER_ERROR:
 			return {
 				...state,
-				toggleState: getErrorState(action)
+				toggleState: getBaqendErrorState(action)
 			}
 
 		case SYNCHRONIZE_ALLOWANCE:

@@ -4,7 +4,7 @@ import {
 	REPORT_SUBMIT_PENDING, REPORT_SUBMIT_SUCCESS, REPORT_SUBMIT_ERROR
 } from '../actions/types'
 
-import {getErrorState, getPendingState, getSuccessState} from "./index";
+import {getBaqendErrorState, getPendingState, getSuccessState} from "./index";
 
 const initialState = {
 	initial: [],
@@ -41,7 +41,7 @@ export default function reports(state = initialState, action = {}) {
 		case REPORT_SUBMIT_SUCCESS:
 			return { ...state, ...buildState(state.initial, [...state.recent, action.payload]), selected: action.payload, submit: getSuccessState()}
 		case REPORT_SUBMIT_ERROR:
-			return { ...state, submit: getErrorState(action)}
+			return { ...state, submit: getBaqendErrorState(action)}
 		default:
 			return state
 	}
