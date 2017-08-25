@@ -1,0 +1,85 @@
+ul {list-style-type: none;}
+body {font-family: Verdana, sans-serif;}
+
+/* Month header */
+.month {
+	position: relative;
+	height: 5rem;
+	width: 100%;
+	background: #ff7002;
+	text-align: center;
+}
+
+.month .left {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 5rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	color: #ffffff;
+}
+
+.month .right {
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 5rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	color: #ffffff;
+}
+
+/* Month list */
+.month ul {
+	margin: 0;
+	padding: 0;
+}
+
+.month ul li {
+	color: white;
+	font-size: 20px;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+}
+
+
+/* Weekdays*/
+.weekdays {
+	margin: 0;
+	padding: 10px 0;
+}
+
+.weekdays .calender-card {
+	background-color: #bababa !important;
+}
+
+.calendar .calender-card {
+	background-color: #ffffff !important;
+	text-align: end;
+}
+
+
+/* Days (1-31) */
+.days {
+	padding: 10px 0;
+	background: #eee;
+	margin: 0;
+}
+
+
+
+/* Highlight the "current" day */
+.days li .active {
+	padding: 5px;
+	background: #ff7002;
+	color: white !important
+}

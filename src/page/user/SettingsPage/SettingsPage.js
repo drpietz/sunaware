@@ -137,11 +137,6 @@ class Settings extends Component {
 									onClick={this.handleUpdate}>
 								Update
 							</Button>
-
-							<Link to="/settings/stats" className="button is-warning"
-									isLoading={this.props.isPending}>
-								Show statistics
-							</Link>
 						</Field>
 					</form>
 				</Content>
