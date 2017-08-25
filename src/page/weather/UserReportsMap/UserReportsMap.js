@@ -62,6 +62,8 @@ class UserReportsMap extends Component {
 	}
 
 	mapReportsToMarkers = reports => (
+
+		//Ensures homogenous format of time
 		reports.map(report => {
 			let createdAt = new Date(report.createdAt);
 			let hours = ('0' + createdAt.getHours()).slice(-2);

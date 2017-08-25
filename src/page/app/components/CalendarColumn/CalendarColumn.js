@@ -1,18 +1,19 @@
 import React from 'react'
 import '../../../app/components/CalendarCard/CalendarCard'
 import CalendarCard from "../CalendarCard/CalendarCard";
+import {Column, Columns} from "bloomer";
 
 function CalendarColumn(props) {
 	return (
-		<div className="columns">
+		<Columns isMobile>
 			{ props.values.map(value => (
-			<div className="column">
+			<Column>
 				<CalendarCard>
 					{value}
 				</CalendarCard>
-			</div>
+			</Column>
 			))}
-		</div>
+		</Columns>
 	)
 }
 

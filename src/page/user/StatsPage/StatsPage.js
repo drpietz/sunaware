@@ -9,11 +9,21 @@ import moment from 'moment'
 
 class StatsPage extends Component {
 
+	/**
+	 * Calculates first weekday of current month
+	 * @param m date
+	 * @returns {moment.Moment | number}
+	 */
 	startMonth = (m) => {
 		let currDate = m.startOf('month');
 		return currDate.day();
 	}
 
+	/**
+	 * Calculates how many days there are in a month
+	 * @param m
+	 * @returns {*|number}
+	 */
 	daysInMonth = (m) => {
 		return m.daysInMonth();
 	}
@@ -21,7 +31,7 @@ class StatsPage extends Component {
 	render () {
 		return(
 			<PageBody>
-				<Content>
+				<Content size="large">
 					<div className="month">
 						<div className="left">
 							&lt;
