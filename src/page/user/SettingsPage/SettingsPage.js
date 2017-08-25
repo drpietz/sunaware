@@ -23,11 +23,67 @@ class Settings extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			skinType: null,
-			positioningEnabled: props.user.positioningEnabled,
-			address: null,
-			position: null
+			skinType: {
+				value: props.user.skinType,
+				getErrors: this.skinTypeErrors,
+				showErrors: true
+			},
+			positioningEnabled: {
+				value: props.user.positioningEnabled,
+				getErrors: this.positioningEnabledErrors,
+				showErrors: true
+			},
+			address: {
+				value: props.user.address,
+				getErrors: this.addressErrors,
+				showErrors: true
+			},
+			position: {
+				value: props.user.position
+			}
 		}
+	}
+
+	skinTypeErrors = (state = this.state) => {
+		let value = state.skinType.value
+		let errors = []
+
+		if (value === null)
+			errors.push('SkinType is required')
+
+		return errors
+	}
+
+	positioningEnabledErrors = (state = this.state) => {
+		let value = state.positioningEnabled.value
+		let errors = []
+
+		if (value === null)
+			errors.push('Position is required')
+
+		return errors
+	}
+
+	addressErrors = (state = this.state) => {
+		let value = state.address.value
+		let errors = []
+
+		if (value === null)
+			errors.push('address is required')
+
+		return errors
+	}
+
+	formErrors = (shownOnly = false, state = this.state) => {
+		const fields = ['skinType', 'positioningEnabled', 'address']
+
+		let errors = []
+		fields.forEach(field => {
+			if (!shownOnly || state[field].showErrors)
+				errors = [...errors, ...state[field].getErrors()]
+		})
+
+		return errors
 	}
 
 
@@ -41,18 +97,22 @@ class Settings extends Component {
 	}
 
 	componentWillUpdate(nextProps, nextState) {
-		if (!this.state.positioningEnabled && nextState.positioningEnabled) {
+		if (!this.state.positioningEnabled.value && nextState.positioningEnabled.value) {
 			this.props.actions.triggerPositionUpdate()
 		}
 
 		if (this.props.positioningPending && !nextProps.positioningPending) {
 			this.setState({
-				positioningEnabled: !nextProps.positioningErrors
+				positioningEnabled: {
+					...this.state.positioningEnabled,
+					value: !nextProps.positioningErrors
+				}
 			})
 		}
 	}
 
 	handleInputChange = (event) => {
+		event.preventDefault();
 		const target = event.target;
 		const value = target.type === 'checkbox' ? target.checked : target.value;
 		const name = target.name;
@@ -62,23 +122,30 @@ class Settings extends Component {
 			return
 		}
 
+
 		this.setState({
-			[name]: value
+			[name]: {...this.state[name], value}
 		})
 	}
 
 	handleReactInputChange = (value, field) => {
 		this.setState({
-			[field]: value
+			[field]: {...this.state[field], value}
 		})
 	}
 
 	handlePositionSelect = ({description, location: {lat, lng}}) => {
 		this.setState({
-			address: description,
+			address: {
+				...this.state.address,
+				value: description
+			},
 			position: {
-				latitude: lat,
-				longitude: lng
+				...this.state.position,
+				value: {
+					latitude: lat,
+					longitude: lng
+				}
 			}
 		})
 	}
@@ -87,10 +154,10 @@ class Settings extends Component {
 		event.preventDefault()
 
 		this.props.actions.updateProfile(
-			this.state.skinType,
-			this.state.positioningEnabled,
-			this.state.position,
-			this.state.address
+			this.state.skinType.value,
+			this.state.positioningEnabled.value,
+			this.state.position.value,
+			this.state.address.value
 		)
 	}
 
@@ -116,13 +183,13 @@ class Settings extends Component {
 
 						<Field>
 							<Control>
-								<Checkbox name="positioningEnabled" checked={this.state.positioningEnabled}>
+								<Checkbox name="positioningEnabled" checked={this.state.positioningEnabled.value}>
 									Positioning enabled
 								</Checkbox>
 							</Control>
 						</Field>
 
-						{ !(this.state.positioningEnabled !== null ? this.state.positioningEnabled : this.props.user.positioningEnabled) ?
+						{ !(this.state.positioningEnabled.value !== null ? this.state.positioningEnabled.value : this.props.user.positioningEnabled.value) ?
 							<Field>
 									<Geosuggest inputClassName="input"
 												placeholder="Choose your location"
@@ -136,7 +203,9 @@ class Settings extends Component {
 						}
 						<Field isGrouped="centered">
 							<Button isColor="warning"
+									type="submit"
 									isLoading={this.props.isPending}
+									disabled={this.formErrors().length > 0}
 									onClick={this.handleUpdate}>
 								Update
 							</Button>
