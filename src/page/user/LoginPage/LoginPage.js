@@ -20,12 +20,12 @@ class Login extends Component {
 			username: {
 				value: null,
 				getErrors: this.usernameErrors,
-				showErrors: true
+				showErrors: false
 			},
 			password: {
 				value: null,
 				getErrors: this.passwordErrors,
-				showErrors: true
+				showErrors: false
 			}
 		}
 	}
@@ -61,13 +61,21 @@ class Login extends Component {
 		return errors
 	}
 
+	fieldErrors = (fieldName, shownOnly = false, state = this.state) => {
+		const field = this.state[fieldName]
+
+		if (shownOnly && !field.showErrors)
+			return []
+		else
+			return field.getErrors(state)
+	}
+
 	formErrors = (shownOnly = false, state = this.state) => {
 		const fields = ['username', 'password']
 
 		let errors = this.baqendErrors('other')
 		fields.forEach(field => {
-			if (!shownOnly || state[field].showErrors)
-				errors = [...errors, ...state[field].getErrors()]
+			errors = [...errors, ...this.fieldErrors(field, shownOnly, state)]
 		})
 
 		return errors
@@ -75,12 +83,23 @@ class Login extends Component {
 
 	handleInputChange = event => {
 		event.preventDefault()
+
         const name = event.target.name;
         const value = event.target.value;
 		this.setState({
 			[name]: {...this.state[name], value}
 		});
 	};
+
+
+	handleInputBlur = event => {
+		event.preventDefault()
+		const name = event.target.name;
+
+		this.setState({
+			[name]: {...this.state[name], showErrors: true}
+		})
+	}
 
 	handleLogin = event => {
 		event.preventDefault();
@@ -92,13 +111,13 @@ class Login extends Component {
 		return (
 			<PageBody>
 				<Content size="small">
-					<form onChange={this.handleInputChange}>
+					<form onChange={this.handleInputChange} onBlur={this.handleInputBlur}>
 						<Box>
 							<Field>
 								<Control hasIcons="left">
 									<Input name="username" placeholder="E-Mail address"
 										   type="username"
-										   isColor={this.usernameErrors().length > 0 && "danger"} />
+										   isColor={this.fieldErrors('username', true).length > 0 && "danger"} />
 
 									<Icon isSize='small' isAlign='left'>
 										<i className="fa fa-envelope" />
@@ -110,7 +129,7 @@ class Login extends Component {
 								<Control hasIcons="left">
 									<Input name="password" placeholder="Password"
 										   type="password"
-										   isColor={this.passwordErrors().length > 0 && "danger"} />
+										   isColor={this.fieldErrors('password', true).length > 0 && "danger"} />
 									<Icon isSize='small' isAlign='left'>
 										<i className="fa fa-lock" />
 									</Icon>

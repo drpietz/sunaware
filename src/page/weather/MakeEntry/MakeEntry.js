@@ -26,23 +26,23 @@ class MakeEntry extends Component {
 			rain:{
 				value: null,
 				getErrors: this.rainErrors,
-				showErrors: true
+				showErrors: false
 			},
 			clouds:{
 				value: null,
 				getErrors: this.cloudsErrors,
-				showErrors: true
+				showErrors: false
 			},
 			temperature:{
 				value: null,
 				getErrors: this.temperatureErrors,
-				showErrors: true
+				showErrors: false
 			}
 		}
 	}
 
 	rainErrors = (state = this.state) => {
-		let value = this.state.rain.value
+		let value = state.rain.value
 		let errors = []
 
 		if (value === null)
@@ -73,13 +73,21 @@ class MakeEntry extends Component {
 		return errors
 	}
 
+	fieldErrors = (fieldName, shownOnly = false, state = this.state) => {
+		const field = this.state[fieldName]
+
+		if (shownOnly && !field.showErrors)
+			return []
+		else
+			return field.getErrors(state)
+	}
+
 	formErrors = (shownOnly = false, state = this.state) => {
 		const fields = ['rain', 'clouds', 'temperature']
 
 		let errors = []
 		fields.forEach(field => {
-			if (!shownOnly || state[field].showErrors)
-				errors = [...errors, ...state[field].getErrors()]
+			errors = [...errors, ...this.fieldErrors(field, shownOnly, state)]
 		})
 
 		return errors
@@ -92,6 +100,15 @@ class MakeEntry extends Component {
 			else
 				this.props.history.push('/start')
 		}
+	}
+
+	handleInputBlur = event => {
+		event.preventDefault()
+		const name = event.target.name;
+
+		this.setState({
+			[name]: {...this.state[name], showErrors: true}
+		})
 	}
 
 	handleInputChange = event => {
@@ -128,7 +145,7 @@ class MakeEntry extends Component {
 				<ModalContent>
 					<Content size="medium">
 						<Box className="make-entry-box">
-							<form onChange={this.handleInputChange}>
+							<form onChange={this.handleInputChange} onBlur={this.handleInputBlur}>
 								<Subtitle isSize={5}>
 									Let us know about the weather at your place.
 								</Subtitle>
@@ -166,7 +183,7 @@ class MakeEntry extends Component {
 								<Field>
 									<Control>
 										<Input name="temperature" placeholder="Temperature in degrees"
-											   isColor={this.temperatureErrors().length > 0 && "danger"}
+											   isColor={this.fieldErrors('temperature', true).length > 0 && "danger"}
 												/>
 
 										<FormErrors formErrors={this.formErrors(true)} />
