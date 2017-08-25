@@ -10,7 +10,7 @@ class AllowanceClock extends Component {
 		super(props)
 
 		this.state = {
-			text: '0 Minuten'
+			text: '0 minutes'
 		}
 	}
 
@@ -71,8 +71,8 @@ class AllowanceClock extends Component {
 		let minutes = Math.floor(remaining / 60000)
 
 		let text;
-		if (minutes === 1) text = "1 Minute"
-		else text = minutes + " Minuten"
+		if (minutes === 1) text = "1 minute"
+		else text = minutes + " minutes"
 
 		if (text !== this.state.text)
 			this.setState({text})
