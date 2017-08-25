@@ -44,8 +44,8 @@ class SignUp extends Component {
                 fieldValidationErrors.username = usernameValid ? '' : ' not an email address';
                 break;
             case 'password':
-                passwordValid = value.length >= 3;
-                fieldValidationErrors.password = passwordValid ? '': ' password is too short';
+                passwordValid = value.length >= 3 && value.length <= 36;
+                fieldValidationErrors.password = passwordValid ? '': ' password must be between 3 or 36 characters long';
                 break;
             default:
                 break;
