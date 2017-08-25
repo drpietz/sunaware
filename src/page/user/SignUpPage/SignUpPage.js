@@ -36,19 +36,26 @@ class SignUp extends Component {
 
         switch(fieldName) {
             case 'displayname':
-                displaynameValid = value.match(/^((\s*[a-z0-9]){3,20})$/i);
-                fieldValidationErrors.displayname = displaynameValid ? '' : 'not a valid name';
+                displaynameValid = value.match(/^((\s*[a-z0-9]){3,20})$/i)
+                fieldValidationErrors.displayname = displaynameValid ? '' : 'not a valid name'
                 break;
             case 'username':
-                usernameValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-                fieldValidationErrors.username = usernameValid ? '' : ' not an email address';
+                usernameValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
+                fieldValidationErrors.username = usernameValid ? '' : ' not an email address'
                 break;
             case 'password':
-                passwordValid = value.length >= 3 && value.length <= 36;
-                fieldValidationErrors.password = passwordValid ? '': ' password must be between 3 or 36 characters long';
-                break;
+            	passwordValid = false
+                if(value.length < 3)
+                	fieldValidationErrors.password = 'password must be be at least 3 characters long'
+				else if (value.length >= 36)
+					fieldValidationErrors.password = 'password may not exceed 36 characters'
+                else {
+					passwordValid = true
+					fieldValidationErrors.password = ''
+				}
+				break
             default:
-                break;
+                break
         }
         this.setState({formErrors: fieldValidationErrors,
 			displaynameValid: displaynameValid,
