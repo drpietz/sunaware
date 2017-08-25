@@ -8,9 +8,7 @@ function CalendarColumn(props) {
 		<Columns isMobile>
 			{ props.values.map(value => (
 			<Column>
-				<CalendarField>
-					{value}
-				</CalendarField>
+				<CalendarField value={value} date={5} />
 			</Column>
 			))}
 		</Columns>

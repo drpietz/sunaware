@@ -6,8 +6,11 @@ function CalendarField(props) {
 
 	return (
 		<Card className="calender-field">
-			<CardContent isPaddingless>
-				{props.children}
+			<CardContent className="calendar-field-content" isPaddingless>
+				<div className="date">
+					{props.date}
+				</div>
+				{props.value}
 			</CardContent>
 		</Card>
 	)
