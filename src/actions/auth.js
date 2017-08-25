@@ -3,6 +3,7 @@ import {
 	USER_REGISTER_PENDING, USER_REGISTER_SUCCESS, USER_REGISTER_ERROR,
 	USER_LOGOUT,
 	USER_PROFILE_UPDATE_PENDING, USER_PROFILE_UPDATE_SUCCESS, USER_PROFILE_UPDATE_ERROR,
+	USER_POSITIONING_PENDING, USER_POSITIONING_SUCCESS, USER_POSITIONING_ERROR,
 	USER_LOCATION_UPDATE,
 	USER_POSITIONING_DISABLE
 } from './types'
@@ -49,15 +50,39 @@ export function logout() {
 	}
 }
 
-export function disablePositioning() {
+export function triggerPositionUpdate() {
+	return dispatch => {
+		dispatch(userPositioningPending())
+
+		navigator.geolocation.getCurrentPosition(
+			({coords: {latitude, longitude}}) => {
+				dispatch(userPositioningSuccess())
+				dispatch(updatePosition(latitude, longitude))
+			},
+			(error) => {
+				dispatch(userPositioningError(error))
+				dispatch(disablePositioning())
+			}
+		);
+	}
+}
+
+function userPositioningPending() {
 	return {
-		'BAQEND': {
-			type: USER_POSITIONING_DISABLE,
-			payload: db => db.User.me.load().then(user => {
-				user.positioningEnabled = false
-				return user.save()
-			})
-		}
+		type: USER_POSITIONING_PENDING
+	}
+}
+
+function userPositioningSuccess() {
+	return {
+		type: USER_POSITIONING_SUCCESS
+	}
+}
+
+function userPositioningError(error) {
+	return {
+		type: USER_POSITIONING_ERROR,
+		error
 	}
 }
 
@@ -67,6 +92,18 @@ export function updatePosition(latitude, longitude) {
 			type: USER_LOCATION_UPDATE,
 			payload: db => db.User.me.load().then(user => {
 				user.position = new db.GeoPoint(latitude, longitude)
+				return user.save()
+			})
+		}
+	}
+}
+
+export function disablePositioning() {
+	return {
+		'BAQEND': {
+			type: USER_POSITIONING_DISABLE,
+			payload: db => db.User.me.load().then(user => {
+				user.positioningEnabled = false
 				return user.save()
 			})
 		}
@@ -88,11 +125,12 @@ export function updateProfile(skinType, positioningEnabled, position, address) {
 				if (positioningEnabled !== null)
 					user.positioningEnabled = positioningEnabled
 
-				if (position !== null)
-					user.position = new db.GeoPoint(position)
-
-				if (address !== null)
+				if (address !== null) {
 					user.address = address
+
+					if (position !== null)
+						user.position = new db.GeoPoint(position)
+				}
 
 				return user.save()
 			})
