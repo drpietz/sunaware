@@ -1,7 +1,7 @@
-import { applyMiddleware, combineReducers } from 'redux'
+import { applyMiddleware, compose, createStore, combineReducers } from 'redux'
 
-import { createStoreWithBaqend, baqendReducer } from 'redux-baqend'
-import middlewares from '../middleware'
+import { createEnhancers, baqendReducer } from 'redux-baqend'
+import { metaMiddlewares, middlewares } from '../middleware'
 import reducers from '../reducers'
 
 import { db } from 'baqend/realtime'
@@ -11,13 +11,20 @@ export default (initialState = {}) => {
 		baqend: baqendReducer,
 		...reducers
 	})
+	const metaMiddleware = applyMiddleware(
+		...metaMiddlewares
+	)
 	const middleware = applyMiddleware(
 		...middlewares
 	)
-	return createStoreWithBaqend(
-		db.connect('archaic-hobbit-96', true),
-		reducer,
-		initialState,
+
+	const dbInstance = db.connect('archaic-hobbit-96', true)
+	const { baqendConnect, baqendMiddleware } = createEnhancers(dbInstance)
+
+	return createStore(reducer, initialState, compose(
+		baqendConnect,
+		metaMiddleware,
+		applyMiddleware(baqendMiddleware),
 		middleware
-	)
+	))
 }

@@ -1,9 +1,10 @@
 import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk'
 
-const middlewares = [
-	createLogger(),
+export const metaMiddlewares = [
 	thunk
 ]
 
-export default middlewares
+export const middlewares = [
+	createLogger()
+]
