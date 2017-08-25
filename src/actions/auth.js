@@ -60,6 +60,7 @@ export function triggerPositionUpdate() {
 				dispatch(updatePosition(latitude, longitude))
 			},
 			(error) => {
+				console.log("Error:", error)
 				dispatch(userPositioningError(error))
 				dispatch(disablePositioning())
 			}
@@ -126,11 +127,12 @@ export function updateProfile(skinType, positioningEnabled, position, address) {
 				if (positioningEnabled !== null)
 					user.positioningEnabled = positioningEnabled
 
-				if (position !== null)
-					user.position = new db.GeoPoint(position)
-
-				if (address !== null)
+				if (address !== null) {
 					user.address = address
+
+					if (position !== null)
+						user.position = new db.GeoPoint(position)
+				}
 
 				return user.save()
 			})
