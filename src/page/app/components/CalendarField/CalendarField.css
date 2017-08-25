@@ -1,3 +1,15 @@
-.card {
+.calender-field {
+	position: relative;
 	min-height: 5rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.calender-field .date {
+	position: absolute;
+	top: 0;
+	right: 0.5rem;
+	font-size: small;
 }

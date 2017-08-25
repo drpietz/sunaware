@@ -5,28 +5,20 @@ import './StatsPage.css'
 import '../../app/components/CalendarColumn/CalendarColumn'
 import CalendarColumn from "../../app/components/CalendarColumn/CalendarColumn"
 import moment from 'moment'
+import CalendarField from "../../app/components/CalendarField/CalendarField";
 
 
 class StatsPage extends Component {
 
-	/**
-	 * Calculates first weekday of current month
-	 * @param m date
-	 * @returns {moment.Moment | number}
-	 */
-	startMonth = (m) => {
-		let currDate = m.startOf('month');
-		return currDate.day();
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			month: moment().startOf('month')
+		}
 	}
 
-	/**
-	 * Calculates how many days there are in a month
-	 * @param m
-	 * @returns {*|number}
-	 */
-	daysInMonth = (m) => {
-		return m.daysInMonth();
-	}
+
 
 	render () {
 		return(
@@ -58,5 +50,6 @@ class StatsPage extends Component {
 	}
 
 }
+
 
 export default StatsPage
