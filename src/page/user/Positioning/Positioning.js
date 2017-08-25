@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
-import {disablePositioning, triggerPositionUpdate} from "../../../actions/auth"
+import {triggerPositionUpdate} from "../../../actions/auth"
 
 import {notify} from 'react-notify-toast'
 
@@ -65,7 +65,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators({disablePositioning, triggerPositionUpdate}, dispatch)
+		actions: bindActionCreators({triggerPositionUpdate}, dispatch)
 	}
 }
 
