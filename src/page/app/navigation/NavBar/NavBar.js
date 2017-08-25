@@ -39,7 +39,6 @@ class NavBar extends Component {
 						{this.props.isLoggedIn ?
 							<NavbarEnd>
 								<NavItem to="/settings" label="Settings" icon="fa-user"/>
-								<NavItem to="/stats" label="Statistics" icon="fa-line-chart"/>
 								<NavItem to="/start" label="Start" disabled={!this.props.profileFilled} icon="fa-map"/>
 								<NavItem to="#" onClick={this.handleLogout} label="Logout" icon="fa-sign-out"/>
 							</NavbarEnd>
