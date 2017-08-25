@@ -47,7 +47,7 @@ class MakeEntry extends Component {
 
 		if (value === null)
 			errors.push('input is invalid')
-		else
+
 			return errors
 	}
 
@@ -57,7 +57,7 @@ class MakeEntry extends Component {
 
 		if (value === null)
 			errors.push('input is invalid')
-		else
+
 			return errors
 	}
 
@@ -65,10 +65,12 @@ class MakeEntry extends Component {
 		let value = this.state.temperature.value
 		let errors = []
 
-		if (value.match(/^-?\d{1,2}$/g))
+		if (value === null)
+			errors.push('Temparature is required')
+		else if (!value.match(/^-?\d{1,2}$/g))
 			errors.push('please select an Input between -99 and 99 degrees')
-		else
-			return errors
+
+		return errors
 	}
 
 	formErrors = (shownOnly = false, state = this.state) => {
@@ -102,15 +104,14 @@ class MakeEntry extends Component {
 	}
 
 	handleReactInputChange = (value, field) => {
-		this.setState(
-			{[field]: value},
-			() => { this.state(field, value) }
-		)
+		this.setState({
+			[field]: {...this.state[field], value}
+		});
 	}
 
 	handleSubmit = event => {
 		event.preventDefault()
-		this.props.actions.submitReport(this.state.clouds, this.state.rain, this.state.temperature)
+		this.props.actions.submitReport(this.state.clouds.value, this.state.rain.value, this.state.temperature.value)
 	}
 
 	handleModalClose = event => {
@@ -165,7 +166,7 @@ class MakeEntry extends Component {
 								<Field>
 									<Control>
 										<Input name="temperature" placeholder="Temperature in degrees"
-											   isColor={this.props.temperatureErrors().length > 0 && "danger"}
+											   isColor={this.temperatureErrors().length > 0 && "danger"}
 												/>
 
 										<FormErrors formErrors={this.formErrors(true)} />
