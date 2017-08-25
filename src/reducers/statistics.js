@@ -1,4 +1,4 @@
-import {FETCH_SUMMARY_PENDING, FETCH_SUMMARY_SUCCESS, FETCH_SUMMARY_ERROR} from "./types";
+import {FETCH_SUMMARY_PENDING, FETCH_SUMMARY_SUCCESS, FETCH_SUMMARY_ERROR} from "../actions/types";
 
 
 export default function(state = {}, action = {}) {

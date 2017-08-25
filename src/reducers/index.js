@@ -1,6 +1,7 @@
 import auth from './auth'
 import reports from './reports'
 import uvTimer from './uvTimer'
+import statistics from './statistics'
 
 export function getPendingState() {
 	return {
@@ -30,4 +31,4 @@ export function getErrorState(error) {
 	}
 }
 
-export default { auth, reports, uvTimer }
+export default { auth, reports, uvTimer, statistics }
