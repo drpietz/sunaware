@@ -36,10 +36,14 @@ class SignUp extends Component {
 	}
 
 	baqendErrors = (field, props = this.props) => {
-		if (props.errors && props.errors.data)
-			return props.errors.data[field] || []
-		else
-			return []
+		if (props.errors) {
+			if (props.errors.data)
+				return props.errors.data[field] || []
+			else if (field === 'other')
+				return [props.errors.message]
+		}
+
+		return []
 	}
 
 	displaynameErrors = (state = this.state) => {
