@@ -35,45 +35,55 @@ class SignUp extends Component {
 		}
 	}
 
-	displaynameErrors = (state = this.state) => {
-		let value = this.state.displayname.value
-
-		if (value === null)
-			return ['Name is required']
-		if (!value.match((/^((\s*[a-z0-9]){3,20})$/i)))
-			return ['Name is not valid']
+	baqendErrors = (field, props = this.props) => {
+		if (props.errors && props.errors.data)
+			return props.errors.data[field] || []
 		else
 			return []
+	}
+
+	displaynameErrors = (state = this.state) => {
+		let value = state.displayname.value
+		let errors = this.baqendErrors('displayname')
+
+		if (value === null)
+			errors.push('Name is required')
+		else if (!value.match((/^((\s*[a-z0-9]){3,20})$/i)))
+			errors.push('Name is not valid')
+
+		return errors
 	}
 
 	usernameErrors = (state = this.state) => {
 		let value = state.username.value
+		let errors = this.baqendErrors('username')
 
 		if (value === null)
-			return ['E-Mail is required']
-		if (!value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i))
-			return ['E-Mail is not valid']
-		else
-			return []
+			errors.push('E-Mail is required')
+		else if (!value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i))
+			errors.push('E-Mail is not valid')
+
+		return errors
 	}
 
 	passwordErrors = (state = this.state) => {
 		let value = state.password.value
+		let errors = this.baqendErrors('password')
 
 		if (value === null)
-			return ['Password is required']
-		if (value.length < 3)
-			return ['Password is too short']
+			errors.push('Password is required')
+		else if (value.length < 3)
+			errors.push('Password is too short')
 		else if (value.length > 36)
-			return ['Password is too long']
-		else
-			return []
+			errors.push('Password is too long')
+
+		return errors
 	}
 
 	formErrors = (shownOnly = false, state = this.state) => {
 		const fields = ['displayname', 'username', 'password']
 
-		let errors = []
+		let errors = this.baqendErrors('other')
 		fields.forEach(field => {
 			if (!shownOnly || state[field].showErrors)
 				errors = [...errors, ...state[field].getErrors()]

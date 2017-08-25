@@ -1,13 +1,15 @@
+import './CalendarCard.css'
 import React from 'react'
+import {Card, CardContent} from "bloomer";
 
 function CalendarCard(props) {
 
 	return (
-		<div className="card calender-card">
-			<div className="card-content">
+		<Card  className="calender-card">
+			<CardContent isPaddingless>
 				{props.children}
-			</div>
-		</div>
+			</CardContent>
+		</Card>
 	)
 }
 
