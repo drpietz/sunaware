@@ -29,9 +29,7 @@ class Settings extends Component {
 				showErrors: true
 			},
 			positioningEnabled: {
-				value: props.user.positioningEnabled,
-				getErrors: this.positioningEnabledErrors,
-				showErrors: true
+				value: props.user.positioningEnabled
 			},
 			address: {
 				value: props.user.address,
@@ -54,16 +52,6 @@ class Settings extends Component {
 		return errors
 	}
 
-	positioningEnabledErrors = (state = this.state) => {
-		let value = state.positioningEnabled.value
-		let errors = []
-
-		if (value === null)
-			errors.push('Position is required')
-
-		return errors
-	}
-
 	addressErrors = (state = this.state) => {
 		let value = state.address.value
 		let errors = []
@@ -77,7 +65,7 @@ class Settings extends Component {
 	}
 
 	formErrors = (shownOnly = false, state = this.state) => {
-		const fields = ['skinType', 'positioningEnabled', 'address']
+		const fields = ['skinType', 'address']
 
 		let errors = []
 		fields.forEach(field => {
