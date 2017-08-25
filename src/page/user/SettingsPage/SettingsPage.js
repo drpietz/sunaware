@@ -37,7 +37,7 @@ class Settings extends Component {
 				showErrors: true
 			},
 			position: {
-				value: props.user.position
+				value: props.user.address ? props.user.position : null
 			}
 		}
 	}
@@ -53,13 +53,12 @@ class Settings extends Component {
 	}
 
 	addressErrors = (state = this.state) => {
-		let value = state.address.value
 		let errors = []
 
 		if (state.positioningEnabled.value)
 			return []
-		else if (value === null)
-			errors.push('Address is required')
+		else if (state.position.value === null)
+			errors.push('A valid address is required')
 
 		return errors
 	}
@@ -96,6 +95,10 @@ class Settings extends Component {
 				positioningEnabled: {
 					...this.state.positioningEnabled,
 					value: !nextProps.positioningErrors
+				},
+				position: {
+					...this.state.position,
+					value: null
 				}
 			})
 		}
@@ -112,6 +115,14 @@ class Settings extends Component {
 			return
 		}
 
+		if (name === 'address') {
+			this.setState({
+				position: {
+					...this.state.position,
+					value: null
+				}
+			})
+		}
 
 		this.setState({
 			[name]: {...this.state[name], value}
@@ -183,7 +194,7 @@ class Settings extends Component {
 							<Field>
 									<Geosuggest inputClassName="input"
 												placeholder="Choose your location"
-												name="position"
+												name="address"
 												initialValue={this.props.user.address || ""}
 												onSuggestSelect={this.handlePositionSelect}
 												autoActivateFirstSuggest={true}/>
