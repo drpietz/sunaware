@@ -49,7 +49,7 @@ class SignUp extends Component {
 			if (props.errors.data)
 				return props.errors.data[field] || []
 			else if (props.errors.status in this.customErrorMessages)
-				return this.customErrorMessages[props.errors.status][field] || []
+				return [...(this.customErrorMessages[props.errors.status][field] || [])]
 			else if (field === 'other')
 				return [props.errors.message]
 		}
