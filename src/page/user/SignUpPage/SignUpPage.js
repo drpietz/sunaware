@@ -16,6 +16,15 @@ class SignUp extends Component {
 
 	constructor(props) {
 		super(props);
+
+		this.customErrorMessages = {
+			409: {
+				username: [
+					'E-Mail is already in use'
+				]
+			}
+		}
+
 		this.state = {
 			displayname: {
 				value: null,
@@ -39,6 +48,8 @@ class SignUp extends Component {
 		if (props.errors) {
 			if (props.errors.data)
 				return props.errors.data[field] || []
+			else if (props.errors.status in this.customErrorMessages)
+				return this.customErrorMessages[props.errors.status][field] || []
 			else if (field === 'other')
 				return [props.errors.message]
 		}
