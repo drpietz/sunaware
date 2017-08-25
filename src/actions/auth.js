@@ -60,7 +60,6 @@ export function triggerPositionUpdate() {
 				dispatch(updatePosition(latitude, longitude))
 			},
 			(error) => {
-				console.log("Error:", error)
 				dispatch(userPositioningError(error))
 				dispatch(disablePositioning())
 			}
@@ -92,7 +91,6 @@ export function updatePosition(latitude, longitude) {
 		'BAQEND': {
 			type: USER_LOCATION_UPDATE,
 			payload: db => db.User.me.load().then(user => {
-				user.positioningEnabled = true
 				user.position = new db.GeoPoint(latitude, longitude)
 				return user.save()
 			})
