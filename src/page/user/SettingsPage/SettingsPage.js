@@ -19,37 +19,23 @@ import {Button, Checkbox, Control, Field} from "bloomer";
 
 class Settings extends Component {
 
-
 	constructor(props) {
 		super(props)
 		this.state = {
 			skinType: null,
-			positioningEnabled: props.user ? props.user.positioningEnabled : true,
+			positioningEnabled: props.user.positioningEnabled,
 			address: null,
 			position: null
 		}
 	}
 
 
-	setCheckedUserFields = (user) => {
-		if (!user)
-			return
-
-		this.setState({
-			positioningEnabled: user.positioningEnabled
-		})
-	}
-
-
 	componentWillReceiveProps(nextProps) {
-		this.setCheckedUserFields(nextProps.user)
-
 		if (this.props.isPending && !nextProps.isPending) {
 			if (nextProps.errors)
 				notify.show(nextProps.errors.message, 'error', 2000)
 			else
 				notify.show('Account updated!', 'success', 2000)
-
 		}
 	}
 
@@ -57,12 +43,23 @@ class Settings extends Component {
 		if (!this.state.positioningEnabled && nextState.positioningEnabled) {
 			this.props.actions.triggerPositionUpdate()
 		}
+
+		if (this.props.positioningPending && !nextProps.positioningPending) {
+			this.setState({
+				positioningEnabled: !nextProps.positioningErrors
+			})
+		}
 	}
 
 	handleInputChange = (event) => {
 		const target = event.target;
 		const value = target.type === 'checkbox' ? target.checked : target.value;
 		const name = target.name;
+
+		if (name === 'positioningEnabled' && value === true) {
+			this.props.actions.triggerPositionUpdate()
+			return
+		}
 
 		this.setState({
 			[name]: value
@@ -155,6 +152,8 @@ function mapStateToProps(state) {
 		user: state.auth.user,
 		isPending: state.auth.update.isPending,
 		errors: state.auth.update.errors,
+		positioningPending: state.auth.positioning.isPending,
+		positioningErrors: state.auth.positioning.errors
 	}
 }
 
