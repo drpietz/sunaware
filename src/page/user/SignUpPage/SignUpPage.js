@@ -93,7 +93,6 @@ class SignUp extends Component {
 
 	handleSignUp = event => {
 		event.preventDefault();
-
 		this.props.actions.register(this.state.username.value, this.state.password.value, this.state.displayname.value)
 	};
 
@@ -138,6 +137,7 @@ class SignUp extends Component {
 
 							<Field isGrouped="centered">
 								<Button isColor="warning"
+										type="submit"
 										isLoading={this.props.isPending}
 										disabled={this.formErrors().length > 0}
 										onClick={this.handleSignUp}>

@@ -64,6 +64,7 @@ class Login extends Component {
 							</Field>
 							<Field isGrouped="centered">
 								<Button isColor="warning"
+										type="submit"
 										isLoading={this.props.isPending}
 										onClick={this.handleLogin}>
 									Login
