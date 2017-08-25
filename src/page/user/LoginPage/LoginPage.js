@@ -17,22 +17,75 @@ class Login extends Component {
 		super(props);
 
 		this.state = {
-			username: null,
-			password: null
+			username: {
+				value: null,
+				getErrors: this.usernameErrors,
+				showErrors: true
+			},
+			password: {
+				value: null,
+				getErrors: this.passwordErrors,
+				showErrors: true
+			}
 		}
+	}
+
+	baqendErrors = (field, props = this.props) => {
+		if (props.errors) {
+			if (props.errors.data)
+				return props.errors.data[field] || []
+			else if (field === 'other')
+				return [props.errors.message]
+		}
+
+		return []
+	}
+
+	usernameErrors = (state = this.state) => {
+		let value = state.username.value
+		let errors = this.baqendErrors('username')
+
+		if (value === null)
+			errors.push('Name is required')
+
+		return errors
+	}
+
+	passwordErrors = (state = this.state) => {
+		let value = state.password.value
+		let errors = this.baqendErrors('password')
+
+		if (value === null)
+			errors.push('Password is required')
+
+		return errors
+	}
+
+	formErrors = (shownOnly = false, state = this.state) => {
+		const fields = ['username', 'password']
+
+		let errors = this.baqendErrors('other')
+		fields.forEach(field => {
+			if (!shownOnly || state[field].showErrors)
+				errors = [...errors, ...state[field].getErrors()]
+		})
+
+		return errors
 	}
 
 	handleInputChange = event => {
 		event.preventDefault()
         const name = event.target.name;
         const value = event.target.value;
-        this.setState({[name]: value});
+		this.setState({
+			[name]: {...this.state[name], value}
+		});
 	};
 
 	handleLogin = event => {
 		event.preventDefault();
 
-		this.props.actions.login(this.state.username, this.state.password)
+		this.props.actions.login(this.state.username.value, this.state.password.value)
 	}
 
 	render () {
@@ -44,7 +97,8 @@ class Login extends Component {
 							<Field>
 								<Control hasIcons="left">
 									<Input name="username" placeholder="E-Mail address"
-										   isColor={this.props.errors && "danger"} />
+										   type="username"
+										   isColor={this.usernameErrors().length > 0 && "danger"} />
 
 									<Icon isSize='small' isAlign='left'>
 										<i className="fa fa-envelope" />
@@ -56,7 +110,7 @@ class Login extends Component {
 								<Control hasIcons="left">
 									<Input name="password" placeholder="Password"
 										   type="password"
-										   isColor={this.props.errors && "danger"} />
+										   isColor={this.passwordErrors().length > 0 && "danger"} />
 									<Icon isSize='small' isAlign='left'>
 										<i className="fa fa-lock" />
 									</Icon>
@@ -71,6 +125,7 @@ class Login extends Component {
 								</Button>
 							</Field>
 						</Box>
+						<FormErrors formErrors={this.formErrors(true)} />
 					</form>
 				</Content>
 			</PageBody>
