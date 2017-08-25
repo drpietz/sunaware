@@ -52,7 +52,7 @@ class MakeEntry extends Component {
 	}
 
 	cloudsErrors = (state = this.state) => {
-		let value = this.state.clouds.value
+		let value = state.clouds.value
 		let errors = []
 
 		if (value === null)
@@ -62,7 +62,7 @@ class MakeEntry extends Component {
 	}
 
 	temperatureErrors = (state = this.state) => {
-		let value = this.state.temperature.value
+		let value = state.temperature.value
 		let errors = []
 
 		if (value === null)
