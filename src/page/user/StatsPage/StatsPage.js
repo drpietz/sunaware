@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import PageBody from "../../app/layout/PageBody/PageBody"
 import Content from "../../app/layout/Content/Content"
 import './StatsPage.css'
-import '../../app/components/CalendarColumn/CalendarColumn'
 import moment from 'moment'
 import Calendar from "../../app/components/Calendar/Calendar";
 
