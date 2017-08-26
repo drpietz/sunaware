@@ -1,4 +1,4 @@
-.calender-field {
+.calendar-field {
 	position: relative;
 	min-height: 5rem;
 
@@ -7,7 +7,7 @@
 	justify-content: center;
 }
 
-.calender-field .date {
+.calendar-field .date {
 	position: absolute;
 	top: 0;
 	right: 0.5rem;
