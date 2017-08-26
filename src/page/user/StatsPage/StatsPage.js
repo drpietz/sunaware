@@ -1,3 +1,5 @@
+import './StatsPage.css'
+
 import React, {Component} from 'react'
 import PageBody from "../../app/layout/PageBody/PageBody"
 import Content from "../../app/layout/Content/Content"
