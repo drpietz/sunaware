@@ -3,5 +3,9 @@
 }
 
 .calendar {
+	margin-bottom: 2rem;
+}
+
+.message {
 	margin-bottom: 4rem;
 }
