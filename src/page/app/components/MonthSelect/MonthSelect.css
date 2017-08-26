@@ -1,0 +1,33 @@
+.month-select {
+	position: relative;
+	height: 5rem;
+	width: 100%;
+	background: #ff7002;
+	text-align: center;
+
+	color: #ffffff;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.month-select .left, .month-select .right {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 5rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.month-select .left {
+	left: 0;
+}
+
+.month-select .right {
+	right: 0;
+}
