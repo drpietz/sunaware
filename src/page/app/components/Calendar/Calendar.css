@@ -5,3 +5,8 @@
 .calendar-field.outlier {
 	opacity: 0.5;
 }
+
+.weekdays .column {
+	text-align: center;
+	padding-top: 2rem;
+}

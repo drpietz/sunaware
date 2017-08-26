@@ -92,17 +92,24 @@ class Calendar extends Component {
 		return result
 	}
 
+	generateRow = (rowData) => {
+		return (
+			<Columns>
+				{ rowData.map(entry => <Column>{entry}</Column>) }
+			</Columns>
+		)
+	}
+
 	render() {
 		const month = this.props.data ? this.getLayedOutFields() : this.getEmptyState()
 		console.log(this.getRandomCloudEmojis(this.daysInMonth()))
 
 		return (
 			<div className="calendar">
-				{ month.map(week => (
-					<Columns>
-						{ week.map(day => <Column>{day}</Column>) }
-					</Columns>
-				)) }
+				<div className="weekdays">
+					{this.generateRow(["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"])}
+				</div>
+				{ month.map(this.generateRow) }
 			</div>
 		)
 	}

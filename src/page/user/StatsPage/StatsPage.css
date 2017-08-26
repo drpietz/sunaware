@@ -50,35 +50,3 @@ body {font-family: Verdana, sans-serif;}
 	text-transform: uppercase;
 	letter-spacing: 3px;
 }
-
-
-/* Weekdays*/
-.weekdays {
-	margin: 0;
-	padding: 10px 0;
-}
-
-.weekdays .calendar-field {
-	background-color: #bababa !important;
-}
-
-.calendar .calendar-field {
-	background-color: #ffffff !important;
-}
-
-
-/* Days (1-31) */
-.days {
-	padding: 10px 0;
-	background: #eee;
-	margin: 0;
-}
-
-
-
-/* Highlight the "current" day */
-.days li .active {
-	padding: 5px;
-	background: #ff7002;
-	color: white !important
-}
