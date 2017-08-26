@@ -21,13 +21,13 @@ class Calendar extends Component {
 
 	ensureData = (props = this.props) => {
 		if (!props.data) {
-			props.actions.fetchMonth(this.getMonth().toDate())
+			props.actions.fetchMonth(this.getMonth(props).toDate())
 		}
 	}
 
 
-	getMonth = () => {
-		return moment(this.props.month).startOf('month')
+	getMonth = (props = this.props) => {
+		return moment(props.month).startOf('month')
 	}
 
 	daysInMonth = () => {
@@ -102,7 +102,6 @@ class Calendar extends Component {
 
 	render() {
 		const month = this.props.data ? this.getLayedOutFields() : this.getEmptyState()
-		console.log(this.getRandomCloudEmojis(this.daysInMonth()))
 
 		return (
 			<div className="calendar">
