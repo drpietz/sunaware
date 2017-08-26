@@ -21,7 +21,7 @@ class Calendar extends Component {
 	generatePadding = (n) => {
 		let result = []
 		for (let i = 0; i < n; i++)
-			result.push(<CalendarField/>)
+			result.push(<CalendarField className="outlier" />)
 		return result
 	}
 

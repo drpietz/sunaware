@@ -1,3 +1,7 @@
 .calendar .emoji {
 	opacity: 0.5;
 }
+
+.calendar-field.outlier {
+	opacity: 0.5;
+}
