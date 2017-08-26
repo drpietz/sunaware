@@ -13,6 +13,9 @@ class Calendar extends Component {
 
 	componentDidMount() {
 		this.ensureData()
+
+		// always refresh current month
+		this.props.actions.fetchMonth(moment().startOf('month').toDate())
 	}
 
 	componentWillReceiveProps(nextProps) {
