@@ -41,13 +41,17 @@ class Calendar extends Component {
 		return result
 	}
 
+	getDayOfWeek = (m) => {
+		return (m.day() + 6) % 7
+	}
+
 	getStartPadding = () => {
-		const length = this.getMonth().day() - 1
+		const length = this.getDayOfWeek(this.getMonth())
 		return this.generatePadding(length)
 	}
 
 	getEndPadding = () => {
-		const length = 7 - this.getMonth().endOf('month').day()
+		const length = 6 - this.getDayOfWeek(this.getMonth().endOf('month'))
 		return this.generatePadding(length)
 	}
 
