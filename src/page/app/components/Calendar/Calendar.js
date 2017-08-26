@@ -10,6 +10,22 @@ import {Column, Columns} from "bloomer";
 import random from 'random-seed'
 
 class Calendar extends Component {
+
+	componentDidMount() {
+		this.ensureData()
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.ensureData(nextProps)
+	}
+
+	ensureData = (props = this.props) => {
+		if (!props.data) {
+			props.actions.fetchMonth(this.getMonth().toDate())
+		}
+	}
+
+
 	getMonth = () => {
 		return moment(this.props.month).startOf('month')
 	}
@@ -94,18 +110,16 @@ class Calendar extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-	const month = state.statistics[ownProps.month]
+	const date = ownProps.month.toDate()
+	let monthString = date.getUTCFullYear() + '-' + date.getMonth()
+	const month = state.statistics[monthString]
 
 	if (month) {
 		return {
-			isPending: month.isPending,
-			errors: month.errors,
 			data: month.data
 		}
 	} else {
 		return {
-			isPending: false,
-			errors: null,
 			data: null
 		}
 	}
