@@ -5,7 +5,7 @@ export default function(state = {}, action = {}) {
 	switch (action.type) {
 		case FETCH_SUMMARY_PENDING:
 			return { ...state,
-				[action.month]: {
+				[action.key]: {
 					isPending: true,
 					errors: null,
 					data: null
@@ -14,7 +14,7 @@ export default function(state = {}, action = {}) {
 
 		case FETCH_SUMMARY_SUCCESS:
 			return { ...state,
-				[action.month]: {
+				[action.key]: {
 					isPending: false,
 					errors: null,
 					data: action.payload
@@ -23,7 +23,7 @@ export default function(state = {}, action = {}) {
 
 		case FETCH_SUMMARY_ERROR:
 			return { ...state,
-				[action.month]: {
+				[action.key]: {
 					isPending: false,
 					errors: action.payload.cause,
 					data: null
